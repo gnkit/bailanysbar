@@ -2,6 +2,7 @@
 
 namespace Domain\Account\Models;
 
+use Database\Factories\Account\PermissionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Domain\Shared\Models\BaseModel;
 use Domain\Account\Models\User;
@@ -28,4 +29,8 @@ final class Permission extends BaseModel
         return $this->belongsToMany(Role::class, 'roles_permissions');
     }
 
+    protected static function newFactory()
+    {
+        return app(PermissionFactory::class);
+    }
 }
