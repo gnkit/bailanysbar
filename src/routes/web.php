@@ -20,8 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/users', 'App\Http\Controllers\Admin\UserController');
+    Route::get('/dashboard', [\App\Http\Controllers\Account\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/users', 'App\Http\Controllers\Account\UserController');
 });

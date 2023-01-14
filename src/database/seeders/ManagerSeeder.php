@@ -22,7 +22,7 @@ class ManagerSeeder extends Seeder
 
         User::create([
             'name' => 'Manager',
-            'email' => 'manage@mail.com',
+            'email' => 'manager@mail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('manager'),
             'remember_token' => Str::random(10),
