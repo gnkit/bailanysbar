@@ -11,6 +11,7 @@
     filter: brightness(0.95);
 }
 
+.contacts a,
 .category a {
     text-decoration: none;
     color: #fff;
@@ -24,7 +25,7 @@
 div.socials a i {
     color: #f3f4f7;
     font-size: 2rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem;
 }
 
 .contact {
@@ -89,7 +90,7 @@ hr {
     bottom: -1px;
 }
 
-.anime {
+.contacts .anime {
     transform: scale(0);
     opacity: 0.5;
     display: none;

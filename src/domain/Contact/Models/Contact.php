@@ -1,0 +1,55 @@
+<?php
+
+namespace Domain\Contact\Models;
+
+use Domain\Account\Models\User;
+use Domain\Shared\Models\BaseModel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Database\Factories\Contact\ContactFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+final class Contact extends BaseModel
+{
+    use HasFactory;
+
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'name',
+        'description',
+        'address',
+        'phone',
+        'instagram',
+        'telegram',
+        'whatsapp',
+        'site',
+        'user_id',
+        'category_id',
+    ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|mixed|void
+     */
+    protected static function newFactory()
+    {
+        return app(ContactFactory::class);
+    }
+}

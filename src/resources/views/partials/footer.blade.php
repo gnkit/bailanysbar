@@ -8,3 +8,5 @@
     </ul>
     <p class="text-center text-muted">© 2021 Company, Inc</p>
 </footer>
+
+@include('partials.scripts')
