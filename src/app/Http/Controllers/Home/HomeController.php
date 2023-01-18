@@ -14,33 +14,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('parent_id', '=', null)->get();
+//         $categories = Category::with('children')->whereNull('parent_id')->get();
 
         return view('pages.home.index', compact('categories'));
     }
 
+    /**
+     * @param Category $category
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function category(Category $category)
     {
-        // $categories = Category::with('children')->whereNull('parent_id')->get();
-//dd($category->children);
         $contacts = [];
-
-//        $contact = Contact::where('category_id', '=', $category->id)->get();
-
-        foreach ($category->children as $child) {
-            $contacts[] = Contact::where('category_id', '=', $child->id)->get();
-//            $contacts = $contacts->merge($contacts);
+        if ($category->children()->count() > 0) {
+            foreach ($category->children as $child) {
+                $contacts[] = Contact::where('category_id', '=', $child->id)->get();
+            }
+        } else {
+            $contacts[] = Contact::where('category_id', '=', $category->id)->get();
         }
-
-//        $contactss[] = $contact;
-
-//         dd($contacts);
-        // $children = $category->children;
-
-
-        // dd($contact);
-
-        // dd($contacts->category());
 
         return view('pages.home.category', compact('contacts', 'category'));
     }

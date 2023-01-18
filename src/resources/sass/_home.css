@@ -1,3 +1,8 @@
+.categories,
+.contacts {
+    margin-bottom: 4rem;
+}
+
 .category {
     background-color: #00c16e;
     font-size: 0.7rem;
@@ -50,11 +55,11 @@ div.socials a i {
     margin: 0 0.5rem;
 }
 
-hr {
+.contacts .contact hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #f3f4f7;
+    border-top: 1px solid #f8fafc;
     margin: 1em 0;
     padding: 0;
 }
