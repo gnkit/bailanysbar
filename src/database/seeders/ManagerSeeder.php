@@ -26,6 +26,7 @@ class ManagerSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('manager'),
             'remember_token' => Str::random(10),
+            'status' => 'active',
             'role_id' => $role->id,
         ]);
     }

@@ -7,6 +7,7 @@ use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Database\Factories\Contact\ContactFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Domain\Contact\Enums\Contact\ContactStatus;
 
 final class Contact extends BaseModel
 {
@@ -25,8 +26,14 @@ final class Contact extends BaseModel
         'telegram',
         'whatsapp',
         'site',
+        'status',
         'user_id',
         'category_id',
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d.m.Y H:i:s',
+        'status' => ContactStatus::class,
     ];
 
     /**

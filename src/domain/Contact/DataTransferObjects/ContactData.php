@@ -5,6 +5,7 @@ namespace Domain\Contact\DataTransferObjects;
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;
+use Domain\Contact\Enums\Contact\ContactStatus;
 
 final class ContactData extends Data
 {
@@ -19,6 +20,7 @@ final class ContactData extends Data
         public readonly ?string $telegram,
         public readonly ?string $whatsapp,
         public readonly ?string $site,
+        public readonly ContactStatus $status,
         public readonly int $category_id,
     ) {
     }
@@ -27,14 +29,15 @@ final class ContactData extends Data
     {
         return [
             'title' => ['required', 'string', 'max255'],
-            'name' => ['sometimes', 'string', 'max:255'],
-            'description' => ['sometimes', 'string', 'max:2048'],
-            'address' => ['sometimes', 'string', 'max:255'],
+            'name' => ['nullable', 'sometimes', 'string', 'max:255'],
+            'description' => ['nullable', 'sometimes', 'string', 'max:2048'],
+            'address' => ['nullable', 'sometimes', 'string', 'max:255'],
             'phone' => ['sometimes', 'string', 'max:255'],
-            'instagram' => ['sometimes', 'string', 'max:255'],
-            'telegram' => ['sometimes', 'string', 'max:255'],
-            'whatsapp' => ['sometimes', 'string', 'max:255'],
-            'site' => ['sometimes', 'string', 'max:255'],
+            'instagram' => ['nullable', 'sometimes', 'string', 'max:255'],
+            'telegram' => ['nullable', 'sometimes', 'string', 'max:255'],
+            'whatsapp' => ['nullable', 'sometimes', 'string', 'max:255'],
+            'site' => ['nullable', 'sometimes', 'string', 'max:255'],
+            'status' => ['sometimes', 'nullable', new Enum(ContactStatus::class)],
             'category_id' => ['required', 'int'],
         ];
     }
@@ -51,6 +54,7 @@ final class ContactData extends Data
             'telegram' => $request->telegram,
             'whatsapp' => $request->whatsapp,
             'site' => $request->site,
+            'status' => $request->status ?? ContactStatus::DRAFT,
             'category_id' => $request->category_id,
         ]);
     }
