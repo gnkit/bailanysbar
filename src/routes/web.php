@@ -22,5 +22,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Account\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/users', 'App\Http\Controllers\Account\UserController');
+    Route::group(['middleware' => 'role:manager'], function () {
+        Route::resource('/users', 'App\Http\Controllers\Account\UserController');
+    });
 });
