@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use Domain\Account\Enums\User\UserStatus;
+use Domain\Account\Models\Role;
+use Domain\Account\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Enum;
 
 class RegisterController extends Controller
 {
@@ -29,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::DASHBOARD;
 
     /**
      * Create a new controller instance.
@@ -53,6 +56,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'status' => ['string', new Enum(UserStatus::class)],
+            'role_id' => ['integer'],
         ]);
     }
 
@@ -60,14 +65,18 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \Domain\Account\Models\User
      */
     protected function create(array $data)
     {
+        $role = Role::where('slug', 'customer')->first();
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'status' => UserStatus::ACTIVE,
+            'role_id' => $role->id,
         ]);
     }
 }

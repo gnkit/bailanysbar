@@ -3,6 +3,7 @@
 namespace Domain\Account\DataTransferObjects;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Enum;
 use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;
 use Domain\Account\Enums\User\UserStatus;
