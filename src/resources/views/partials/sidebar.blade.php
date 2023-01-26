@@ -13,6 +13,7 @@
                     {{ __('Contacts') }}
                 </a>
             </li>
+            @role('manager')
             <li>
                 <a href="#" class="nav-link link-dark">
                     <i class="fa-solid fa-clipboard-list"></i>
@@ -37,6 +38,7 @@
                     {{ __('Permissions') }}
                 </a>
             </li>
+            @endrole
             <li>
                 <a href="#" class="nav-link link-dark">
                     <i class="fa-solid fa-circle-user"></i>

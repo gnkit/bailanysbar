@@ -61,6 +61,15 @@ final class User extends Authenticatable
     }
 
     /**
+     * @param $role
+     * @return bool
+     */
+    public function hasRole($role): bool
+    {
+        return $this->role->slug === $role ?? false;
+    }
+
+    /**
      * @return \Illuminate\Contracts\Foundation\Application|mixed
      */
     protected static function newFactory()
