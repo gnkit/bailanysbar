@@ -2,13 +2,13 @@
     <div class="d-flex flex-column flex-shrink-0">
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="#" class="nav-link active">
+                <a href="{{ route('dashboard') }}" class="nav-link link-dark {{ request()->is('dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-gauge-high"></i>
                     {{ __('Dashboard') }}
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="{{ route('contacts.index') }}" class="nav-link link-dark {{ request()->is('contacts') ? 'active' : '' }}">
                     <i class="fa-solid fa-mobile-screen"></i>
                     {{ __('Contacts') }}
                 </a>

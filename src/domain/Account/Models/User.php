@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Domain\Account\Enums\User\UserStatus;
 
@@ -67,6 +68,14 @@ final class User extends Authenticatable
     public function hasRole($role): bool
     {
         return $this->role->slug === $role ?? false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isManager(): bool
+    {
+        return Auth::user()->role->slug === 'manager' ?? false;
     }
 
     /**

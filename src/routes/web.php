@@ -25,4 +25,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => 'role:manager'], function () {
         Route::resource('/users', 'App\Http\Controllers\Account\UserController');
     });
+    Route::resource('/contacts', 'App\Http\Controllers\Contact\ContactController');
 });

@@ -2,9 +2,12 @@
 
 namespace Domain\Contact\DataTransferObjects;
 
+use Domain\Account\Models\User;
+use Domain\Contact\Models\Category;
+use Domain\Contact\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Enum;
 use Spatie\LaravelData\Data;
-use Illuminate\Validation\Rule;
 use Domain\Contact\Enums\Contact\ContactStatus;
 
 final class ContactData extends Data
@@ -20,7 +23,10 @@ final class ContactData extends Data
         public readonly ?string $telegram,
         public readonly ?string $whatsapp,
         public readonly ?string $site,
-        public readonly ContactStatus $status,
+        public readonly string $status,
+        #[Exists(User::class)]
+        public readonly ?int $user_id,
+        #[Exists(Category::class)]
         public readonly int $category_id,
     ) {
     }
@@ -28,17 +34,18 @@ final class ContactData extends Data
     public static function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max255'],
+            'title' => ['required', 'string', 'max:255', 'unique:contacts'],
             'name' => ['nullable', 'sometimes', 'string', 'max:255'],
-            'description' => ['nullable', 'sometimes', 'string', 'max:2048'],
+            'description' => ['nullable', 'sometimes', 'string', 'max:4096'],
             'address' => ['nullable', 'sometimes', 'string', 'max:255'],
-            'phone' => ['sometimes', 'string', 'max:255'],
+            'phone' => ['sometimes', 'string', 'max:12'],
             'instagram' => ['nullable', 'sometimes', 'string', 'max:255'],
             'telegram' => ['nullable', 'sometimes', 'string', 'max:255'],
             'whatsapp' => ['nullable', 'sometimes', 'string', 'max:255'],
             'site' => ['nullable', 'sometimes', 'string', 'max:255'],
-            'status' => ['sometimes', 'nullable', new Enum(ContactStatus::class)],
-            'category_id' => ['required', 'int'],
+            'status' => ['required', new Enum(ContactStatus::class)],
+            'user_id' => ['sometimes'],
+            'category_id' => ['required'],
         ];
     }
 
@@ -54,7 +61,8 @@ final class ContactData extends Data
             'telegram' => $request->telegram,
             'whatsapp' => $request->whatsapp,
             'site' => $request->site,
-            'status' => $request->status ?? ContactStatus::DRAFT,
+            'status' => $request->status,
+            'user_id' => $request->user_id,
             'category_id' => $request->category_id,
         ]);
     }
