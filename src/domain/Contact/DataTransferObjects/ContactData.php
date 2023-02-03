@@ -4,9 +4,10 @@ namespace Domain\Contact\DataTransferObjects;
 
 use Domain\Account\Models\User;
 use Domain\Contact\Models\Category;
-use Domain\Contact\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Enum;
+use Illuminate\Validation\Rule;
+use Spatie\LaravelData\Attributes\Validation\Enum;
+use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Data;
 use Domain\Contact\Enums\Contact\ContactStatus;
 
@@ -23,9 +24,10 @@ final class ContactData extends Data
         public readonly ?string $telegram,
         public readonly ?string $whatsapp,
         public readonly ?string $site,
-        public readonly string $status,
+        #[Enum(ContactStatus::class)]
+        public readonly ContactStatus $status,
         #[Exists(User::class)]
-        public readonly ?int $user_id,
+        public readonly int $user_id,
         #[Exists(Category::class)]
         public readonly int $category_id,
     ) {
@@ -34,7 +36,7 @@ final class ContactData extends Data
     public static function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255', 'unique:contacts'],
+            'title' => ['required', 'string', 'max:255', Rule::unique('contacts', 'title')->ignore(request()->contact)],
             'name' => ['nullable', 'sometimes', 'string', 'max:255'],
             'description' => ['nullable', 'sometimes', 'string', 'max:4096'],
             'address' => ['nullable', 'sometimes', 'string', 'max:255'],
@@ -43,7 +45,7 @@ final class ContactData extends Data
             'telegram' => ['nullable', 'sometimes', 'string', 'max:255'],
             'whatsapp' => ['nullable', 'sometimes', 'string', 'max:255'],
             'site' => ['nullable', 'sometimes', 'string', 'max:255'],
-            'status' => ['required', new Enum(ContactStatus::class)],
+            'status' => ['sometimes', new Enum(ContactStatus::class)],
             'user_id' => ['sometimes'],
             'category_id' => ['required'],
         ];
@@ -51,7 +53,9 @@ final class ContactData extends Data
 
     public static function fromRequest(Request $request): self
     {
+//dd($request);
         return self::from([
+            'id' => intval($request->contact) ?? null,
             'title' => $request->title,
             'name' => $request->name,
             'description' => $request->description,
@@ -62,7 +66,7 @@ final class ContactData extends Data
             'whatsapp' => $request->whatsapp,
             'site' => $request->site,
             'status' => $request->status,
-            'user_id' => $request->user_id,
+            'user_id' => $request->user_id ?? auth()->id(),
             'category_id' => $request->category_id,
         ]);
     }

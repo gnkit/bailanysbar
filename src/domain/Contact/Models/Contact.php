@@ -12,7 +12,7 @@ use Domain\Contact\Enums\Contact\ContactStatus;
 final class Contact extends BaseModel
 {
     use HasFactory;
-
+    
     /**
      * @var string[]
      */

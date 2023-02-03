@@ -14,6 +14,7 @@ class GetOwnContactsAction
     public static function execute($quantity): Paginator
     {
         $contacts = Contact::where('user_id', '=', auth()->id())
+            ->orderByDesc('created_at')
             ->select('id', 'title', 'status')
             ->simplePaginate($quantity);
 

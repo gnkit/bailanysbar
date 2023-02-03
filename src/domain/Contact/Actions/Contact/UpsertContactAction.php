@@ -16,7 +16,9 @@ class UpsertContactAction
     public static function execute(ContactData $data, User $user)
     {
         $contact = Contact::updateOrCreate(
-            ['id' => $data->id],
+            [
+                'id' => $data->id,
+            ],
             [
                 'title' => $data->title,
                 'name' => $data->name,
@@ -34,7 +36,7 @@ class UpsertContactAction
         );
 
         if ($contact->wasRecentlyCreated) {
-            return redirect()->back()->withMessage('error', 'Contact dont created.');
+            return redirect()->back()->withMessage('error', 'Contact dont created or updated.');
         }
         return $contact;
     }

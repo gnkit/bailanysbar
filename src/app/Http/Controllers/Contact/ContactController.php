@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Contact;
 
 use App\Http\Controllers\Controller;
 use Domain\Contact\Actions\Category\GetAllCategoriesAction;
+use Domain\Contact\Actions\Contact\DeleteContactAction;
 use Domain\Contact\Actions\Contact\GetAllContactsAction;
 use Domain\Contact\Actions\Contact\GetOwnContactsAction;
 use Domain\Contact\Actions\Contact\UpsertContactAction;
@@ -19,7 +20,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $rows = 3;
+        $rows = 10;
 
         if (Auth::user()->isManager()) {
             $contacts = GetAllContactsAction::execute($rows);
@@ -55,47 +56,45 @@ class ContactController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param \Domain\Contact\Models\Contact $contact
-     * @return \Illuminate\Http\Response
+     * @param Contact $contact
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Contact $contact)
     {
-        //
+        return view('pages.contact.show', compact('contact'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \Domain\Contact\Models\Contact $contact
-     * @return \Illuminate\Http\Response
+     * @param Contact $contact
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Contact $contact)
     {
-        //
+        $categories = GetAllCategoriesAction::execute();
+
+        return view('pages.contact.edit', compact('categories', 'contact'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Domain\Contact\Models\Contact $contact
-     * @return \Illuminate\Http\Response
+     * @param ContactData $data
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Contact $contact)
+    public function update(ContactData $data, Request $request)
     {
-        //
+        UpsertContactAction::execute($data, $request->user());
+
+        return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.')->withInput();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param \Domain\Contact\Models\Contact $contact
-     * @return \Illuminate\Http\Response
+     * @param Contact $contact
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Contact $contact)
     {
-        //
+        DeleteContactAction::execute($contact);
+
+        return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
     }
 }

@@ -14,6 +14,7 @@ class GetAllContactsAction
     public static function execute($quantity): Paginator
     {
         $contacts = Contact::select('id', 'title', 'status')
+            ->orderByDesc('created_at')
             ->simplePaginate($quantity);
 
         return $contacts;
