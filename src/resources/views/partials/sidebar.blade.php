@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('contacts.index') }}" class="nav-link link-dark {{ request()->is('contacts') ? 'active' : '' }}">
+                <a href="{{ route('contacts.index') }}" class="nav-link link-dark {{ request()->is('contacts/*') ? 'active' : '' }}">
                     <i class="fa-solid fa-mobile-screen"></i>
                     {{ __('Contacts') }}
                 </a>
@@ -40,7 +40,7 @@
             </li>
             @endrole
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="{{ route('setting') }}" class="nav-link link-dark {{ request()->is('setting') ? 'active' : '' }}" class="nav-link link-dark">
                     <i class="fa-solid fa-circle-user"></i>
                     {{ __('Account') }}
                 </a>

@@ -21,7 +21,8 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', [\App\Http\Controllers\Account\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\Account\AccountController::class, 'dashboard'])->name('dashboard');
+    Route::get('/setting', [\App\Http\Controllers\Account\AccountController::class, 'setting'])->name('setting');
     Route::group(['middleware' => 'role:manager'], function () {
         Route::resource('/users', 'App\Http\Controllers\Account\UserController');
     });
