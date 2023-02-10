@@ -25,19 +25,19 @@
                                 <table class="table table-hover table table-responsive">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col" class="d-none d-sm-block">#</th>
                                         <th scope="col">{{ __('Title') }}</th>
-                                        <th scope="col">{{ __('Status') }}</th>
+                                        <th scope="col" class="d-none d-sm-block">{{ __('Status') }}</th>
                                         <th scope="col">{{ __('Actions') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($contacts as $contact)
                                         <tr>
-                                            <td class="col-1">{{ ++$i }}</td>
-                                            <td class="col-3">{{ $contact->title ?? '' }}</td>
-                                            <td class="col-3">{{ $contact->status->value ?? '' }}</td>
-                                            <td class="col-5">
+                                            <td class="col-1 d-none d-sm-block">{{ ++$i }}</td>
+                                            <td class="col-3 ">{{ $contact->title ?? '' }}</td>
+                                            <td class="col-3 d-none d-sm-block">{{ $contact->status->value ?? '' }}</td>
+                                            <td class="col-5 ">
                                                 <form action="{{ route('contacts.destroy', $contact->id) }}"
                                                       method="POST">
                                                     @csrf

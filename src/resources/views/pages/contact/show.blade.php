@@ -12,27 +12,78 @@
                         @include('partials.flash_message')
 
                         <h4 class="mb-3">{{ __('Contact') }}</h4>
-                        <div class="card border-light mb-3">
-                            <div class="card-header">{{ $contact->title ?? '' }}</div>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $contact->name ?? '' }}</h5>
-                                <p class="card-text"><i
-                                        class="fa-solid fa-list me-2"></i>{{ $contact->category->name ?? '' }}</p>
-                                <p class="card-text"><i class="fa-solid fa-phone me-2"></i>{{ $contact->phone ?? '' }}
-                                </p>
-                                <p class="card-text"><i
-                                        class="fa-solid fa-location-dot me-2"></i>{{ $contact->address ?? '' }}</p>
-                                <p class="card-text"><i
-                                        class="fa-solid fa-file-lines me-2"></i>{{ $contact->description ?? '' }}</p>
-                                <p class="card-text"><i
-                                        class="fa-brands fa-whatsapp me-2"></i>{{ $contact->whatsapp ?? '' }}</p>
-                                <p class="card-text"><i
-                                        class="fa-brands fa-instagram me-2"></i>{{ $contact->instagram ?? '' }}</p>
-                                <p class="card-text"><i
-                                        class="fa-brands fa-telegram me-2"></i>{{ $contact->telegram ?? '' }}</p>
-                                <p class="card-text"><i class="fa-solid fa-link me-2"></i>{{ $contact->site ?? '' }}</p>
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <div class="col">
+                                    <div class="card border-light mb-3">
+                                        <div class="card-header">{{ __('Primary Info') }}</div>
+                                        <div class="card-body">
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-heading me-2"></i>{{ $contact->title ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-user-pen me-2"></i>{{ $contact->name ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-list me-2"></i>{{ $contact->category->name ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-phone me-2"></i>{{ $contact->phone ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-location-dot me-2"></i>{{ $contact->address ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-file-lines me-2"></i>{{ $contact->description ?? '' }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="col">
+                                    <div class="card border-light mb-3">
+                                        <div class="card-header">{{ __('Secondary Info') }}</div>
+                                        <div class="card-body">
+                                            <p class="card-text"><i
+                                                    class="fa-brands fa-whatsapp me-2"></i>{{ $contact->whatsapp ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-brands fa-instagram me-2"></i>{{ $contact->instagram ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-brands fa-telegram me-2"></i>{{ $contact->telegram ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i
+                                                    class="fa-solid fa-link me-2"></i>{{ $contact->site ?? '' }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <hr class="my-4">
+                        <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <div class="row g-3">
+
+                                <div class="col">
+                                    <a class="w-100 btn btn-info btn-lg"
+                                       href="{{ route('contacts.edit', $contact->id) }}"
+                                       type="submit">{{ __('Edit') }}</a>
+                                </div>
+                                <div class="col">
+                                    <button class="w-100 btn btn-danger btn-lg"
+                                            type="submit">{{ __('Delete') }}</button>
+                                </div>
+
+                            </div>
+                        </form>
+
 
                     </div>
                 </div>
