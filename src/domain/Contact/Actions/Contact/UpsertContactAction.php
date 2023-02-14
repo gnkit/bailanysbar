@@ -6,7 +6,7 @@ use Domain\Account\Models\User;
 use Domain\Contact\DataTransferObjects\ContactData;
 use Domain\Contact\Models\Contact;
 
-class UpsertContactAction
+final class UpsertContactAction
 {
     /**
      * @param ContactData $data

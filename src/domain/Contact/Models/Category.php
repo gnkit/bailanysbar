@@ -33,7 +33,15 @@ final class Category extends BaseModel
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|mixed|void
      */

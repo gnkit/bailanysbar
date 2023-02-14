@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Contact;
 
 use App\Http\Controllers\Controller;
-use Domain\Contact\Actions\Category\GetAllCategoriesAction;
+use Domain\Contact\Actions\Category\GetAllParentCategoriesAction;
 use Domain\Contact\Actions\Contact\DeleteContactAction;
 use Domain\Contact\Actions\Contact\GetAllContactsAction;
 use Domain\Contact\Actions\Contact\GetOwnContactsAction;
@@ -38,7 +38,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $categories = GetAllCategoriesAction::execute();
+        $categories = GetAllParentCategoriesAction::execute();
 
         return view('pages.contact.create', compact('categories'));
     }
@@ -70,7 +70,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        $categories = GetAllCategoriesAction::execute();
+        $categories = GetAllParentCategoriesAction::execute();
 
         return view('pages.contact.edit', compact('categories', 'contact'));
     }

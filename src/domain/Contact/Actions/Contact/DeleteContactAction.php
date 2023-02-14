@@ -4,7 +4,7 @@ namespace Domain\Contact\Actions\Contact;
 
 use Domain\Contact\Models\Contact;
 
-class DeleteContactAction
+final class DeleteContactAction
 {
     /**
      * @param Contact $contact
