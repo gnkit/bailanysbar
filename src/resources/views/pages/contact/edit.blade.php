@@ -47,7 +47,7 @@
                                                 @if(0 < $category->children->count())
                                                     @foreach($category->children as $child)
                                                         <option
-                                                                value="{{ $child->id }}" {{ $child->id != old('category') ?: 'selected' }}>{{ '--- ' . $child->name }}</option>
+                                                                value="{{ $child->id }}" {{ (($contact->category_id === $child->id) != old('category')) ? 'selected' : '' }}>{{ '--- ' . $child->name }}</option>
                                                     @endforeach
                                                 @endif
                                             @endforeach
