@@ -8,13 +8,11 @@ final class DeleteContactAction
 {
     /**
      * @param Contact $contact
-     * @return true
+     * @return void
      */
     public static function execute(Contact $contact)
     {
         $contact = Contact::findOrFail($contact->id);
         $contact->delete();
-
-        return true;
     }
 }

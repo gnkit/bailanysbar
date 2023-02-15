@@ -10,9 +10,9 @@ final class UpsertCategoryAction
 {
     /**
      * @param CategoryData $data
-     * @return mixed
+     * @return Category
      */
-    public static function execute(CategoryData $data)
+    public static function execute(CategoryData $data): Category
     {
         $category = Category::updateOrCreate(
             [
@@ -25,11 +25,6 @@ final class UpsertCategoryAction
             ],
         );
 
-        if ($category->wasRecentlyCreated) {
-            return false;
-        }
-
         return $category;
-
     }
 }

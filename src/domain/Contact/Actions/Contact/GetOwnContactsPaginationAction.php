@@ -5,7 +5,7 @@ namespace Domain\Contact\Actions\Contact;
 use Domain\Contact\Models\Contact;
 use Illuminate\Pagination\Paginator;
 
-final class GetOwnContactsAction
+final class GetOwnContactsPaginationAction
 {
     /**
      * @param $quantity

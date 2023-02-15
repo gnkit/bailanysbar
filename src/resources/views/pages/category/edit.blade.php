@@ -32,21 +32,16 @@
                                     <div class="col">
                                         <label for="category" class="form-label">{{ __('Category') }}</label>
                                         <select name="parent_id" class="form-select" id="category" required>
-                                            @if($category->parent_id == null)
-                                                <option value="" selected>{{ __('Without Category') }}</option>
-                                            @endif
                                             @foreach($categories as $category_another)
-                                                @continue($category->id == $category_another->id)
+                                                @continue($category->id === $category_another->id)
                                                 <option
-                                                    value="{{ $category_another->id }}" {{ $category_another->id != old('category') ?: 'selected' }}>{{ $category_another->name }}</option>
-{{--                                                @if(0 < $category_another->children->count())--}}
-{{--                                                    @foreach($category_another->children as $child)--}}
-{{--                                                        <option--}}
-{{--                                                            value="{{ $child->id }}" {{ $child->id != old('category') ?: 'selected' }}>{{ '--- ' . $child->name }}</option>--}}
-{{--                                                    @endforeach--}}
-{{--                                                @endif--}}
+                                                    value="{{ $category_another->id }}" {{ (($category->parent_id === $category_another->id) != old('parent_id')) ? 'selected':'' }}>{{ $category_another->name }}</option>
                                             @endforeach
-                                            <option value="">{{ __('Delete Category') }}</option>
+                                            @if($category->parent_id === null)
+                                                <option value="" selected>{{ __('Parent Category') }}</option>
+                                            @else
+                                                <option value="">{{ __('Delete Parent Category') }}</option>
+                                            @endif
                                         </select>
                                         <div class="invalid-feedback">
                                             {{ __('Please category a valid status.') }}

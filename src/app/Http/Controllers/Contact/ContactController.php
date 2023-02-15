@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Contact;
 use App\Http\Controllers\Controller;
 use Domain\Contact\Actions\Category\GetAllParentCategoriesAction;
 use Domain\Contact\Actions\Contact\DeleteContactAction;
-use Domain\Contact\Actions\Contact\GetAllContactsAction;
-use Domain\Contact\Actions\Contact\GetOwnContactsAction;
+use Domain\Contact\Actions\Contact\GetAllContactsPaginationAction;
+use Domain\Contact\Actions\Contact\GetOwnContactsPaginationAction;
 use Domain\Contact\Actions\Contact\UpsertContactAction;
 use Domain\Contact\DataTransferObjects\ContactData;
 use Domain\Contact\Models\Contact;
@@ -23,9 +23,9 @@ class ContactController extends Controller
         $rows = 10;
 
         if (Auth::user()->isManager()) {
-            $contacts = GetAllContactsAction::execute($rows);
+            $contacts = GetAllContactsPaginationAction::execute($rows);
         } else {
-            $contacts = GetOwnContactsAction::execute($rows);
+            $contacts = GetOwnContactsPaginationAction::execute($rows);
         }
 
         return view('pages.contact.index', compact('contacts'))

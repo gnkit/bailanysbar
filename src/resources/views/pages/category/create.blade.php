@@ -34,13 +34,7 @@
                                             <option value="">{{ __('Select Category') }}</option>
                                             @foreach($categories as $category)
                                                 <option
-                                                    value="{{ $category->id }}" {{ $category->id != old('category') ?: 'selected' }}>{{ $category->name }}</option>
-{{--                                                @if(0 < $category->children->count())--}}
-{{--                                                    @foreach($category->children as $child)--}}
-{{--                                                        <option--}}
-{{--                                                            value="{{ $child->id }}" {{ $child->id != old('category') ?: 'selected' }}>{{ '--- ' . $child->name }}</option>--}}
-{{--                                                    @endforeach--}}
-{{--                                                @endif--}}
+                                                    value="{{ $category->id }}" {{ $category->id != old('parent_id') ?: 'selected' }}>{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">

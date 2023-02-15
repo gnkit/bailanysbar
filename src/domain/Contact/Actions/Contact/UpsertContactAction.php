@@ -11,9 +11,9 @@ final class UpsertContactAction
     /**
      * @param ContactData $data
      * @param User $user
-     * @return mixed
+     * @return Contact
      */
-    public static function execute(ContactData $data, User $user)
+    public static function execute(ContactData $data, User $user): Contact
     {
         $contact = Contact::updateOrCreate(
             [
@@ -35,9 +35,6 @@ final class UpsertContactAction
             ],
         );
 
-        if ($contact->wasRecentlyCreated) {
-            return redirect()->back()->withMessage('error', 'Contact dont created or updated.');
-        }
         return $contact;
     }
 }

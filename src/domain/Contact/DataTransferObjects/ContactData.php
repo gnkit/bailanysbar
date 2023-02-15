@@ -53,7 +53,6 @@ final class ContactData extends Data
 
     public static function fromRequest(Request $request): self
     {
-//dd($request);
         return self::from([
             'id' => intval($request->contact) ?? null,
             'title' => $request->title,

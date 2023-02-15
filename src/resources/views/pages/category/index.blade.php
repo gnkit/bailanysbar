@@ -26,8 +26,8 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col-5">{{ __('Name') }}</th>
-                                        <th scope="col-6">{{ __('Actions') }}</th>
+                                        <th scope="col">{{ __('Name') }}</th>
+                                        <th scope="col">{{ __('Actions') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
