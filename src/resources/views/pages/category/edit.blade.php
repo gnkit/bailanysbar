@@ -11,7 +11,7 @@
                     <div class="col-12 mt-3">
                         @include('partials.flash_message')
 
-                        <h4 class="mb-3">{{ __('Update Category') }}</h4>
+                        <h4 class="mb-3">{{ __('Edit Category') }}</h4>
                         <form method="POST" action="{{ route('categories.update', $category) }}" id="updateCategory"
                               class="needs-validation" novalidate>
                             @method('PUT')

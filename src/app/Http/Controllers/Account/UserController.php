@@ -3,84 +3,92 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use Domain\Account\Actions\Role\GetAllRolesAction;
+use Domain\Account\Actions\User\DeleteUserAction;
+use Domain\Account\Actions\User\GetAllUsersPaginationAction;
+use Domain\Account\Actions\User\UpsertUserAction;
+use Domain\Account\DataTransferObjects\UserData;
 use Domain\Account\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        dd(User::all());
+        $rows = 10;
+
+        $users = GetAllUsersPaginationAction::execute($rows);
+
+        return view('pages.user.index', compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * $rows
+            );
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        $roles = GetAllRolesAction::execute();
+
+        return view('pages.user.create', compact('roles'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param UserData $data
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(UserData $data)
     {
-        //
+        UpsertUserAction::execute($data);
+
+        return redirect()->route('users.index')->with('success', 'User created successfully.')->withInput();
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param \Domain\Account\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(User $user)
     {
-        //
+        $roles = GetAllRolesAction::execute();
+
+        return view('pages.user.show', compact('roles', 'user'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \Domain\Account\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(User $user)
     {
-        //
+        $roles = GetAllRolesAction::execute();
+
+        return view('pages.user.edit', compact('roles', 'user'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Domain\Account\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @param UserData $data
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(UserData $data)
     {
-        //
+        UpsertUserAction::execute($data);
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully.')->withInput();
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param \Domain\Account\Models\User $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
     {
-        //
+        DeleteUserAction::execute($user);
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 }

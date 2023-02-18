@@ -25,6 +25,7 @@ final class RoleData extends Data
     public static function fromRequest(Request $request): self
     {
         return self::from([
+            'id' => $request->id ?? null,
             'name' => $request->name,
         ]);
     }

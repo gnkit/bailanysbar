@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Http\Controllers\Controller;
 use Domain\Contact\Actions\Category\DeleteCategoryAction;
 use Domain\Contact\Actions\Category\GetAllParentCategoriesAction;
-use Domain\Contact\Actions\Category\GetParentCategoriesPaginationAction;
+use Domain\Contact\Actions\Category\GetAllParentCategoriesPaginationAction;
 use Domain\Contact\Actions\Category\UpsertCategoryAction;
 use Domain\Contact\DataTransferObjects\CategoryData;
 use Domain\Contact\Models\Category;
@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $rows = 10;
 
-        $categories = GetParentCategoriesPaginationAction::execute($rows);
+        $categories = GetAllParentCategoriesPaginationAction::execute($rows);
 
         return view('pages.category.index', compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * $rows

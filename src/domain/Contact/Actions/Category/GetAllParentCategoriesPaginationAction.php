@@ -5,7 +5,7 @@ namespace Domain\Contact\Actions\Category;
 use Domain\Contact\Models\Category;
 use Illuminate\Pagination\Paginator;
 
-final class GetParentCategoriesPaginationAction
+final class GetAllParentCategoriesPaginationAction
 {
     /**
      * @param $quantity

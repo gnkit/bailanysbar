@@ -2,7 +2,9 @@
 
 namespace Domain\Account\DataTransferObjects;
 
+use Domain\Account\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Enum;
 use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;
@@ -14,9 +16,9 @@ final class UserData extends Data
         public readonly ?int $id,
         public readonly string $name,
         public readonly string $email,
-        public readonly string $password,
+        public readonly ?string $password,
         public readonly UserStatus $status,
-        public readonly ?int $role_id,
+        public readonly ?RoleData $role_id,
     ) {
     }
 
@@ -24,23 +26,24 @@ final class UserData extends Data
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'email:rfc,dns', Rule::unique('users')->ignore(request('email'))],
-            // 'email' => ['required', 'unique:users', 'email:rfc,dns'],
+            'email' => ['required', 'email', 'email:rfc,dns', Rule::unique('users', 'email')->ignore(request()->user)],
+//             'email' => ['required', 'unique:users', 'email:rfc,dns'],
             'password' => ['sometimes'],
-            // 'password' => ['sometimes', Password::min(8)->mixedCase()->numbers()->symbols()],
+//             'password' => ['sometimes', Password::min(8)->mixedCase()->numbers()->symbols()],
             'status' => ['sometimes', new Enum(UserStatus::class)],
-            'role_id' => ['required'],
+            'role_id' => ['required', 'int'],
         ];
     }
 
     public static function fromRequest(Request $request): self
     {
         return self::from([
+            'id' => $request->user ?? null,
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
-            'status' => $request->status ?? UserStatus::ACTIVE,
-            'role_id' => $request->role_id,
+            'password' => $request->password ? Hash::make($request->password) : $request->user()->password,
+            'status' => $request->status  ?? UserStatus::ACTIVE,
+            'role_id' => RoleData::from(Role::findOrFail($request->role_id)),
         ]);
     }
 }

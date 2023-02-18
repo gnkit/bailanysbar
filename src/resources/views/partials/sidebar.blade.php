@@ -18,14 +18,13 @@
             @role('manager')
             <li>
                 <a href="{{ route('categories.index') }}"
-                   class="nav-link link-dark {{ request()->is('categories/*') || request()->is('categories') ? 'active' : '' }}"
-                   class="nav-link link-dark">
+                   class="nav-link link-dark {{ request()->is('categories/*') || request()->is('categories') ? 'active' : '' }}">
                     <i class="fa-solid fa-clipboard-list"></i>
                     {{ __('Categories') }}
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="{{ route('users.index') }}" class="nav-link link-dark {{ request()->is('users/*') || request()->is('users') ? 'active' : '' }}">
                     <i class="fa-solid fa-user"></i>
                     {{ __('Users') }}
                 </a>
