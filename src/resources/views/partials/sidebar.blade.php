@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="{{ route('permissions.index') }}" class="nav-link link-dark {{ request()->is('permissions/*') || request()->is('permissions') ? 'active' : '' }}" class="nav-link link-dark">
                     <i class="fa-solid fa-shield-halved"></i>
                     {{ __('Permissions') }}
                 </a>

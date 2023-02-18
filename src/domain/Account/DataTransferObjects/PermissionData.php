@@ -11,7 +11,7 @@ final class PermissionData extends Data
     public function __construct(
         public readonly ?int $id,
         public readonly string $name,
-        public readonly string $slug,
+        public readonly ?string $slug,
     ) {
     }
 
@@ -25,6 +25,7 @@ final class PermissionData extends Data
     public static function fromRequest(Request $request): self
     {
         return self::from([
+            'id' => $request->permission ?? null,
             'name' => $request->name,
         ]);
     }

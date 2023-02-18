@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/setting', [\App\Http\Controllers\Account\AccountController::class, 'setting'])->name('setting');
     Route::group(['middleware' => 'role:manager'], function () {
         Route::resource('/users', 'App\Http\Controllers\Account\UserController');
+        Route::resource('/permissions', 'App\Http\Controllers\Account\Permission\PermissionController')->except('show');
         Route::resource('/categories', 'App\Http\Controllers\Link\Category\CategoryController')->except('show');
     });
     Route::resource('/contacts', 'App\Http\Controllers\Link\Contact\ContactController');
