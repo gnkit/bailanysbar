@@ -136,12 +136,12 @@
                                 <div class="col">
                                     <button class="w-100 btn btn-secondary btn-lg" type="submit"
                                             name="status"
-                                            value="{{ \Domain\Contact\Enums\Contact\ContactStatus::DRAFT }}">{{ __('Save Draft') }}</button>
+                                            value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('Save Draft') }}</button>
                                 </div>
                                 <div class="col">
                                     <button class="w-100 btn btn-success btn-lg" type="submit"
                                             name="status"
-                                            value="{{ \Domain\Contact\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
+                                            value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
                                 </div>
                             </div>
 

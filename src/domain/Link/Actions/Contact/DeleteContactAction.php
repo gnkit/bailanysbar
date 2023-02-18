@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Contact\Actions\Contact;
+namespace Domain\Link\Actions\Contact;
 
-use Domain\Contact\Models\Contact;
+use Domain\Link\Models\Contact;
 
 final class DeleteContactAction
 {

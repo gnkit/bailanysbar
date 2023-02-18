@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\Contact\Actions\Category;
+namespace Domain\Link\Actions\Category;
 
-use Domain\Contact\DataTransferObjects\CategoryData;
-use Domain\Contact\Models\Category;
+use Domain\Link\DataTransferObjects\CategoryData;
+use Domain\Link\Models\Category;
 use Illuminate\Support\Str;
 
 final class UpsertCategoryAction

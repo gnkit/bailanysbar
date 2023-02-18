@@ -1,10 +1,10 @@
 <?php
 
-namespace Domain\Contact\Actions\Contact;
+namespace Domain\Link\Actions\Contact;
 
 use Domain\Account\Models\User;
-use Domain\Contact\DataTransferObjects\ContactData;
-use Domain\Contact\Models\Contact;
+use Domain\Link\DataTransferObjects\ContactData;
+use Domain\Link\Models\Contact;
 
 final class UpsertContactAction
 {

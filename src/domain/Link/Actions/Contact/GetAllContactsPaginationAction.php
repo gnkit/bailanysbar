@@ -1,11 +1,11 @@
 <?php
 
-namespace Domain\Contact\Actions\Contact;
+namespace Domain\Link\Actions\Contact;
 
-use Domain\Contact\Models\Contact;
+use Domain\Link\Models\Contact;
 use Illuminate\Pagination\Paginator;
 
-final class GetOwnContactsPaginationAction
+final class GetAllContactsPaginationAction
 {
     /**
      * @param $quantity
@@ -13,9 +13,8 @@ final class GetOwnContactsPaginationAction
      */
     public static function execute($quantity): Paginator
     {
-        $contacts = Contact::where('user_id', '=', auth()->id())
+        $contacts = Contact::select('id', 'title', 'status')
             ->orderByDesc('created_at')
-            ->select('id', 'title', 'status')
             ->simplePaginate($quantity);
 
         return $contacts;

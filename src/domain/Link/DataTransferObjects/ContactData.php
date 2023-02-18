@@ -1,15 +1,15 @@
 <?php
 
-namespace Domain\Contact\DataTransferObjects;
+namespace Domain\Link\DataTransferObjects;
 
 use Domain\Account\Models\User;
-use Domain\Contact\Models\Category;
+use Domain\Link\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelData\Attributes\Validation\Enum;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Data;
-use Domain\Contact\Enums\Contact\ContactStatus;
+use Domain\Link\Enums\Contact\ContactStatus;
 
 final class ContactData extends Data
 {

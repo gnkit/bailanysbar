@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Contact\Actions\Category;
+namespace Domain\Link\Actions\Category;
 
-use Domain\Contact\Models\Category;
+use Domain\Link\Models\Category;
 
 final class DeleteCategoryAction
 {

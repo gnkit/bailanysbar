@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Contact;
+namespace App\Http\Controllers\Link\Contact;
 
 use App\Http\Controllers\Controller;
-use Domain\Contact\Actions\Category\GetAllParentCategoriesAction;
-use Domain\Contact\Actions\Contact\DeleteContactAction;
-use Domain\Contact\Actions\Contact\GetAllContactsPaginationAction;
-use Domain\Contact\Actions\Contact\GetOwnContactsPaginationAction;
-use Domain\Contact\Actions\Contact\UpsertContactAction;
-use Domain\Contact\DataTransferObjects\ContactData;
-use Domain\Contact\Models\Contact;
+use Domain\Link\Actions\Category\GetAllParentCategoriesAction;
+use Domain\Link\Actions\Contact\DeleteContactAction;
+use Domain\Link\Actions\Contact\GetAllContactsPaginationAction;
+use Domain\Link\Actions\Contact\GetOwnContactsPaginationAction;
+use Domain\Link\Actions\Contact\UpsertContactAction;
+use Domain\Link\DataTransferObjects\ContactData;
+use Domain\Link\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

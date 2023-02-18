@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Contact\DataTransferObjects;
+namespace Domain\Link\DataTransferObjects;
 
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Data;

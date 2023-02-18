@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Contact\Models;
+namespace Domain\Link\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Domain\Shared\Models\BaseModel;

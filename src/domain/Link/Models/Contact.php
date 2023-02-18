@@ -1,18 +1,18 @@
 <?php
 
-namespace Domain\Contact\Models;
+namespace Domain\Link\Models;
 
 use Domain\Account\Models\User;
 use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Database\Factories\Contact\ContactFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Domain\Contact\Enums\Contact\ContactStatus;
+use Domain\Link\Enums\Contact\ContactStatus;
 
 final class Contact extends BaseModel
 {
     use HasFactory;
-    
+
     /**
      * @var string[]
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Contact\Enums\Contact;
+namespace Domain\Link\Enums\Contact;
 
 
 enum ContactStatus: string

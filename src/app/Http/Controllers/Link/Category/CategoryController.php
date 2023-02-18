@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Link\Category;
 
 use App\Http\Controllers\Controller;
-use Domain\Contact\Actions\Category\DeleteCategoryAction;
-use Domain\Contact\Actions\Category\GetAllParentCategoriesAction;
-use Domain\Contact\Actions\Category\GetAllParentCategoriesPaginationAction;
-use Domain\Contact\Actions\Category\UpsertCategoryAction;
-use Domain\Contact\DataTransferObjects\CategoryData;
-use Domain\Contact\Models\Category;
+use Domain\Link\Actions\Category\DeleteCategoryAction;
+use Domain\Link\Actions\Category\GetAllParentCategoriesAction;
+use Domain\Link\Actions\Category\GetAllParentCategoriesPaginationAction;
+use Domain\Link\Actions\Category\UpsertCategoryAction;
+use Domain\Link\DataTransferObjects\CategoryData;
+use Domain\Link\Models\Category;
 
 class CategoryController extends Controller
 {
