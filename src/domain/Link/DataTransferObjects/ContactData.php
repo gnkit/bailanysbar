@@ -36,7 +36,7 @@ final class ContactData extends Data
     public static function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255', Rule::unique('contacts', 'title')->ignore(request()->contact)],
+            'title' => ['required', 'string', 'max:255', Rule::unique('contacts', 'title')->ignore(request('contact'))],
             'name' => ['nullable', 'sometimes', 'string', 'max:255'],
             'description' => ['nullable', 'sometimes', 'string', 'max:4096'],
             'address' => ['nullable', 'sometimes', 'string', 'max:255'],

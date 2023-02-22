@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => 'role:manager'], function () {
         Route::resource('/users', 'App\Http\Controllers\Account\UserController');
         Route::resource('/permissions', 'App\Http\Controllers\Account\Permission\PermissionController')->except('show');
+        Route::resource('/roles', 'App\Http\Controllers\Account\Role\RoleController')->except('show');
         Route::resource('/categories', 'App\Http\Controllers\Link\Category\CategoryController')->except('show');
     });
     Route::resource('/contacts', 'App\Http\Controllers\Link\Contact\ContactController');

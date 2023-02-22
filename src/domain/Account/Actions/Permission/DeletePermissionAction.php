@@ -12,8 +12,9 @@ final class DeletePermissionAction
      */
     public static function execute(Permission $permission)
     {
-        $permission = Permission::findOrFail($permission->id);
-
+        if (0 < $permission->roles()->count()) {
+            $permission->roles()->detach();
+        }
         $permission->delete();
     }
 }

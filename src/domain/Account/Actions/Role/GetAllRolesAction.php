@@ -1,6 +1,6 @@
 <?php
 
-namespace domain\Account\Actions\Role;
+namespace Domain\Account\Actions\Role;
 
 use Domain\Account\Models\Role;
 use Illuminate\Database\Eloquent\Collection;

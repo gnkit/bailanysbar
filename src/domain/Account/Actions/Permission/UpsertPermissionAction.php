@@ -14,7 +14,7 @@ final class UpsertPermissionAction
      */
     public static function execute(PermissionData $data): Permission
     {
-        $category = Permission::updateOrCreate(
+        $permission = Permission::updateOrCreate(
             [
                 'id' => $data->id,
             ],
@@ -24,6 +24,6 @@ final class UpsertPermissionAction
             ],
         );
 
-        return $category;
+        return $permission;
     }
 }

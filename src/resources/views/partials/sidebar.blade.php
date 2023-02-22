@@ -24,19 +24,22 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('users.index') }}" class="nav-link link-dark {{ request()->is('users/*') || request()->is('users') ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}"
+                   class="nav-link link-dark {{ request()->is('users/*') || request()->is('users') ? 'active' : '' }}">
                     <i class="fa-solid fa-user"></i>
                     {{ __('Users') }}
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="{{ route('roles.index') }}"
+                   class="nav-link link-dark {{ request()->is('roles/*') || request()->is('roles') ? 'active' : '' }}">
                     <i class="fa-solid fa-passport"></i>
                     {{ __('Roles') }}
                 </a>
             </li>
             <li>
-                <a href="{{ route('permissions.index') }}" class="nav-link link-dark {{ request()->is('permissions/*') || request()->is('permissions') ? 'active' : '' }}" class="nav-link link-dark">
+                <a href="{{ route('permissions.index') }}"
+                   class="nav-link link-dark {{ request()->is('permissions/*') || request()->is('permissions') ? 'active' : '' }}">
                     <i class="fa-solid fa-shield-halved"></i>
                     {{ __('Permissions') }}
                 </a>
@@ -44,7 +47,7 @@
             @endrole
             <li>
                 <a href="{{ route('setting') }}"
-                   class="nav-link link-dark {{ request()->is('setting') ? 'active' : '' }}" class="nav-link link-dark">
+                   class="nav-link link-dark {{ request()->is('setting') ? 'active' : '' }}">
                     <i class="fa-solid fa-circle-user"></i>
                     {{ __('Account') }}
                 </a>
