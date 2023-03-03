@@ -8,7 +8,7 @@
                     <div class="category">
                         <a class="" href="{{ url('/category' , [$category->id]) }}">
                             <div class="">
-                                <i class="fa-solid fa-lock"></i>
+                                <i class="{{ $category->icon }}"></i>
                                 <br>
                                 {{ $category->name ?? '' }}
                             </div>

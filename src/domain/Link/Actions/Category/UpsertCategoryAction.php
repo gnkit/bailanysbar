@@ -21,6 +21,7 @@ final class UpsertCategoryAction
             [
                 'name' => $data->name,
                 'slug' => Str::slug($data->name),
+                'icon' => $data->icon,
                 'parent_id' => $data->parent_id,
             ],
         );

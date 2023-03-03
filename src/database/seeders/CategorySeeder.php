@@ -20,6 +20,7 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => $name,
             'slug' => Str::slug($name),
+            'icon' => '',
             'parent_id' => null,
         ]);
 

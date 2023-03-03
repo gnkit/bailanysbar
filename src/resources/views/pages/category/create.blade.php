@@ -29,6 +29,15 @@
                                     </div>
 
                                     <div class="col">
+                                        <label for="icon" class="form-label">{{ __('Icon')  }}</label>
+                                        <input name="icon" type="text" class="form-control" id="icon" placeholder=""
+                                               value="{{ old('icon') ?? '' }}">
+                                        <div class="invalid-feedback">
+                                            {{ __('Valid icon is required.') }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
                                         <label for="category" class="form-label">{{ __('Category') }}</label>
                                         <select name="parent_id" class="form-select" id="category" required>
                                             <option value="">{{ __('Select Category') }}</option>

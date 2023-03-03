@@ -28,6 +28,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
+            'icon' => 'fa-solid fa-paperclip',
             'parent_id'=> fake()->randomElement([null, 1, 2]),
         ];
     }

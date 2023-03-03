@@ -5,7 +5,10 @@
         <div class="container filter">
             <button class="button button" data-filter="all">Барлығы</button>
             @foreach($category->children as $child)
-                <button class="button button" data-filter="{{ $child->slug }}">{{ $child->name }}</button>
+                <button class="button button" data-filter="{{ $child->slug }}">
+                    <i class="{{ $child->icon ?? '' }}"></i>
+                    {{ $child->name }}
+                </button>
             @endforeach
         </div>
         <div class="container contacts">
