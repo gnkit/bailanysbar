@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Domain\Contact\Models\Category;
+use Domain\Link\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;

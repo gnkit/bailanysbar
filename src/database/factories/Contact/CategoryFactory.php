@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Contact;
 
-use Domain\Contact\Models\Category;
+use Domain\Link\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

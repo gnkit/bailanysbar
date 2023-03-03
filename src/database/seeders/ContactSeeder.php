@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use Domain\Contact\Models\Contact;
-use Domain\Account\Models\User;
+use Domain\Link\Models\Contact;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
