@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Domain\Contact\Models\Contact;
-use Domain\Contact\Models\Category;
+use Domain\Link\Models\Contact;
+use Domain\Link\Models\Category;
 
 class HomeController extends Controller
 {

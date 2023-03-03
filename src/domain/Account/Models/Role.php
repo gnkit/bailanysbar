@@ -5,8 +5,6 @@ namespace Domain\Account\Models;
 use Database\Factories\Account\RoleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Domain\Shared\Models\BaseModel;
-use Domain\Account\Models\User;
-use Domain\Account\Models\Permission;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

@@ -2,7 +2,6 @@
 
 namespace Domain\Account\DataTransferObjects;
 
-use Domain\Account\Models\Permission;
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;

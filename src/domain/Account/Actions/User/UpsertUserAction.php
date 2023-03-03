@@ -3,7 +3,6 @@
 namespace Domain\Account\Actions\User;
 
 use Domain\Account\DataTransferObjects\UserData;
-use Domain\Account\Models\Role;
 use Domain\Account\Models\User;
 
 final class UpsertUserAction
@@ -14,7 +13,6 @@ final class UpsertUserAction
      */
     public static function execute(UserData $data): User
     {
-//        dd($data);
         $user = User::updateOrCreate(
             [
                 'id' => $data->id
@@ -24,7 +22,7 @@ final class UpsertUserAction
                 'email' => $data->email,
                 'password' => $data->password,
                 'status' => $data->status,
-                'role_id' => $data->role_id ?? Role::where('slug', 'customer')->first()
+                'role_id' => $data->role_id,
             ],
         );
 

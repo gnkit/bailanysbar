@@ -27,7 +27,7 @@ final class CategoryData extends Data
     public static function fromRequest(Request $request): self
     {
         return self::from([
-            'id' => intval($request->category) ?? null,
+            'id' => $request->category ?? null,
             'name' => $request->name,
             'parent_id' => $request->parent_id,
         ]);

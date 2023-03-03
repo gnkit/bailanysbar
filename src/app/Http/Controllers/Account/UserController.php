@@ -9,7 +9,6 @@ use Domain\Account\Actions\User\GetAllUsersPaginationAction;
 use Domain\Account\Actions\User\UpsertUserAction;
 use Domain\Account\DataTransferObjects\UserData;
 use Domain\Account\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

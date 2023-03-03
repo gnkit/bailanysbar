@@ -5,8 +5,6 @@ namespace Domain\Account\Models;
 use Database\Factories\Account\PermissionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Domain\Shared\Models\BaseModel;
-use Domain\Account\Models\User;
-use Domain\Account\Models\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class Permission extends BaseModel

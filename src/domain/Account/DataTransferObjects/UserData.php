@@ -18,7 +18,7 @@ final class UserData extends Data
         public readonly string $email,
         public readonly ?string $password,
         public readonly UserStatus $status,
-        public readonly ?RoleData $role_id,
+        public readonly int $role_id,
     ) {
     }
 
@@ -31,7 +31,7 @@ final class UserData extends Data
             'password' => ['sometimes'],
 //             'password' => ['sometimes', Password::min(8)->mixedCase()->numbers()->symbols()],
             'status' => ['sometimes', new Enum(UserStatus::class)],
-            'role_id' => ['required', 'int'],
+            'role_id' => ['required', 'numeric', 'exists:roles,id'],
         ];
     }
 
@@ -43,7 +43,7 @@ final class UserData extends Data
             'email' => $request->email,
             'password' => $request->password ? Hash::make($request->password) : $request->user()->password,
             'status' => $request->status  ?? UserStatus::ACTIVE,
-            'role_id' => RoleData::from(Role::findOrFail($request->role_id)),
+            'role_id' => $request->role_id ?? Role::where('slug', 'customer')->first(),
         ]);
     }
 }
