@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @include('partials.intro')
+
     <div class="container">
         <div class="row g-2 categories">
             @foreach ($categories as $category)
@@ -10,7 +13,7 @@
                             <div class="">
                                 <i class="{{ $category->icon }}"></i>
                                 <br>
-                                {{ $category->name ?? '' }}
+                                <span class="small fw-bolder"> {{ $category->name ?? '' }}</span>
                             </div>
                         </a>
                     </div>

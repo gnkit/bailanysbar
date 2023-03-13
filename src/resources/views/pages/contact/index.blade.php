@@ -22,7 +22,7 @@
                         @if(0 < $contacts->count())
                             <!-- Main row -->
                             <div class="row px-2 mb-2">
-                                <table class="table table-hover table table-responsive">
+                                <table class="table table-hover table table-responsive table-sm">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -42,7 +42,7 @@
                                                       method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-info btn-sm"
+                                                    <a class="btn btn-outline-secondary btn-sm"
                                                        href="{{ route('contacts.show', $contact->id) }}">Show</a>
                                                     <a class="btn btn-success btn-sm"
                                                        href="{{ route('contacts.edit', $contact->id) }}">Edit</a>

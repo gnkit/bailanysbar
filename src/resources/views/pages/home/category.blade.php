@@ -7,7 +7,7 @@
             @foreach($category->children as $child)
                 <button class="button button" data-filter="{{ $child->slug }}">
                     <i class="{{ $child->icon ?? '' }}"></i>
-                    {{ $child->name }}
+                    <span>{{ $child->name }}</span>
                 </button>
             @endforeach
         </div>
@@ -25,7 +25,7 @@
                         <div class="collapse" id="socid{{ $contact->id }}">
                             <div class="socials">
                                 <a href="tel:{{ $contact->phone ?? '' }}" class="" target="_blank">
-                                    <i class="fa-solid fa-mobile-screen-button"></i>
+                                    <i class="fa-solid fa-square-phone-flip"></i>
                                 </a>
                                 <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}" class="" target="_blank">
                                     <i class="fa-brands fa-whatsapp"></i>
@@ -44,10 +44,10 @@
                                    aria-controls="desid{{ $contact->id }}">
                                     <i class="fas fa-ellipsis-h"></i>
                                 </a>
+                                <hr>
                             </div>
                         </div>
                         <div class="collapse description" id="desid{{ $contact->id }}">
-                            <hr>
                             <p><i class="fa-solid fa-user"></i>{{ $contact->name ?? '' }}</p>
                             <p><i class="fa-solid fa-location-dot"></i>{{ $contact->address ?? '' }}</p>
                             <p><i class="fa-solid fa-file-lines"></i>{{ $contact->description ?? '' }}</p>

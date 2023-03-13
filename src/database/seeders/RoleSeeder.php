@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
         Role::factory()
             ->count(1)
             ->state(new Sequence(
-                ['name' => 'Manage', 'slug' => 'manager'],
+                ['name' => 'Manager', 'slug' => 'manager'],
             ))->hasAttached(Permission::all())
             ->create();
 

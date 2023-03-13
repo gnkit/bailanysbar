@@ -16,20 +16,20 @@
 
                             <div class="col-md-6">
                                 <div class="col">
-                                    <div class="card border-light mb-3">
+                                    <div class="card border-secondary mb-3">
                                         <div class="card-header">{{ __('Primary Info') }}</div>
                                         <div class="card-body">
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-heading me-2"></i>{{ $user->name ?? '' }}
+                                                    class="fa-regular fa-user me-2"></i>{{ $user->name ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-user-pen me-2"></i>{{ $user->email ?? '' }}
+                                                    class="fa-regular fa-envelope me-2"></i>{{ $user->email ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-list me-2"></i>{{ $user->status ?? '' }}
+                                                    class="fa-regular fa-heart me-2"></i>{{ $user->status ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-phone me-2"></i>{{ $user->role->name ?? '' }}
+                                                    class="fa-regular fa-pen-to-square me-2"></i>{{ $user->role->name ?? '' }}
                                             </p>
                                         </div>
                                     </div>
@@ -38,15 +38,20 @@
 
                             <div class="col-md-6">
                                 <div class="col">
-                                    <div class="card border-light mb-3">
+                                    <div class="card border-secondary mb-3">
                                         <div class="card-header">{{ __('Secondary Info') }}</div>
                                         <div class="card-body">
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-location-dot me-2"></i>{{ $user->contacts->count() ?? '' }}
-                                            </p>
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-location-dot me-2"></i>{{ $user->contacts ?? '' }}
-                                            </p>
+                                            @if(0 < $user->contacts->count())
+                                                <ol class="list-group list-group-numbered list-group-flush">
+                                                    @foreach($user->contacts as $contact)
+                                                        <li class="list-group-item list-group-item-action">
+                                                            <a class="text-decoration-none link-dark" href="{{ route('contacts.show', $contact) }}">
+                                                                {{ $contact->name }}
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ol>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

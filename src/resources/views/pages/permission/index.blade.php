@@ -22,7 +22,7 @@
                         @if(0 < $permissions->count())
                             <!-- Main row -->
                             <div class="row px-2 mb-2">
-                                <table class="table table-hover table-responsive">
+                                <table class="table table-hover table-responsive table-sm">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>

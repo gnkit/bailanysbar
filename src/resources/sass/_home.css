@@ -5,7 +5,7 @@
 
 .category {
     background-color: #00c16e;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     height: 5.5rem;
     padding: 0.7rem;
     text-align: center;
@@ -28,7 +28,7 @@
 
 .categories div.col-6 div.category a i.fa-solid,
 div.socials a i {
-    color: #f3f4f7;
+    color: #fff;
     font-size: 2rem;
     margin: 0.5rem;
 }
@@ -36,7 +36,6 @@ div.socials a i {
 .contact {
     background-color: #00c16e;
     font-size: 1rem;
-    /*    height: 5.5rem;*/
     padding: 0.7rem;
     margin-bottom: 0.7rem;
     text-align: center;
@@ -44,13 +43,13 @@ div.socials a i {
 
 .description {
     text-align: left;
-    color: #f3f4f7;
+    color: #fff;
     font-size: 0.8rem;
     margin-top: 0.7rem;
 }
 
 .description > p > i::before {
-    color: #f3f4f7;
+    color: #fff;
     font-size: 0.8rem;
     margin: 0 0.5rem;
 }
@@ -59,8 +58,8 @@ div.socials a i {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #f8fafc;
-    margin: 1em 0;
+    border-top: 1px solid #fff;
+    margin: 0.5rem 0;
     padding: 0;
 }
 
@@ -68,7 +67,6 @@ div.socials a i {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    /*  max-width: 1024px;*/
     margin: 0.8rem auto;
     font-size: 0.7rem;
 }
@@ -78,8 +76,7 @@ div.socials a i {
     margin: 0.2rem;
     cursor: pointer;
     color: #f3f4f7;
-    background-color: #ffa728;
-    text-transform: uppercase;
+    background-color: #037ef3;
     font-weight: bold;
     border: 0;
     outline: none;
@@ -87,19 +84,14 @@ div.socials a i {
     position: relative;
 }
 
-/*.button:last-child {
-  margin-right: 0;
-}*/
-
-.button:active {
-    bottom: -1px;
+.button:last-child {
+    margin-right: 0;
 }
 
 .contacts .anime {
     transform: scale(0);
     opacity: 0.5;
     display: none;
-    /*  visibility: hidden;*/
 }
 
 .hide {
@@ -111,7 +103,6 @@ div.socials a i {
 @keyframes hide {
     0% {
         visibility: visible;
-        /*    height: 200px;*/
     }
 
     100% {

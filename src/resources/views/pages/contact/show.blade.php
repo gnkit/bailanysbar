@@ -16,26 +16,25 @@
 
                             <div class="col-md-6">
                                 <div class="col">
-                                    <div class="card border-light mb-3">
+                                    <div class="card border-secondary mb-3">
                                         <div class="card-header">{{ __('Primary Info') }}</div>
                                         <div class="card-body">
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-heading me-2"></i>{{ $contact->title ?? '' }}
+                                                    class="fa-solid fa-paperclip me-2"></i>{{ $contact->title ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-user-pen me-2"></i>{{ $contact->name ?? '' }}
+                                                    class="fa-regular fa-user me-2"></i>{{ $contact->name ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-list me-2"></i>{{ $contact->category->name ?? '' }}
+                                                    class="fa-regular fa-bookmark me-2"></i>{{ $contact->category->name ?? '' }}
                                             </p>
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-phone me-2"></i>{{ $contact->phone ?? '' }}
+                                            <p class="card-text"><i class="fa-solid fa-square-phone-flip me-2"></i>{{ $contact->phone ?? '' }}
                                             </p>
                                             <p class="card-text"><i
                                                     class="fa-solid fa-location-dot me-2"></i>{{ $contact->address ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-file-lines me-2"></i>{{ $contact->description ?? '' }}
+                                                    class="fa-regular fa-file-lines me-2"></i>{{ $contact->description ?? '' }}
                                             </p>
                                         </div>
                                     </div>
@@ -44,7 +43,7 @@
 
                             <div class="col-md-6">
                                 <div class="col">
-                                    <div class="card border-light mb-3">
+                                    <div class="card border-secondary mb-3">
                                         <div class="card-header">{{ __('Secondary Info') }}</div>
                                         <div class="card-body">
                                             <p class="card-text"><i
@@ -56,8 +55,7 @@
                                             <p class="card-text"><i
                                                     class="fa-brands fa-telegram me-2"></i>{{ $contact->telegram ?? '' }}
                                             </p>
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-link me-2"></i>{{ $contact->site ?? '' }}
+                                            <p class="card-text"><i class="fa-brands fa-chrome me-2"></i>{{ $contact->site ?? '' }}
                                             </p>
                                         </div>
                                     </div>
@@ -73,7 +71,7 @@
                             <div class="row g-3">
 
                                 <div class="col">
-                                    <a class="w-100 btn btn-info btn-lg"
+                                    <a class="w-100 btn btn-secondary btn-lg"
                                        href="{{ route('contacts.edit', $contact->id) }}"
                                        type="submit">{{ __('Edit') }}</a>
                                 </div>

@@ -16,20 +16,17 @@
 
                             <div class="col-md-6">
                                 <div class="col">
-                                    <div class="card border-light mb-3">
+                                    <div class="card border-secondary mb-3">
                                         <div class="card-header">{{ __('Account Info') }}</div>
                                         <div class="card-body">
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-heading me-2"></i>{{ $account->name ?? '' }}
+                                            <p class="card-text"><i class="fa-regular fa-circle-user me-2"></i>{{ $account->name ?? '' }}
+                                            </p>
+                                            <p class="card-text"><i class="fa-regular fa-envelope me-2"></i>{{ $account->email ?? '' }}
                                             </p>
                                             <p class="card-text"><i
-                                                    class="fa-solid fa-user-pen me-2"></i>{{ $account->email ?? '' }}
+                                                    class="fa-regular fa-heart me-2"></i>{{ $account->status ?? '' }}
                                             </p>
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-list me-2"></i>{{ $account->status ?? '' }}
-                                            </p>
-                                            <p class="card-text"><i
-                                                    class="fa-solid fa-phone me-2"></i>{{ $account->role->name ?? '' }}
+                                            <p class="card-text"><i class="fa-regular fa-pen-to-square me-2"></i>{{ $account->role->name ?? '' }}
                                             </p>
                                         </div>
                                     </div>
@@ -45,7 +42,7 @@
                             <div class="row g-3">
 
                                 <div class="col">
-                                    <a class="w-100 btn btn-info btn-lg"
+                                    <a class="w-100 btn btn-secondary btn-lg"
                                        href="{{ route('password.reset', $account->id) }}"
                                        type="submit">{{ __('Reset Password') }}</a>
                                 </div>
