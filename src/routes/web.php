@@ -20,7 +20,7 @@ Route::get('/category/{category}/', [\App\Http\Controllers\Home\HomeController::
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'user' ], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Account\AccountController::class, 'dashboard'])->name('dashboard');
     Route::get('/setting', [\App\Http\Controllers\Account\AccountController::class, 'setting'])->name('setting');
     Route::group(['middleware' => 'role:manager'], function () {
