@@ -1,5 +1,5 @@
-<div class="col-sm-3 bg-white p-2">
-    <nav class="navbar navbar-expand-sm bg-light">
+<div class="col-sm-3 bg-light py-4">
+    <nav class="navbar navbar-expand-sm">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -7,7 +7,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex flex-column flex-shrink-0 w-100 px-2">
+            <div class="d-flex flex-column flex-shrink-0 w-100">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
                         <a href="{{ url('/') }}"

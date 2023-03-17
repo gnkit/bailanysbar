@@ -18,15 +18,16 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-<div id="app" class="container">
+    
+<div id="app" class="container bg-light shadow-lg">
 
     @include('partials.header')
 
-    <main class="py-4 mb-5">
-        @yield('content')
-    </main>
+    @yield('content')
+
+</div>
 
     @include('partials.footer')
-</div>
+
 </body>
 </html>
