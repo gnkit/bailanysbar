@@ -11,14 +11,17 @@
                     <div class="col-12 mt-3">
                         @include('partials.flash_message')
 
-                        <h4 class="mb-3">{{ __('Edit Contact') }}</h4>
+                        <!-- Title -->
+                        <h1 class="mb-4">{{ __('Edit Contact') }}</h1>
+
+                        <!-- Form -->
                         <form method="POST" action="{{ route('contacts.update', $contact) }}" id="updateContact"
                               class="needs-validation" novalidate>
                             @method('PUT')
                             @csrf
                             <div class="row g-3">
 
-                                <div class="col-md-6">
+                                <div class="col-md-8 col-sm-12 col-lg-6 p-3">
 
                                     <div class="col">
                                         <label for="title" class="form-label">{{ __('Title')  }}*</label>
@@ -86,10 +89,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="col-md-6">
-
                                     <div class="col">
                                         <label for="whatsapp" class="form-label">{{ __('Whatsapp') }}</label>
                                         <input name="whatsapp" type="text" class="form-control" id="whatsapp"
@@ -140,22 +139,22 @@
                                         </div>
                                     </div>
 
+                                    <hr class="my-4">
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <button class="w-100 btn btn-secondary btn-lg" type="submit"
+                                                    name="status"
+                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('Save Draft') }}</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 btn btn-success btn-lg" type="submit"
+                                                    name="status"
+                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
 
-                            </div>
-
-                            <hr class="my-4">
-                            <div class="row g-3">
-                                <div class="col">
-                                    <button class="w-100 btn btn-secondary btn-lg" type="submit"
-                                            name="status"
-                                            value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('Save Draft') }}</button>
-                                </div>
-                                <div class="col">
-                                    <button class="w-100 btn btn-success btn-lg" type="submit"
-                                            name="status"
-                                            value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
-                                </div>
                             </div>
 
                         </form>

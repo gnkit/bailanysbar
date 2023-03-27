@@ -1,4 +1,4 @@
-<div class="col-sm-3 bg-light py-4">
+<div class="col-sm-3 bg-light p-3">
     <nav class="navbar navbar-expand-sm">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -8,13 +8,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex flex-column flex-shrink-0 w-100">
+                <div class="logo text-center m-2 p-2">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'BailanysBar') }}
+                    </a>
+                </div>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="{{ url('/') }}"
-                           class="nav-link link-dark">
-                            <i class="fa-solid fa-house"></i>
-                            {{ __('Home') }}
-                        </a>
+                        <span class="nav-link link-dark">
+                            <i class="fa-regular fa-circle-user"></i>
+                            {{ auth()->user()->name ?? '' }}
+                            <hr>
+                        </span>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('dashboard') }}"
@@ -57,6 +62,7 @@
                            class="nav-link {{ request()->is('user/permissions/*') || request()->is('user/permissions') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-shield-halved"></i>
                             {{ __('Permissions') }}
+                            <hr>
                         </a>
                     </li>
                     @endrole
