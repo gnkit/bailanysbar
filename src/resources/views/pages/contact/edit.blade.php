@@ -152,7 +152,7 @@
                                                     value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>

@@ -12,8 +12,10 @@
                 @csrf
                 @method('DELETE')
                 <a class="btn btn-success btn-sm"
-                   href="{{ route('categories.edit', $subCategory->id) }}">Edit</a>
-                <button type="submit" class="btn btn-danger btn-sm">Delete
+                   href="{{ route('categories.edit', $subCategory->id) }}"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                <button type="submit" class="btn btn-danger btn-sm"><i
+                        class="fa-solid fa-trash-can"></i>
                 </button>
             </form>
         </td>

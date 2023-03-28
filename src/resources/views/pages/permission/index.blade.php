@@ -1,66 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
+    <div class="row gx-5">
 
-            @include('partials.sidebar')
+        @include('partials.sidebar')
 
-            <div class="col-sm-9 bg-white p-2">
-                <div class="row">
-                    <div class="col-12 mt-3">
-                        <h4 class="mb-3">{{ __('All Permissions') }}</h4>
-                        <!-- Button -->
-                        <div class="row mb-2">
-                            <div class="col-12">
-                                <a class="btn btn-dark" href="{{ route('permissions.create') }}">{{ __('Create') }}</a>
-                            </div>
-                        </div>
+        <div class="col-sm-9 bg-white py-4">
 
-                        @include('partials.flash_message')
+            <!-- Title -->
+            <h1 class="mb-4">{{ __('All Permissions') }}</h1>
 
-                        @if(0 < $permissions->count())
-                            <!-- Main row -->
-                            <div class="row px-2 mb-2">
-                                <table class="table table-hover table-responsive table-sm">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">{{ __('Name') }}</th>
-                                        <th scope="col">{{ __('Actions') }}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($permissions as $permission)
-                                        <tr>
-                                            <th class="col-1">{{ ++$i }}</th>
-                                            <td class="col-5">{{ $permission->name ?? '' }}</td>
-                                            <td class="col-6">
-                                                <form action="{{ route('permissions.destroy', $permission->id) }}"
-                                                      method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a class="btn btn-success btn-sm"
-                                                       href="{{ route('permissions.edit', $permission->id) }}">Edit</a>
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.row (main row) -->
-                        @else
-                            <div class="row">
-                                {{ __('No Permissions') }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
+            <!-- Button -->
+            <div class="text-end mb-4">
+                <a class="btn btn-success" href="{{ route('permissions.create') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    {{ __('New Permission') }}
+                </a>
             </div>
 
+            @include('partials.flash_message')
+
+            @if(0 < $permissions->count())
+                <!-- Table -->
+                <table class="table table-hover table-responsive table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{{ __('Name') }}</th>
+                        <th scope="col">{{ __('Actions') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($permissions as $permission)
+                        <tr>
+                            <th class="col-1">{{ ++$i }}</th>
+                            <td class="col-5">{{ $permission->name ?? '' }}</td>
+                            <td class="col-6">
+                                <form action="{{ route('permissions.destroy', $permission->id) }}"
+                                      method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a class="btn btn-success btn-sm"
+                                       href="{{ route('permissions.edit', $permission->id) }}"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                            class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p class="text-start">
+                    {{ __('No Permissions') }}
+                </p>
+            @endif
         </div>
     </div>
 @endsection

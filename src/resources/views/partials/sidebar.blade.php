@@ -1,4 +1,4 @@
-<div class="col-sm-3 bg-light p-3">
+<div class="col-sm-3 bg-light p-4">
     <nav class="navbar navbar-expand-sm">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
