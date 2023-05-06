@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white py-4">
+        <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
             <h1 class="mb-4">{{ __('All Categories') }}</h1>
@@ -22,7 +22,7 @@
 
             @if(0 < $categories->count())
                 <!-- Table -->
-                <table class="table table-hover table-responsive table-sm">
+                <table class="table table-hover table-responsive table-sm table-striped">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                     @foreach ($categories as $category)
-                        <tr style="background-color: #adb5bd">
+                        <tr>
                             <th class="col-1">{{ ++$i }}</th>
                             <td class="col-5">{{ $category->name ?? '' }}</td>
                             <td class="col-6">

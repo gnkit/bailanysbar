@@ -1,5 +1,5 @@
 @foreach ($subCategories as $subCategory)
-    <tr style="background: rgba(173, 181, 189, {{ '0.' . $loop->depth }})">
+    <tr>
         <th class="col-1" style="padding-left:{{ $loop->depth/2 }}rem">
             @for ($i = 0; $i < $loop->depth; $i++)
                 {!! '&middot;' !!}
