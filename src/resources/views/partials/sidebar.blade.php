@@ -18,9 +18,11 @@
                         <span class="nav-link link-dark">
                             <i class="fa-regular fa-circle-user"></i>
                             {{ auth()->user()->name ?? '' }}
-                            <hr>
                         </span>
                     </li>
+
+                    <hr>
+                    
                     <li class="nav-item">
                         <a href="{{ route('dashboard') }}"
                            class="nav-link {{ request()->is('user/dashboard') ? 'active' : 'link-dark' }}">
@@ -62,9 +64,11 @@
                            class="nav-link {{ request()->is('user/permissions/*') || request()->is('user/permissions') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-shield-halved"></i>
                             {{ __('Permissions') }}
-                            <hr>
                         </a>
                     </li>
+
+                    <hr>
+
                     @endrole
                     <li class="nav-item">
                         <a href="{{ route('setting') }}"

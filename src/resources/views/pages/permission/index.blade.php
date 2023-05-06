@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white py-4">
+        <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
             <h1 class="mb-4">{{ __('All Permissions') }}</h1>
@@ -22,7 +22,7 @@
 
             @if(0 < $permissions->count())
                 <!-- Table -->
-                <table class="table table-hover table-responsive table-sm">
+                <table class="table table-hover table-responsive table-sm table-striped">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
