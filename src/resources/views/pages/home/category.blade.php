@@ -2,59 +2,68 @@
 
 @section('content')
     <div class="container">
-        <div class="container filter">
-            <button class="button button" data-filter="all">Барлығы</button>
-            @foreach($category->children as $child)
-                <button class="button button" data-filter="{{ $child->slug }}">
-                    <i class="{{ $child->icon ?? '' }}"></i>
-                    <span>{{ $child->name }}</span>
-                </button>
-            @endforeach
+
+        <div class="row">
+            <div class="col text-center p-4">
+                <div class="container filter">
+                    <button class="button btn btn-primary m-1" data-filter="all">
+                        <span class="lead">Барлығы</span>
+                    </button>
+                    @foreach($category->children as $child)
+                        <button class="button btn btn-primary m-1" data-filter="{{ $child->slug }}">
+                            <i class="{{ $child->icon ?? '' }}"></i>
+                            <span class="lead">{{ $child->name }}</span>
+                        </button>
+                    @endforeach
+                </div>
+            </div>
+            
         </div>
-        <div class="container contacts">
+
+        <div class="row g-2 contacts">
             @foreach($contacts as $contact_child)
                 @foreach($contact_child as $contact)
-                    <div class="row contact {{ $contact->category->slug }}">
-                        <a data-bs-toggle="collapse" href="#socid{{ $contact->id }}" role="button" aria-expanded="false"
-                           aria-controls="socid{{ $contact->id }}">
-                            <h5 class="h5 text-light">
-                                {{ $contact->title ?? '' }}
-                            </h5>
-                        </a>
-                        <hr>
-                        <div class="collapse" id="socid{{ $contact->id }}">
-                            <div class="socials">
-                                <a href="tel:{{ $contact->phone ?? '' }}" class="" target="_blank">
-                                    <i class="fa-solid fa-square-phone-flip"></i>
+                    <div class="col-md-6 col-sm-12 contact {{ $contact->category->slug }}">
+                        <div class="card text-bg-success">
+                            <div class="card-body text-center">
+                                <a class="p-2 text-white text-decoration-none lead w-100" data-bs-toggle="collapse" href="#socid{{ $contact->id }}" role="button" aria-expanded="false" aria-controls="#socid{{ $contact->id }}">
+                                    {{ $contact->title ?? '' }}
                                 </a>
-                                <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}" class="" target="_blank">
-                                    <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div class="collapse" id="socid{{ $contact->id }}">
+                            <div class="socials p-2 text-center text-white">
+                                <a href="tel:{{ $contact->phone ?? '' }}" class="text-white text-decoration-none lead p-2 m-2" target="_blank">
+                                    <i class="fa-solid fa-square-phone-flip fa-xl "></i>
                                 </a>
-                                <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}" class="" target="_blank">
-                                    <i class="fa-brands fa-instagram"></i>
+                                <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}" class="text-white text-decoration-none lead p-2 m-2" target="_blank">
+                                    <i class="fa-brands fa-whatsapp fa-xl "></i>
                                 </a>
-                                <a href="https://t.me/{{ $contact->telegram ?? '' }}" class="" target="_blank">
-                                    <i class="fa-brands fa-telegram"></i>
+                                <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}" class="text-white text-decoration-none lead p-2 m-2" target="_blank">
+                                    <i class="fa-brands fa-instagram fa-xl "></i>
                                 </a>
-                                <a href="{{ $contact->site ?? '' }}" class="" target="_blank">
-                                    <i class="fa-brands fa-chrome"></i>
+                                <a href="https://t.me/{{ $contact->telegram ?? '' }}" class="text-white text-decoration-none lead p-2 m-2" target="_blank">
+                                    <i class="fa-brands fa-telegram fa-xl "></i>
                                 </a>
-                                <a data-bs-toggle="collapse" href="#desid{{ $contact->id }}" role="button"
+                                <a href="{{ $contact->site ?? '' }}" class="text-white text-decoration-none lead p-2 m-2" target="_blank">
+                                    <i class="fa-brands fa-chrome fa-xl "></i>
+                                </a>
+                                <a data-bs-toggle="collapse" class="text-white text-decoration-none lead p-2 m-2 fa-2xl" href="#desid{{ $contact->id }}" role="button"
                                    aria-expanded="false"
                                    aria-controls="desid{{ $contact->id }}">
-                                    <i class="fas fa-ellipsis-h"></i>
+                                    <i class="fas fa-ellipsis-h fa-xl "></i>
                                 </a>
-                                <hr>
+                            </div>
+                            <div class="collapse description p-2" id="desid{{ $contact->id }}">
+                                <p><i class="fa-solid fa-user me-2"></i>{{ $contact->name ?? '' }}</p>
+                                <p><i class="fa-solid fa-location-dot me-2"></i>{{ $contact->address ?? '' }}</p>
+                                <p><i class="fa-solid fa-file-lines me-2"></i>{{ $contact->description ?? '' }}</p>
                             </div>
                         </div>
-                        <div class="collapse description" id="desid{{ $contact->id }}">
-                            <p><i class="fa-solid fa-user"></i>{{ $contact->name ?? '' }}</p>
-                            <p><i class="fa-solid fa-location-dot"></i>{{ $contact->address ?? '' }}</p>
-                            <p><i class="fa-solid fa-file-lines"></i>{{ $contact->description ?? '' }}</p>
-                        </div>
+                        </div>    
                     </div>
                 @endforeach
             @endforeach
         </div>
+
     </div>
 @endsection
