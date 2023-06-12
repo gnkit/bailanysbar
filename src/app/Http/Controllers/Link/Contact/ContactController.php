@@ -10,11 +10,21 @@ use Domain\Link\Actions\Contact\GetOwnContactsPaginationAction;
 use Domain\Link\Actions\Contact\UpsertContactAction;
 use Domain\Link\DataTransferObjects\ContactData;
 use Domain\Link\Models\Contact;
+use Domain\Link\Services\Notification\NotificationContactService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Translation\Dumper\YamlFileDumper;
+
 
 class ContactController extends Controller
 {
+    /**
+     * @param NotificationContactService $notificationContactService
+     */
+    public function __construct(private NotificationContactService $notificationContactService)
+    {
+    }
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
@@ -22,7 +32,7 @@ class ContactController extends Controller
     {
         $rows = 10;
 
-        if (Auth::user()->isManager()) {
+        if (auth()->user()->isManager()) {
             $contacts = GetAllContactsPaginationAction::execute($rows);
         } else {
             $contacts = GetOwnContactsPaginationAction::execute($rows);
@@ -50,7 +60,8 @@ class ContactController extends Controller
      */
     public function store(ContactData $data, Request $request)
     {
-        UpsertContactAction::execute($data, $request->user());
+        $contact = UpsertContactAction::execute($data, $request->user());
+        $this->notificationContactService->sendNotificationContactCreatedToManager($contact);
 
         return redirect()->route('contacts.index')->with('success', 'Contact created successfully.')->withInput();
     }
@@ -61,6 +72,11 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
+        if ($this->notificationContactService->readNotificationContact($contact)) {
+
+            return redirect()->refresh()->with('success', 'Contact read.');
+        };
+
         return view('pages.contact.show', compact('contact'));
     }
 

@@ -35,32 +35,42 @@
                     @foreach ($contacts as $contact)
                         <tr>
                             <td class="col-1">{{ ++$i }}</td>
-                            <td class="col-3">{{ $contact->title ?? '' }}</td>
                             <td class="col-3">
-                                    <span class="badge
-                                        @switch($contact->status->value)
-                                            @case('pending')
-                                                bg-info
-                                                @break
+                                {{ str()->limit($contact->title, 25) ?? '' }}
+                                @foreach (auth()->user()->unreadNotifications as $notification)
+                                    @if($notification->data['contact_id'] === $contact->id)
+                                        <span class="badge bg-warning">unread</span>
+                                    @else
+                                        {{ '' }}
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td class="col-3">
+                                        <span class="badge
+                                            @switch($contact->status->value)
+                                                @case('pending')
+                                                    bg-info
+                                                    @break
 
-                                            @case('published')
-                                                bg-success
-                                                @break
+                                                @case('published')
+                                                    bg-success
+                                                    @break
 
-                                            @case('draft')
-                                                bg-secondary
-                                                @break
+                                                @case('draft')
+                                                    bg-secondary
+                                                    @break
 
-                                            @case('canceled')
-                                                bg-dark
-                                                @break
+                                                @case('canceled')
+                                                    bg-dark
+                                                    @break
 
-                                            @default
-                                                bg-warning
+                                                @default
+                                                    bg-warning
 
-                                        @endswitch
-                                        ">{{ $contact->status->value ?? '' }}
-                                    </span>
+                                            @endswitch
+                                            ">{{ $contact->status->value ?? '' }}
+                                        </span>
+
                             </td>
                             <td class="col-5">
                                 <form action="{{ route('contacts.destroy', $contact->id) }}"

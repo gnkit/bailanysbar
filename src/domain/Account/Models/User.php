@@ -5,6 +5,7 @@ namespace Domain\Account\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\Account\UserFactory;
 use Domain\Link\Models\Contact;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Domain\Account\Enums\User\UserStatus;
+
 
 final class User extends Authenticatable
 {
@@ -76,6 +78,16 @@ final class User extends Authenticatable
     public function isManager(): bool
     {
         return Auth::user()->role->slug === 'manager' ?? false;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function managers(): Collection
+    {
+        $role = Role::where('slug', 'manager')->first();
+
+        return User::where('role_id', $role->id)->get();
     }
 
     /**
