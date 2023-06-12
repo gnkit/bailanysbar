@@ -35,6 +35,7 @@
                            class="nav-link {{ request()->is('user/contacts/*') || request()->is('user/contacts') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-paperclip"></i>
                             {{ __('Contacts') }}
+                            <span class="badge rounded-pill bg-warning text-dark float-end">{{ count(auth()->user()->unreadNotifications) }}</span>
                         </a>
                     </li>
                     @role('manager')
