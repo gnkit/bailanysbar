@@ -22,7 +22,7 @@
                     </li>
 
                     <hr>
-                    
+
                     <li class="nav-item">
                         <a href="{{ route('dashboard') }}"
                            class="nav-link {{ request()->is('user/dashboard') ? 'active' : 'link-dark' }}">
@@ -35,7 +35,9 @@
                            class="nav-link {{ request()->is('user/contacts/*') || request()->is('user/contacts') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-paperclip"></i>
                             {{ __('Contacts') }}
-                            <span class="badge rounded-pill bg-warning text-dark float-end">{{ count(auth()->user()->unreadNotifications) }}</span>
+                            @role('manager')
+                                <span class="badge rounded-pill bg-warning text-dark float-end">{{ count(auth()->user()->unreadNotifications) }}</span>
+                            @endrole
                         </a>
                     </li>
                     @role('manager')
