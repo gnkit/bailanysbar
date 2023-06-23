@@ -4,6 +4,7 @@ namespace Domain\Link\DataTransferObjects;
 
 use Domain\Account\Models\User;
 use Domain\Link\Models\Category;
+use Domain\Link\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelData\Attributes\Validation\Enum;
@@ -53,6 +54,9 @@ final class ContactData extends Data
 
     public static function fromRequest(Request $request): self
     {
+        $contact = ContactData::from(Contact::findOrFail($request->contact));
+        $id = auth()->user()->id;
+
         return self::from([
             'id' => $request->contact ?? null,
             'title' => $request->title,
@@ -65,7 +69,7 @@ final class ContactData extends Data
             'whatsapp' => $request->whatsapp,
             'site' => $request->site,
             'status' => $request->status,
-            'user_id' => $request->user_id ?? auth()->id(),
+            'user_id' => $contact->user_id ?? $id,
             'category_id' => $request->category_id,
         ]);
     }

@@ -12,9 +12,6 @@ use Domain\Link\DataTransferObjects\ContactData;
 use Domain\Link\Models\Contact;
 use Domain\Link\Services\Notification\NotificationContactService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Translation\Dumper\YamlFileDumper;
-
 
 class ContactController extends Controller
 {
@@ -86,6 +83,11 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
+        if ($this->notificationContactService->readNotificationContact($contact)) {
+
+            return redirect()->refresh()->with('success', 'Contact read.');
+        };
+
         $categories = GetAllParentCategoriesAction::execute();
 
         return view('pages.contact.edit', compact('categories', 'contact'));

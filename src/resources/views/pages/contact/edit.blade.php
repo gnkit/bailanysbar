@@ -9,20 +9,20 @@
 
             <!-- Title -->
             <h1 class="mb-4">{{ __('Edit Contact') }}</h1>
-            
+
             @include('partials.flash_message')
 
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
                     <div class="card shadow-lg">
-                        <div class="card-body">           
+                        <div class="card-body">
 
                             <!-- Form -->
                             <form method="POST" action="{{ route('contacts.update', $contact) }}" id="updateContact"
                                   class="needs-validation" novalidate>
                                 @method('PUT')
                                 @csrf
-                                
+
                                 <div class="col">
                                     <label for="title" class="form-label">{{ __('Title')  }}*</label>
                                     <input name="title" type="text" class="form-control" id="title" placeholder=""
@@ -50,7 +50,7 @@
                                             @if(0 < $category->children->count())
                                                 @foreach($category->children as $child)
                                                     <option
-                                                            value="{{ $child->id }}" {{ (($contact->category_id === $child->id) != old('category')) ? 'selected' : '' }}>{{ '--- ' . $child->name }}</option>
+                                                        value="{{ $child->id }}" {{ (($contact->category_id === $child->id) != old('category')) ? 'selected' : '' }}>{{ '--- ' . $child->name }}</option>
                                                 @endforeach
                                             @endif
                                         @endforeach
@@ -140,7 +140,7 @@
                                 </div>
 
                                 <hr class="my-4">
-                                
+
                                 <div class="row g-3">
                                     <div class="col">
                                         <button class="w-100 btn btn-secondary" type="submit"
@@ -152,6 +152,18 @@
                                                 name="status"
                                                 value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
                                     </div>
+                                    @role('manager')
+                                    <div class="col">
+                                        <button class="w-100 btn btn-danger" type="submit"
+                                                name="status"
+                                                value="{{ \Domain\Link\Enums\Contact\ContactStatus::CANCELLED }}">{{ __('Cancel') }}</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100 btn btn-primary" type="submit"
+                                                name="status"
+                                                value="{{ \Domain\Link\Enums\Contact\ContactStatus::PUBLISHED }}">{{ __('Confirm') }}</button>
+                                    </div>
+                                    @endrole
                                 </div>
                             </form>
 
