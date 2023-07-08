@@ -11,7 +11,7 @@
             <h1 class="mb-4">{{ __('Create Contact') }}</h1>
 
             @include('partials.flash_message')
-            
+
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
                     <div class="card shadow-lg">
@@ -19,7 +19,7 @@
 
                             <!-- Form -->
                             <form method="POST" action="{{ route('contacts.store') }}" id="createContact"
-                                  class="needs-validation" novalidate>
+                                  class="needs-validation" novalidate enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="col">
@@ -56,6 +56,15 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         {{ __('Please category a valid status.') }}
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <label for="image" class="form-label">{{ __('Image (ex.500x500px)')  }}</label>
+                                    <input name="image" type="file" class="form-control" id="image" placeholder=""
+                                           value="{{ old('image') ?? '' }}">
+                                    <div class="invalid-feedback">
+                                        {{ __('Valid image is required.') }}
                                     </div>
                                 </div>
 
@@ -127,7 +136,7 @@
                                 </div>
 
                                 <hr class="my-4">
-                                
+
                                 <div class="row g-3">
                                     <div class="col">
                                         <button class="w-100 btn btn-secondary" type="submit"

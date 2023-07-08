@@ -11,27 +11,31 @@ use Spatie\LaravelData\Attributes\Validation\Enum;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Data;
 use Domain\Link\Enums\Contact\ContactStatus;
+use Domain\Link\Enums\Contact\ContactImageDefault;
+use Domain\Link\Services\Image\ImageUploadContactService;
 
 final class ContactData extends Data
 {
     public function __construct(
-        public readonly ?int $id,
-        public readonly string $title,
-        public readonly ?string $name,
-        public readonly ?string $description,
-        public readonly ?string $address,
-        public readonly string $phone,
-        public readonly ?string $instagram,
-        public readonly ?string $telegram,
-        public readonly ?string $whatsapp,
-        public readonly ?string $site,
+        public readonly ?int          $id,
+        public readonly string        $title,
+        public readonly ?string       $name,
+        public readonly ?string       $description,
+        public readonly ?string       $address,
+        public readonly string        $phone,
+        public readonly ?string       $instagram,
+        public readonly ?string       $telegram,
+        public readonly ?string       $whatsapp,
+        public readonly ?string       $site,
         #[Enum(ContactStatus::class)]
         public readonly ContactStatus $status,
         #[Exists(User::class)]
-        public readonly int $user_id,
+        public readonly ?int          $user_id,
         #[Exists(Category::class)]
-        public readonly int $category_id,
-    ) {
+        public readonly int           $category_id,
+        public readonly string        $image,
+    )
+    {
     }
 
     public static function rules(): array
@@ -49,13 +53,13 @@ final class ContactData extends Data
             'status' => ['sometimes', new Enum(ContactStatus::class)],
             'user_id' => ['sometimes'],
             'category_id' => ['required'],
+            'image' => ['sometimes', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:1024'],
         ];
     }
 
     public static function fromRequest(Request $request): self
     {
-        $contact = ContactData::from(Contact::findOrFail($request->contact));
-        $id = auth()->user()->id;
+        $contact = Contact::where('id', $request->contact)->first();
 
         return self::from([
             'id' => $request->contact ?? null,
@@ -69,8 +73,9 @@ final class ContactData extends Data
             'whatsapp' => $request->whatsapp,
             'site' => $request->site,
             'status' => $request->status,
-            'user_id' => $contact->user_id ?? $id,
+            'user_id' => $contact->user->id ?? null,
             'category_id' => $request->category_id,
+            'image' => (new ImageUploadContactService)->upload($request, $contact),
         ]);
     }
 }

@@ -30,8 +30,9 @@ final class UpsertContactAction
                 'whatsapp' => $data->whatsapp,
                 'site' => $data->site,
                 'status' => $data->status,
-                'user_id' => $data->user_id,
+                'user_id' => $data->user_id ?? $user->id,
                 'category_id' => $data->category_id,
+                'image' => $data->image,
             ],
         );
 

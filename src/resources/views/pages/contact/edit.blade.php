@@ -19,7 +19,7 @@
 
                             <!-- Form -->
                             <form method="POST" action="{{ route('contacts.update', $contact) }}" id="updateContact"
-                                  class="needs-validation" novalidate>
+                                  class="needs-validation" novalidate enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
 
@@ -57,6 +57,22 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         {{ __('Please category a valid status.') }}
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    @if(null !== $contact->image)
+                                        <img src="{{ asset('storage/images/' . $contact->image) }}"
+                                             class="top-0 end-0 rounded-circle m-2 p-2 card-img-top"
+                                             alt="Avatar" style="height: 5rem; width: 5rem;"/>
+                                    @endif
+                                    <br>
+                                    <label for="image" class="form-label">{{ __('Image')  }}</label>
+                                    <input name="image" type="file" class="form-control" id="image"
+                                           placeholder=""
+                                           value="{{ $contact->image ?? old('image') ?? '' }}">
+                                    <div class="invalid-feedback">
+                                        {{ __('Valid image is required.') }}
                                     </div>
                                 </div>
 
