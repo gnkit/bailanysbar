@@ -29,6 +29,7 @@ final class Contact extends BaseModel
         'status',
         'user_id',
         'category_id',
+        'image',
     ];
 
     protected $casts = [

@@ -13,8 +13,11 @@
             <!-- Content -->
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
-                    <div class="card shadow-lg">
-                        <div class="card-body">                   
+                    <div class="card shadow-lg position-relative">
+                        <img src="{{ asset('storage/images/' . $contact->image) }}"
+                             class="position-absolute top-0 end-0 rounded-circle m-2 p-2 card-img-top" alt="Avatar"
+                             style="height: 11rem; width: 11rem;"/>
+                        <div class="card-body">
                             <p class="card-text"><i
                                     class="fa-solid fa-paperclip me-2"></i>{{ $contact->title ?? '' }}
                             </p>
@@ -46,7 +49,7 @@
                             <p class="card-text"><i
                                     class="fa-brands fa-chrome me-2"></i>{{ $contact->site ?? '' }}
                             </p>
-                            
+
                             <hr class="my-4">
 
                             <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
