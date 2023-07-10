@@ -17,6 +17,17 @@
                         <img src="{{ asset('storage/images/' . $contact->image) }}"
                              class="position-absolute top-0 end-0 rounded-circle m-2 p-2 card-img-top" alt="Avatar"
                              style="height: 11rem; width: 11rem;"/>
+                        <form action="{{ route('contact.image.reset', $contact) }}" method="POST"
+                              class="position-absolute end-0 p-2" style="margin: 11rem 3.5rem 0.5rem 0.5rem;">
+                            @method('PUT')
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col">
+                                    <button class="btn btn-warning text-white"
+                                            type="submit">{{ __('Reset') }}</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="card-body">
                             <p class="card-text"><i
                                     class="fa-solid fa-paperclip me-2"></i>{{ $contact->title ?? '' }}

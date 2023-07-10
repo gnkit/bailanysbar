@@ -20,7 +20,7 @@ Route::get('/category/{category}/', [\App\Http\Controllers\Home\HomeController::
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'user' ], function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Account\AccountController::class, 'dashboard'])->name('dashboard');
     Route::get('/setting', [\App\Http\Controllers\Account\AccountController::class, 'setting'])->name('setting');
     Route::group(['middleware' => 'role:manager'], function () {
@@ -30,4 +30,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user' ], function () {
         Route::resource('/categories', 'App\Http\Controllers\Link\Category\CategoryController')->except('show');
     });
     Route::resource('/contacts', 'App\Http\Controllers\Link\Contact\ContactController');
+    Route::put('/contact/{contact}', [App\Http\Controllers\Link\Contact\ImageUploadContactServiceController::class, 'reset'])->name('contact.image.reset');
 });

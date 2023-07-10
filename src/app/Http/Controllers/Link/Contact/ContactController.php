@@ -10,6 +10,7 @@ use Domain\Link\Actions\Contact\GetOwnContactsPaginationAction;
 use Domain\Link\Actions\Contact\UpsertContactAction;
 use Domain\Link\DataTransferObjects\ContactData;
 use Domain\Link\Models\Contact;
+use Domain\Link\Services\Image\ImageUploadContactService;
 use Domain\Link\Services\Notification\NotificationContactService;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,12 @@ class ContactController extends Controller
 {
     /**
      * @param NotificationContactService $notificationContactService
+     * @param ImageUploadContactService $imageUploadContactService
      */
-    public function __construct(private NotificationContactService $notificationContactService)
+    public function __construct(
+        private NotificationContactService $notificationContactService,
+        private ImageUploadContactService  $imageUploadContactService
+    )
     {
     }
 
@@ -112,6 +117,7 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         DeleteContactAction::execute($contact);
+        $this->imageUploadContactService->destroy($contact);
 
         return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
     }
