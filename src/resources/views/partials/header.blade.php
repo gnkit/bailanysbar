@@ -16,20 +16,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a href="#"
-                               class="nav-link px-2 {{ request()->is('/') ? 'active' : '' }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#"
-                               class="nav-link px-2 {{ request()->is('/pricing') ? 'active' : '' }}">{{ __('Pricing') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#"
-                               class="nav-link px-2 {{ request()->is('/faqs') ? 'active' : '' }}">{{ __('FAQs') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#"
+                            <a href="{{ route('about') }}"
                                class="nav-link px-2 {{ request()->is('/about') ? 'active' : '' }}">{{ __('About') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('guide') }}"
+                               class="nav-link px-2 {{ request()->is('/guide') ? 'active' : '' }}">{{ __('Guide') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pricing') }}"
+                               class="nav-link px-2 {{ request()->is('/pricing') ? 'active' : '' }}">{{ __('Pricing') }}</a>
                         </li>
                     </ul>
 
