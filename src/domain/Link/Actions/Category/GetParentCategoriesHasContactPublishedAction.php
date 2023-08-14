@@ -5,7 +5,7 @@ namespace Domain\Link\Actions\Category;
 use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Link\Models\Category;
 
-final class GetParentCategoriesWithContactPublishedAction
+final class GetParentCategoriesHasContactPublishedAction
 {
     /**
      * @return array

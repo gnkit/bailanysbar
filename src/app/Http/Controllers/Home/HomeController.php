@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Domain\Link\Actions\Category\GetParentCategoriesWithContactPublishedAction;
-use Domain\Link\Enums\Contact\ContactStatus;
-use Domain\Link\Models\Contact;
+use Domain\Link\Actions\Category\GetParentCategoriesHasContactPublishedAction;
+use Domain\Link\Actions\Contact\GetAllContactsPublishedHasCategoryAction;
 use Domain\Link\Models\Category;
 
 class HomeController extends Controller
@@ -15,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = GetParentCategoriesWithContactPublishedAction::execute();
+        $categories = GetParentCategoriesHasContactPublishedAction::execute();
 
         return view('pages.home.index', compact('categories'));
     }
@@ -26,14 +25,7 @@ class HomeController extends Controller
      */
     public function category(Category $category)
     {
-        $contacts = [];
-        if ($category->children()->count() > 0) {
-            foreach ($category->children as $child) {
-                $contacts[] = Contact::where('category_id', '=', $child->id)->get();
-            }
-        } else {
-            $contacts[] = Contact::where('category_id', '=', $category->id)->get();
-        }
+        $contacts = GetAllContactsPublishedHasCategoryAction::execute($category);
 
         return view('pages.home.category', compact('contacts', 'category'));
     }
