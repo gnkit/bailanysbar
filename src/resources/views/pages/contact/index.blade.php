@@ -28,6 +28,7 @@
                         <th scope="col">#</th>
                         <th scope="col">{{ __('Title') }}</th>
                         <th scope="col">{{ __('Status') }}</th>
+                        <th scope="col">{{ __('Category') }}</th>
                         <th scope="col">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
@@ -35,7 +36,7 @@
                     @foreach ($contacts as $contact)
                         <tr>
                             <td class="col-1">{{ ++$i }}</td>
-                            <td class="col-3">
+                            <td class="col-4">
                                 {{ str()->limit($contact->title, 25) ?? '' }}
                                 @foreach (auth()->user()->unreadNotifications as $notification)
                                     @if($notification->data['contact_id'] === $contact->id)
@@ -45,7 +46,7 @@
                                     @endif
                                 @endforeach
                             </td>
-                            <td class="col-3">
+                            <td class="col-2">
                                         <span class="badge
                                             @switch($contact->status->value)
                                                 @case('pending')
@@ -70,9 +71,9 @@
                                             @endswitch
                                             ">{{ $contact->status->value ?? '' }}
                                         </span>
-
                             </td>
-                            <td class="col-5">
+                            <td class="col-2">{{ $contact->category->name }}</td>
+                            <td class="col-3">
                                 <form action="{{ route('contacts.destroy', $contact->id) }}"
                                       method="POST">
                                     @csrf
