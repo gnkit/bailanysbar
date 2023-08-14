@@ -7,7 +7,7 @@
             <div class="col text-center p-4">
                 <div class="container filter">
                     <button class="button btn btn-primary m-1" data-filter="all">
-                        <span class="lead">Барлығы</span>
+                        <span class="lead">{{ $category->name }}</span>
                     </button>
                     @foreach($category->children as $child)
                         <button class="button btn btn-primary m-1" data-filter="{{ $child->slug }}">
