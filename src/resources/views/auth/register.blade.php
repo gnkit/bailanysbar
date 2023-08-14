@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('register') }}" id="register-form">
                             @csrf
 
                             <div class="row mb-3">
@@ -71,9 +71,22 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <div class="col-md-6 offset-md-4">
+                                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"
+                                           class="form-control @error('g-recaptcha-response') is-invalid @enderror" value="">
+
+                                    @error('g-recaptcha-response')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" onclick="onClick(event)">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

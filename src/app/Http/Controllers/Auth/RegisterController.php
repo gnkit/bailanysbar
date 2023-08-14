@@ -9,6 +9,7 @@ use Domain\Account\Models\Role;
 use Domain\Account\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Enum;
 
@@ -58,6 +59,16 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'status' => ['string', new Enum(UserStatus::class)],
             'role_id' => ['integer'],
+            'g-recaptcha-response' => ['required', function (string $attribute, mixed $value, \Closure $fail) {
+                $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                    'secret' => config('services.recaptcha.secret_key'),
+                    'response' => $value,
+                    'remoteip'=>request()->ip(),
+                ]);
+                if (!$response->json('success')) {
+                    $fail("The {$attribute} is invalid");
+                }
+            }],
         ]);
     }
 

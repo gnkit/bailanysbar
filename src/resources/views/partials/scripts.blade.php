@@ -31,3 +31,15 @@
         }
     });
 </script>
+
+<script>
+    function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+            grecaptcha.execute('{{config('services.recaptcha.site_key')}}', {action: 'register'}).then(function(token) {
+                document.getElementById("g-recaptcha-response").value = token;
+                document.getElementById("register-form").submit();
+            });
+        });
+    }
+</script>
