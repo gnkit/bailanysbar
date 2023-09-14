@@ -20,7 +20,7 @@
                                     </div>
                                 @endif
 
-                                {{ __('You are logged in!') }}
+                                {{ __('messages.logged_in') }}
 
                         </div>
                     </div>

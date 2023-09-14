@@ -36,3 +36,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function () {
     Route::resource('/contacts', 'App\Http\Controllers\Link\Contact\ContactController');
     Route::put('/contact/{contact}', [App\Http\Controllers\Link\Contact\ImageUploadContactServiceController::class, 'reset'])->name('contact.image.reset');
 });
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+});

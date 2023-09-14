@@ -17,7 +17,7 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a href="{{ route('about') }}"
-                               class="nav-link px-2 {{ request()->is('about') ? 'active' : '' }}">{{ __('About') }}</a>
+                               class="nav-link px-2 {{ request()->is('about') ? 'active' : '' }}">{{ __('messages.page_link_about') }}</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('guide') }}"
@@ -25,7 +25,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('pricing') }}"
-                               class="nav-link px-2 {{ request()->is('pricing') ? 'active' : '' }}">{{ __('Pricing') }}</a>
+                               class="nav-link px-2 {{ request()->is('pricing') ? 'active' : '' }}">{{ __('messages.page_link_price') }}</a>
                         </li>
                     </ul>
 
@@ -68,6 +68,9 @@
                             </li>
                         @endguest
                     </ul>
+
+                    <!-- Language Switcher -->
+                    @include('partials/language_switcher')
                 </div>
             </div>
         </nav>
