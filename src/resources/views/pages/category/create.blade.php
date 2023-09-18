@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row gx-5">
+    <div class="row">
 
         @include('partials.sidebar')
 
@@ -9,7 +9,7 @@
 
             <!-- Title -->
             <h1 class="mb-4">{{ __('Create Category') }}</h1>
-            
+
             @include('partials.flash_message')
 
             <div class="row g-3">

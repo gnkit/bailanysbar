@@ -1,5 +1,6 @@
-.card:hover {
-    filter: brightness(95%);
+div.category.card:hover {
+    filter: brightness(85%);
+    transition: 0.3s;
 }
 
 .contacts .anime {

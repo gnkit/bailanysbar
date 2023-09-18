@@ -4,9 +4,9 @@
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
             <div class="p-4 d-flex justify-content-center align-items-center">
                 <div class="text-white">
-                    <h1 class="mb-3 fw-bold display-6">{{ __('messages.intro_title') }}</h1>
-                    <p class="mb-4 fw-bold lead">{{ __('messages.intro_text') }}</p>
-                    <a class="btn btn-outline-light fw-bolder btn-lg shadow-lg rounded-5 px-4" href="{{ route('register') }}"
+                    <h1 class="mb-1 fw-bold display-6">{{ __('messages.intro_title') }}</h1>
+                    <p class="mb-3 fw-bold">{{ __('messages.intro_text') }}</p>
+                    <a class="text-white btn btn-warning fw-bolder rounded-5 px-4" href="{{ route('login') }}"
                        role="button">
                         {{ __('messages.intro_button') }}
                     </a>

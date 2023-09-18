@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row gx-5">
+    <div class="row">
 
         @include('partials.sidebar')
 
@@ -9,13 +9,13 @@
 
             <!-- Title -->
             <h1 class="mb-4">{{ __('Edit User') }}</h1>
-            
+
             @include('partials.flash_message')
 
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
                     <div class="card shadow-lg">
-                        <div class="card-body">           
+                        <div class="card-body">
 
                             <!-- Form -->
                             <form method="POST" action="{{ route('users.update', $user) }}" id="updateUser"

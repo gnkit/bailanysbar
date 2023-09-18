@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row gx-5">
+    <div class="row">
 
         @include('partials.sidebar')
 
@@ -21,7 +21,7 @@
                             <form method="POST" action="{{ route('users.store') }}" id="createUser"
                               class="needs-validation" novalidate>
                                 @csrf
-                            
+
                                 <div class="col">
                                     <label for="name" class="form-label">{{ __('Name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""

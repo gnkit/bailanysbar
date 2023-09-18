@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row gx-5">
+    <div class="row">
 
         @include('partials.sidebar')
 
@@ -14,7 +14,7 @@
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
                     <div class="card shadow-lg">
-                        <div class="card-body">     
+                        <div class="card-body">
                             <p class="card-text"><i
                                     class="fa-regular fa-user me-2"></i>{{ $user->name ?? '' }}
                             </p>
@@ -29,7 +29,7 @@
                             </p>
 
                             <hr class="my-4">
-                            
+
                             <p class="card-text fw-bold text-center">{{ __('User\'s Contacts') }}</p>
 
                             @if(0 < $user->contacts->count())

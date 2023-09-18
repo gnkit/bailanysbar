@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row gx-5">
+    <div class="row">
 
         @include('partials.sidebar')
 
@@ -9,7 +9,7 @@
 
             <!-- Title -->
             <h1 class="mb-4">{{ __('Account') }}</h1>
-            
+
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
                     <div class="card shadow-lg">
@@ -18,7 +18,7 @@
                             <p class="card-text"><i class="fa-regular fa-envelope me-2"></i>{{ $account->email ?? '' }}</p>
                             <p class="card-text"><i class="fa-regular fa-heart me-2"></i>{{ $account->status ?? '' }}</p>
                             <p class="card-text"><i class="fa-regular fa-pen-to-square me-2"></i>{{ $account->role->name ?? '' }}</p>
-                            
+
                             <hr class="my-4">
 
                             <form action="{{ route('users.destroy', $account->id) }}" method="POST">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-            </div>          
+            </div>
 
         </div>
 

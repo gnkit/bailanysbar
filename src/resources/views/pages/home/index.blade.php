@@ -9,7 +9,7 @@
             @foreach ($categories as $category)
                 <div class="col-6">
                     <a class="text-white text-decoration-none lead" href="{{ url('/category' , [$category->id]) }}">
-                        <div class="card text-bg-success">
+                        <div class="category card bg-success rounded-0 border-0 h-100">
                             <div class="card-body text-center">
                                 <div class="">
                                     <i class="{{ $category->icon }}"></i>

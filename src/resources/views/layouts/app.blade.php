@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<div id="app" class="container-fluid bg-light shadow-lg pb-4" style="min-height: 80vh;">
+<div id="app" class="container bg-light shadow-lg pb-4" style="min-height: 80vh;">
 
     @include('partials.header')
 
