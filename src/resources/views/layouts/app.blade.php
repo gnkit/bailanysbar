@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<div id="app" class="container bg-light shadow-lg pb-4" style="min-height: 80vh;">
+<div id="app" class="container bg-light shadow-lg pb-4 mb-5" style="min-height: 80vh;">
 
     @include('partials.header')
 
@@ -32,7 +32,9 @@
 
 </div>
 
+@include('partials.footer_bar')
 @include('partials.footer')
+@include('partials.scripts')
 
 </body>
 </html>

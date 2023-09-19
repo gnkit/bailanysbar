@@ -28,7 +28,9 @@
                         <th scope="col">#</th>
                         <th scope="col">{{ __('Title') }}</th>
                         <th scope="col">{{ __('Status') }}</th>
+                        @role('manager')
                         <th scope="col">{{ __('Category') }}</th>
+                        @endrole
                         <th scope="col">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
@@ -72,14 +74,18 @@
                                             ">{{ $contact->status->value ?? '' }}
                                         </span>
                             </td>
-                            <td class="col-2">{{ $contact->category->name }}</td>
+                            @role('manager')
+                            <td class="col-2">{{ $contact->category->name ?? '' }}</td>
+                            @endrole('manager')
                             <td class="col-3">
                                 <form action="{{ route('contacts.destroy', $contact->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
+                                    @role('manager')
                                     <a class="btn btn-outline-secondary btn-sm"
                                        href="{{ route('contacts.show', $contact->id) }}"><i class="fa-solid fa-eye"></i></a>
+                                    @endrole
                                     <a class="btn btn-success btn-sm"
                                        href="{{ route('contacts.edit', $contact->id) }}"><i
                                             class="fa-solid fa-pen-to-square"></i></a>

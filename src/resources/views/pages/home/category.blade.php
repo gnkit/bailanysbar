@@ -17,13 +17,12 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
 
         <div class="row g-2 contacts">
             @foreach($contacts as $contact_child)
                 @foreach($contact_child as $contact)
-                    <div class="contact col-md-6 col-sm-12 {{ $contact->category->slug }}">
+                    <div class="contact col-lg-4 col-md-6 col-sm-12 {{ $contact->category->slug }}">
                         <div class="card bg-success border-0">
                             <div class="card-body text-center">
                                 @if(null !== $contact->image)
