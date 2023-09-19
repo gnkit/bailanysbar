@@ -1,7 +1,7 @@
-<div class="d-block d-sm-none container fixed-bottom mb-2">
-    <div class="flex text-white p-4">
+<div class="d-block d-sm-none container fixed-bottom mb-2 bg-light">
+    <div class="flex text-white text-center p-2">
         <a class="btn btn-success border-0 text-decoration-none p-3" href="{{ route('dashboard') }}">
-            <i class="fa-regular fa-chart-bar fa-xl "></i>
+            <i class="fa-regular fa-chart-bar fa-xl py-2"></i>
         </a>
         <a class="btn btn-success border-0 text-decoration-none p-3" href="{{ route('contacts.index') }}">
             <i class="fa-solid fa-paperclip fa-xl py-2"></i>
