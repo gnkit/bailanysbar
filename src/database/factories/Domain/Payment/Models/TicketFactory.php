@@ -1,19 +1,19 @@
 <?php
 
-namespace Database\Factories\Account;
+namespace Database\Factories\Domain\Payment\Models;
 
-use Domain\Account\Models\Role;
+use Domain\Payment\Models\Ticket;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domain\Account\Models\Role>
  */
-class RoleFactory extends Factory
+class TicketFactory extends Factory
 {
     /**
      * @var string
      */
-    protected $model = Role::class;
+    protected $model = Ticket::class;
 
     /**
      * Define the model's default state.
@@ -23,8 +23,8 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Customer',
-            'slug' => 'customer',
+            'user_id' => fake()->numberBetween(1, 10),
+            'limit' => fake()->numberBetween(1, 5),
         ];
     }
 }

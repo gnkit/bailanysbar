@@ -2,9 +2,8 @@
 
 namespace Domain\Link\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Domain\Shared\Models\BaseModel;
-use Database\Factories\Contact\CategoryFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Category extends BaseModel
 {
@@ -41,13 +40,5 @@ final class Category extends BaseModel
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|mixed|void
-     */
-    protected static function newFactory()
-    {
-        return app(CategoryFactory::class);
     }
 }

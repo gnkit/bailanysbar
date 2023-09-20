@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Account;
+namespace Database\Factories\Domain\Account\Models;
 
 use Domain\Account\Models\Role;
 use Domain\Account\Models\User;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Contact;
+namespace Database\Factories\Domain\Link\Models;
 
 use Domain\Link\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;

@@ -3,16 +3,13 @@
 namespace Domain\Link\Models;
 
 use Domain\Account\Models\User;
+use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Database\Factories\Contact\ContactFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Domain\Link\Enums\Contact\ContactStatus;
 
 final class Contact extends BaseModel
 {
-    use HasFactory;
-
     /**
      * @var string[]
      */
@@ -51,13 +48,5 @@ final class Contact extends BaseModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|mixed|void
-     */
-    protected static function newFactory()
-    {
-        return app(ContactFactory::class);
     }
 }

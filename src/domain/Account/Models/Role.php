@@ -2,16 +2,13 @@
 
 namespace Domain\Account\Models;
 
-use Database\Factories\Account\RoleFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Domain\Shared\Models\BaseModel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Role extends BaseModel
 {
-    use HasFactory;
-
     /**
      * @var string[]
      */
@@ -31,13 +28,8 @@ final class Role extends BaseModel
     /**
      * @return BelongsToMany
      */
-    public function permissions():BelongsToMany
+    public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'roles_permissions');
-    }
-
-    protected static function newFactory()
-    {
-        return app(RoleFactory::class);
     }
 }

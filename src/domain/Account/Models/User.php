@@ -3,17 +3,18 @@
 namespace Domain\Account\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\Account\UserFactory;
+use Domain\Account\Enums\User\UserStatus;
 use Domain\Link\Models\Contact;
+use Domain\Payment\Models\Ticket;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
-use Domain\Account\Enums\User\UserStatus;
 
 
 final class User extends Authenticatable
@@ -64,6 +65,14 @@ final class User extends Authenticatable
     }
 
     /**
+     * @return HasOne
+     */
+    public function ticket(): HasOne
+    {
+        return $this->hasOne(Ticket::class);
+    }
+
+    /**
      * @param $role
      * @return bool
      */
@@ -88,13 +97,5 @@ final class User extends Authenticatable
         $role = Role::where('slug', 'manager')->first();
 
         return User::where('role_id', $role->id)->get();
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|mixed
-     */
-    protected static function newFactory()
-    {
-        return app(UserFactory::class);
     }
 }
