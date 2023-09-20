@@ -18,6 +18,7 @@
                             <p class="card-text"><i class="fa-regular fa-envelope me-2"></i>{{ $account->email ?? '' }}</p>
                             <p class="card-text"><i class="fa-regular fa-heart me-2"></i>{{ $account->status ?? '' }}</p>
                             <p class="card-text"><i class="fa-regular fa-pen-to-square me-2"></i>{{ $account->role->name ?? '' }}</p>
+                            <p class="card-text"><i class="fa-solid fa-ticket me-2"></i>{{ $account->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}</p>
 
                             <hr class="my-4">
 

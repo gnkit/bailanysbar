@@ -9,6 +9,8 @@ use Domain\Account\Actions\User\GetAllUsersPaginationAction;
 use Domain\Account\Actions\User\UpsertUserAction;
 use Domain\Account\DataTransferObjects\UserData;
 use Domain\Account\Models\User;
+use Domain\Payment\Actions\Ticket\UpsertTicketAction;
+use Domain\Payment\DataTransferObjects\TicketData;
 
 class UserController extends Controller
 {
@@ -37,12 +39,14 @@ class UserController extends Controller
     }
 
     /**
-     * @param UserData $data
+     * @param UserData $userData
+     * @param TicketData $ticketData
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserData $data)
+    public function store(UserData $userData, TicketData $ticketData)
     {
-        UpsertUserAction::execute($data);
+        UpsertUserAction::execute($userData);
+        UpsertTicketAction::execute($ticketData);
 
         return redirect()->route('users.index')->with('success', 'User created successfully.')->withInput();
     }

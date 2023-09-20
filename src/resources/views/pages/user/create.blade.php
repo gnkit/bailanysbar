@@ -19,7 +19,7 @@
 
                             <!-- Form -->
                             <form method="POST" action="{{ route('users.store') }}" id="createUser"
-                              class="needs-validation" novalidate>
+                                  class="needs-validation" novalidate>
                                 @csrf
 
                                 <div class="col">
@@ -34,7 +34,7 @@
                                 <div class="col">
                                     <label for="email" class="form-label">{{ __('Email') }}*</label>
                                     <input name="email" type="email" class="form-control" id="email" placeholder=""
-                                           value="{{ old('email') ?? '' }}">
+                                           value="{{ old('email') ?? '' }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid email is required.') }}
                                     </div>
@@ -44,9 +44,20 @@
                                     <label for="password" class="form-label">{{ __('Password') }}*</label>
                                     <input name="password" type="password" class="form-control" id="password"
                                            placeholder=""
-                                           value="{{ old('password') ?? '' }}">
+                                           value="{{ old('password') ?? '' }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid password is required.') }}
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <label for="ticket" class="form-label">{{ __('Ticket') }}*</label>
+                                    <input name="limit" type="number" class="form-control" id="ticket"
+                                           min="1" max="5" placeholder=""
+                                           value="{{ old('ticket') ?? \Domain\Payment\Enums\Ticket\TicketLimit::DEFAULT->value }}"
+                                           required>
+                                    <div class="invalid-feedback">
+                                        {{ __('Valid ticket is required.') }}
                                     </div>
                                 </div>
 
@@ -64,8 +75,8 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="status" class="form-label">{{ __('Status') }}</label>
-                                    <select name="status" class="form-select" id="status">
+                                    <label for="status" class="form-label">{{ __('Status') }}*</label>
+                                    <select name="status" class="form-select" id="status" required>
                                         @foreach(\Domain\Account\Enums\User\UserStatus::cases() as $status)
                                             <option
                                                 value="{{ $status->value }}" {{ $status->value != old('status') ?: 'selected' }}>{{ $status->value }}</option>

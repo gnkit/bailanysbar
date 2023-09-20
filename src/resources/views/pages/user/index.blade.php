@@ -28,6 +28,7 @@
                         <th scope="col">#</th>
                         <th scope="col">{{ __('Name') }}</th>
                         <th scope="col">{{ __('Status') }}</th>
+                        <th scope="col">{{ __('Ticket') }}</th>
                         <th scope="col">{{ __('Role') }}</th>
                         <th scope="col">{{ __('Actions') }}</th>
                     </tr>
@@ -37,7 +38,8 @@
                         <tr>
                             <td class="col-1">{{ ++$i }}</td>
                             <td class="col-2">{{ $user->name ?? '' }}</td>
-                            <td class="col-2">{{ $user->status ?? '' }}</td>
+                            <td class="col-1">{{ $user->status ?? '' }}</td>
+                            <td class="col-1">{{ $user->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}</td>
                             <td class="col-2">{{ $user->role->name ?? '' }}</td>
                             <td class="col-5">
                                 <form action="{{ route('users.destroy', $user->id) }}"
