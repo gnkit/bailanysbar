@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Domain\Account\Actions\Role\GetBySlugRoleAction;
 use Domain\Account\Enums\User\UserStatus;
 use Domain\Account\Models\Role;
 use Domain\Account\Models\User;
@@ -48,7 +49,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -63,7 +64,7 @@ class RegisterController extends Controller
                 $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
                     'secret' => config('services.recaptcha.secret_key'),
                     'response' => $value,
-                    'remoteip'=>request()->ip(),
+                    'remoteip' => request()->ip(),
                 ]);
                 if (!$response->json('success')) {
                     $fail("The {$attribute} is invalid");
@@ -75,12 +76,12 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Domain\Account\Models\User
      */
     protected function create(array $data)
     {
-        $role = Role::where('slug', 'customer')->first();
+        $role = GetBySlugRoleAction::execute('customer');
 
         return User::create([
             'name' => $data['name'],
