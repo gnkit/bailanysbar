@@ -39,4 +39,11 @@ class StaticPageController extends Controller
         return view('pages.static.privacy');
     }
 
+    /**
+     * @return View
+     */
+    public function sale(): View
+    {
+        return view('pages.static.sale');
+    }
 }

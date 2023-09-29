@@ -20,6 +20,7 @@ Route::get('/about', [\App\Http\Controllers\StaticPage\StaticPageController::cla
 Route::get('/guide', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'guide'])->name('guide');
 Route::get('/pricing', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'pricing'])->name('pricing');
 Route::get('/privacy', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'privacy'])->name('privacy');
+Route::get('/sale', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'sale'])->name('sale');
 
 Auth::routes();
 

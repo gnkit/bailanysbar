@@ -62,6 +62,9 @@ class ContactController extends Controller
      */
     public function store(ContactData $data, Request $request)
     {
+        if (!\auth()->user()->isCanPublishContact()) {
+            return redirect()->route('contacts.index')->with('error', 'You cannot create a contact. Your limit has been reached.')->withInput();
+        }
         $contact = UpsertContactAction::execute($data, $request->user());
         $this->notificationContactService->sendNotificationContactCreatedToManager($contact);
 
