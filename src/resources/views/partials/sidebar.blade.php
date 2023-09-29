@@ -53,6 +53,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('tickets.index') }}"
+                           class="nav-link {{ request()->is('user/tickets/*') || request()->is('user/tickets') ? 'active' : 'link-dark' }}">
+                            <i class="fa-solid fa-ticket"></i>
+                            {{ __('Tickets') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('users.index') }}"
                            class="nav-link {{ request()->is('user/users/*') || request()->is('user/users') ? 'active' : 'link-dark' }}">
                             <i class="fa-regular fa-user"></i>

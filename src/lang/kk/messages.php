@@ -7,5 +7,4 @@ return [
 	'intro_button' => 'Бастау',
 	'page_link_about' => 'Біз жайлы',
 	'page_link_price' => 'Баға',
-
 ];

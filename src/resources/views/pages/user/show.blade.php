@@ -27,6 +27,9 @@
                             <p class="card-text"><i
                                     class="fa-regular fa-pen-to-square me-2"></i>{{ $user->role->name ?? '' }}
                             </p>
+                            <p class="card-text"><i
+                                    class="fa-solid fa-ticket me-2"></i>{{ $user->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}
+                            </p>
 
                             <hr class="my-4">
 
@@ -36,7 +39,8 @@
                                 <ol class="list-group list-group-numbered list-group-flush">
                                     @foreach($user->contacts as $contact)
                                         <li class="list-group-item list-group-item-action">
-                                            <a class="text-decoration-none link-dark" href="{{ route('contacts.show', $contact) }}">
+                                            <a class="text-decoration-none link-dark"
+                                               href="{{ route('contacts.show', $contact) }}">
                                                 {{ $contact->name }}
                                             </a>
                                         </li>

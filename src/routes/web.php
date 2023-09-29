@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function () {
         Route::resource('/permissions', 'App\Http\Controllers\Account\Permission\PermissionController')->except('show');
         Route::resource('/roles', 'App\Http\Controllers\Account\Role\RoleController')->except('show');
         Route::resource('/categories', 'App\Http\Controllers\Link\Category\CategoryController')->except('show');
+        Route::resource('/tickets', 'App\Http\Controllers\Payment\Ticket\TicketController')->except('show');
     });
     Route::resource('/contacts', 'App\Http\Controllers\Link\Contact\ContactController');
     Route::put('/contact/{contact}', [App\Http\Controllers\Link\Contact\ImageUploadContactServiceController::class, 'reset'])->name('contact.image.reset');

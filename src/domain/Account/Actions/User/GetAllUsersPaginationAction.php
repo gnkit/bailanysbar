@@ -1,6 +1,6 @@
 <?php
 
-namespace domain\Account\Actions\User;
+namespace Domain\Account\Actions\User;
 
 use Domain\Account\Models\User;
 use Illuminate\Pagination\Paginator;

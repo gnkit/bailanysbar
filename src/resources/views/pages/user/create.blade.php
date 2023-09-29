@@ -51,17 +51,6 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="ticket" class="form-label">{{ __('Ticket') }}*</label>
-                                    <input name="limit" type="number" class="form-control" id="ticket"
-                                           min="1" max="5" placeholder=""
-                                           value="{{ old('ticket') ?? \Domain\Payment\Enums\Ticket\TicketLimit::DEFAULT->value }}"
-                                           required>
-                                    <div class="invalid-feedback">
-                                        {{ __('Valid ticket is required.') }}
-                                    </div>
-                                </div>
-
-                                <div class="col">
                                     <label for="role" class="form-label">{{ __('Role') }}*</label>
                                     <select name="role_id" class="form-select" id="role" required>
                                         @foreach($roles as $role)

@@ -23,5 +23,4 @@ class Ticket extends BaseModel
     {
         return $this->belongsTo(User::class);
     }
-
 }

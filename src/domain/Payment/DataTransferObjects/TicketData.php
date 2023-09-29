@@ -28,7 +28,7 @@ final class TicketData extends Data
     {
         return self::from([
             'id' => $request->ticket ?? null,
-            'user_id' => $request->user_id ?? $request->user()->id,
+            'user_id' => $request->user_id,
             'limit' => $request->limit ?? TicketLimit::DEFAULT->value,
         ]);
     }
