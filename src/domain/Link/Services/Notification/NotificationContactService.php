@@ -2,8 +2,8 @@
 
 namespace Domain\Link\Services\Notification;
 
-use App\Notifications\ContactCreated;
 use Domain\Account\Models\User;
+use Domain\Link\Notifications\ContactCreated;
 use Illuminate\Support\Facades\Notification;
 
 final class NotificationContactService
