@@ -4,7 +4,9 @@ namespace Domain\Link\Actions\Contact;
 
 use Domain\Account\Models\User;
 use Domain\Link\DataTransferObjects\ContactData;
+use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Link\Models\Contact;
+use Domain\Payment\Actions\Ticket\CalculateTicketAction;
 
 final class UpsertContactAction
 {
@@ -35,6 +37,10 @@ final class UpsertContactAction
                 'image' => $data->image,
             ],
         );
+
+        if (auth()->user()->isManager() && $data->status === ContactStatus::PUBLISHED) {
+            CalculateTicketAction::execute($user);
+        }
 
         return $contact;
     }
