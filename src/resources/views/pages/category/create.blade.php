@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Create Category') }}</h1>
+            <h1 class="mb-4">{{ __('messages.create_category') }}</h1>
 
             @include('partials.flash_message')
 
@@ -23,7 +23,7 @@
                             @csrf
 
                             <div class="col">
-                                <label for="name" class="form-label">{{ __('Name')  }}*</label>
+                                <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                 <input name="name" type="text" class="form-control" id="name" placeholder=""
                                        value="{{ old('name') ?? '' }}" required>
                                 <div class="invalid-feedback">
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="col">
-                                <label for="icon" class="form-label">{{ __('Icon')  }}</label>
+                                <label for="icon" class="form-label">{{ __('messages.icon')  }}</label>
                                 <input name="icon" type="text" class="form-control" id="icon" placeholder=""
                                        value="{{ old('icon') ?? '' }}">
                                 <div class="invalid-feedback">
@@ -41,9 +41,9 @@
                             </div>
 
                             <div class="col">
-                                <label for="category" class="form-label">{{ __('Category') }}</label>
+                                <label for="category" class="form-label">{{ __('messages.category') }}</label>
                                 <select name="parent_id" class="form-select" id="category" required>
-                                    <option value="">{{ __('Select Category') }}</option>
+                                    <option value="">{{ __('messages.select_category') }}</option>
                                     @foreach($categories as $category)
                                         <option
                                             value="{{ $category->id }}" {{ $category->id != old('parent_id') ?: 'selected' }}>{{ $category->name }}</option>
@@ -58,7 +58,7 @@
 
                             <div class="row g-3">
                                 <div class="col">
-                                    <button class="w-100 btn btn-success" type="submit">{{ __('Save') }}</button>
+                                    <button class="w-100 btn btn-success" type="submit">{{ __('messages.save') }}</button>
                                 </div>
                             </div>
                         </form>

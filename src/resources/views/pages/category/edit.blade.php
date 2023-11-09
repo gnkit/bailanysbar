@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Edit Category') }}</h1>
+            <h1 class="mb-4">{{ __('messages.edit_category') }}</h1>
 
             @include('partials.flash_message')
 
@@ -24,7 +24,7 @@
                                 @csrf
 
                                 <div class="col">
-                                    <label for="name" class="form-label">{{ __('Name')  }}*</label>
+                                    <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ $category->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="icon" class="form-label">{{ __('Icon')  }}</label>
+                                    <label for="icon" class="form-label">{{ __('messages.icon')  }}</label>
                                     <input name="icon" type="text" class="form-control" id="icon" placeholder=""
                                            value="{{ $category->icon ?? old('icon') }}">
                                     <div class="invalid-feedback">
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="category" class="form-label">{{ __('Category') }}</label>
+                                    <label for="category" class="form-label">{{ __('messages.category') }}</label>
                                     <select name="parent_id" class="form-select" id="category" required>
                                         @foreach($categories as $category_another)
                                             @continue($category->id === $category_another->id)
@@ -50,9 +50,9 @@
                                                 value="{{ $category_another->id }}" {{ (($category->parent_id === $category_another->id) != old('parent_id')) ? 'selected':'' }}>{{ $category_another->name }}</option>
                                         @endforeach
                                         @if($category->parent_id === null)
-                                            <option value="" selected>{{ __('Parent Category') }}</option>
+                                            <option value="" selected>{{ __('messages.parent_category') }}</option>
                                         @else
-                                            <option value="">{{ __('Delete Parent Category') }}</option>
+                                            <option value="">{{ __('messages.delete_parent_category') }}</option>
                                         @endif
                                     </select>
                                     <div class="invalid-feedback">
@@ -65,7 +65,7 @@
                                 <div class="row g-3">
                                     <div class="col">
                                         <button class="w-100 btn btn-success"
-                                                type="submit">{{ __('Update') }}</button>
+                                                type="submit">{{ __('messages.update') }}</button>
                                     </div>
                                 </div>
                             </form>

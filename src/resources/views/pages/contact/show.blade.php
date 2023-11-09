@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Contact') }}</h1>
+            <h1 class="mb-4">{{ __('messages.contact') }}</h1>
 
             <!-- Content -->
             <div class="row g-3">
@@ -24,7 +24,7 @@
                             <div class="row g-3">
                                 <div class="col">
                                     <button class="btn btn-warning text-white"
-                                            type="submit">{{ __('Reset') }}</button>
+                                            type="submit">{{ __('messages.reset') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -71,11 +71,11 @@
                                     <div class="col">
                                         <a class="w-100 btn btn-secondary"
                                            href="{{ route('contacts.edit', $contact->id) }}"
-                                           type="submit">{{ __('Edit') }}</a>
+                                           type="submit">{{ __('messages.edit') }}</a>
                                     </div>
                                     <div class="col">
                                         <button class="w-100 btn btn-danger"
-                                                type="submit">{{ __('Delete') }}</button>
+                                                type="submit">{{ __('messages.delete') }}</button>
                                     </div>
 
                                 </div>

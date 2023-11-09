@@ -8,13 +8,13 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('All Categories') }}</h1>
+            <h1 class="mb-4">{{ __('messages.all_categories') }}</h1>
 
             <!-- Button -->
             <div class="text-end mb-4">
                 <a class="btn btn-success" href="{{ route('categories.create') }}">
                     <i class="fa-solid fa-plus"></i>
-                    {{ __('New Category') }}
+                    {{ __('messages.new') }}
                 </a>
             </div>
 
