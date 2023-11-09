@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Edit Role') }}</h1>
+            <h1 class="mb-4">{{ __('messages.edit_role') }}</h1>
 
             @include('partials.flash_message')
 
@@ -25,7 +25,7 @@
                                 @csrf
 
                                 <div class="col">
-                                    <label for="name" class="form-label">{{ __('Name')  }}*</label>
+                                    <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ $role->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="permissions" class="form-label">{{ __('Permissions') }}</label>
+                                    <label for="permissions" class="form-label">{{ __('messages.permissions') }}</label>
                                     <select name="permissions[]" class="form-select" id="permissions" multiple
                                             required>
                                         @foreach($permissions as $permission)
@@ -57,7 +57,7 @@
                                 <div class="row g-3">
                                     <div class="col">
                                         <button class="w-100 btn btn-success"
-                                                type="submit">{{ __('Update') }}</button>
+                                                type="submit">{{ __('messages.update') }}</button>
                                     </div>
                                 </div>
                             </form>

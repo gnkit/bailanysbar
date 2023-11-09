@@ -8,13 +8,13 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('All Tickets') }}</h1>
+            <h1 class="mb-4">{{ __('messages.all_tickets') }}</h1>
 
             <!-- Button -->
             <div class="text-end mb-4">
                 <a class="btn btn-success" href="{{ route('tickets.create') }}">
                     <i class="fa-solid fa-plus"></i>
-                    {{ __('New Ticket') }}
+                    {{ __('messages.new') }}
                 </a>
             </div>
 
@@ -26,11 +26,11 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ __('User Email') }}</th>
-                        <th scope="col">{{ __('Limit') }}</th>
-                        <th scope="col">{{ __('Created') }}</th>
-                        <th scope="col">{{ __('Updated') }}</th>
-                        <th scope="col">{{ __('Actions') }}</th>
+                        <th scope="col">{{ __('messages.email') }}</th>
+                        <th scope="col">{{ __('messages.limit') }}</th>
+                        <th scope="col">{{ __('messages.created') }}</th>
+                        <th scope="col">{{ __('messages.updated') }}</th>
+                        <th scope="col">{{ __('messages.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -60,7 +60,7 @@
                 </table>
             @else
                 <p class="text-start">
-                    {{ __('No Tickets') }}
+                    {{ __('messages.no_tickets') }}
                 </p>
             @endif
             <!-- Pagination -->

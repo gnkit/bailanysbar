@@ -8,13 +8,13 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('All Roles') }}</h1>
+            <h1 class="mb-4">{{ __('messages.all_roles') }}</h1>
 
             <!-- Button -->
             <div class="text-end mb-4">
                 <a class="btn btn-success" href="{{ route('roles.create') }}">
                     <i class="fa-solid fa-plus"></i>
-                    {{ __('New Role') }}
+                    {{ __('messages.new') }}
                 </a>
             </div>
 
@@ -26,9 +26,9 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ __('Name') }}</th>
-                        <th scope="col">{{ __('Permissions') }}</th>
-                        <th scope="col">{{ __('Actions') }}</th>
+                        <th scope="col">{{ __('messages.name') }}</th>
+                        <th scope="col">{{ __('messages.permissions') }}</th>
+                        <th scope="col">{{ __('messages.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -64,7 +64,7 @@
                 </table>
             @else
                 <p class="text-start">
-                    {{ __('No Roles') }}
+                    {{ __('messages.no_roles') }}
                 </p>
             @endif
         </div>

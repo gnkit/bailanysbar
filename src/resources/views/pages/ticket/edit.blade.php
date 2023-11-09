@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Edit Ticket') }}</h1>
+            <h1 class="mb-4">{{ __('messages.edit_ticket') }}</h1>
 
             @include('partials.flash_message')
 
@@ -24,7 +24,7 @@
                                 @csrf
 
                                 <div class="col">
-                                    <label for="user_id" class="form-label">{{ __('User') }}*</label>
+                                    <label for="user_id" class="form-label">{{ __('messages.user') }}*</label>
                                     <select name="user_id" class="form-select" id="user_id" required>
                                         <option
                                             value="{{ $ticket->user_id }}" {{ $ticket->user_id != old('user_id') ?: 'selected' }}>{{ $ticket->user->email }}</option>
@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="ticket" class="form-label">{{ __('Ticket') }}*</label>
+                                    <label for="ticket" class="form-label">{{ __('messages.ticket') }}*</label>
                                     <input name="limit" type="number" class="form-control" id="ticket"
                                            min="1" max="5" placeholder=""
                                            value="{{ $ticket->limit ?? old('ticket') }}"
@@ -49,7 +49,7 @@
 
                                 <div class="row g-3">
                                     <div class="col">
-                                        <button class="w-100 btn btn-success" type="submit">{{ __('Update') }}</button>
+                                        <button class="w-100 btn btn-success" type="submit">{{ __('messages.update') }}</button>
                                     </div>
                                 </div>
                             </form>

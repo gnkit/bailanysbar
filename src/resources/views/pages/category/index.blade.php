@@ -57,7 +57,7 @@
                 </table>
             @else
                 <p class="text-start">
-                    {{ __('No Contacts') }}
+                    {{ __('messages.no_categories') }}
                 </p>
             @endif
             <!-- Pagination -->

@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Edit Permission') }}</h1>
+            <h1 class="mb-4">{{ __('messages.edit_permission') }}</h1>
 
             @include('partials.flash_message')
 
@@ -25,7 +25,7 @@
                                 @csrf
 
                                 <div class="col">
-                                    <label for="name" class="form-label">{{ __('Name')  }}*</label>
+                                    <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ $permission->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
@@ -38,7 +38,7 @@
                                 <div class="row g-3">
                                     <div class="col">
                                         <button class="w-100 btn btn-success"
-                                                type="submit">{{ __('Update') }}</button>
+                                                type="submit">{{ __('messages.update') }}</button>
                                     </div>
                                 </div>
                             </form>
