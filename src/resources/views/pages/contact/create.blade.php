@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Create Contact') }}</h1>
+            <h1 class="mb-4">{{ __('messages.create_contact') }}</h1>
 
             @include('partials.flash_message')
 
@@ -18,8 +18,8 @@
                         <div class="card-body">
 
                             @if(!\auth()->user()->isCanPublishContact())
-                                <p>{{ __('Your limit has been reached. But you can buy tickets.') }}</p>
-                                <a href="{{ route('sale') }}">{{ __('Buy tickets.') }}</a>
+                                <p>{{ __('messages.limit_create_contact') }}</p>
+                                <a href="{{ route('sale') }}">{{ __('messages.buy_tickets') }}</a>
                             @else
                                 <!-- Form -->
                                 <form method="POST" action="{{ route('contacts.store') }}" id="createContact"
@@ -27,7 +27,7 @@
                                     @csrf
 
                                     <div class="col">
-                                        <label for="title" class="form-label">{{ __('Title')  }}*</label>
+                                        <label for="title" class="form-label">{{ __('messages.title')  }}*</label>
                                         <input name="title" type="text" class="form-control" id="title" placeholder=""
                                                value="{{ old('title') ?? '' }}" required>
                                         <div class="invalid-feedback">
@@ -36,7 +36,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="phone" class="form-label">{{ __('Phone') }}*</label>
+                                        <label for="phone" class="form-label">{{ __('messages.phone') }}*</label>
                                         <input name="phone" type="tel" class="form-control" id="phone" placeholder=""
                                                value="{{ old('phone') ?? '' }}">
                                         <div class="invalid-feedback">
@@ -45,7 +45,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="category" class="form-label">{{ __('Category') }}*</label>
+                                        <label for="category" class="form-label">{{ __('messages.category') }}*</label>
                                         <select name="category_id" class="form-select" id="category" required>
                                             @foreach($categories as $category)
                                                 <option
@@ -64,7 +64,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="image" class="form-label">{{ __('Image (ex.500x500px)')  }}</label>
+                                        <label for="image" class="form-label">{{ __('messages.image')  }}</label>
                                         <input name="image" type="file" class="form-control" id="image" placeholder=""
                                                value="{{ old('image') ?? '' }}">
                                         <div class="invalid-feedback">
@@ -73,7 +73,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="name" class="form-label">{{ __('Name')  }}</label>
+                                        <label for="name" class="form-label">{{ __('messages.name')  }}</label>
                                         <input name="name" type="text" class="form-control" id="name" placeholder=""
                                                value="{{ old('name') ?? '' }}">
                                         <div class="invalid-feedback">
@@ -82,7 +82,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="address" class="form-label">{{ __('Address')  }}</label>
+                                        <label for="address" class="form-label">{{ __('messages.address')  }}</label>
                                         <input name="address" type="text" class="form-control" id="address"
                                                placeholder=""
                                                value="{{ old('address') ?? '' }}">
@@ -92,7 +92,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="description" class="form-label">{{ __('Description') }}</label>
+                                        <label for="description" class="form-label">{{ __('messages.description') }}</label>
                                         <textarea name="description" type="text" class="form-control" id="description"
                                                   placeholder="" rows="3">{{ old('description') ?? '' }}</textarea>
                                         <div class="invalid-feedback">
@@ -101,7 +101,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="whatsapp" class="form-label">{{ __('Whatsapp') }}</label>
+                                        <label for="whatsapp" class="form-label">{{ __('messages.whatsapp') }}</label>
                                         <input name="whatsapp" type="text" class="form-control" id="whatsapp"
                                                placeholder=""
                                                value="{{ old('whatsapp') ?? '' }}">
@@ -111,7 +111,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="instagram" class="form-label">{{ __('Instagram') }}</label>
+                                        <label for="instagram" class="form-label">{{ __('messages.instagram') }}</label>
                                         <input name="instagram" type="text" class="form-control" id="instagram"
                                                placeholder=""
                                                value="{{ old('instagram') ?? '' }}">
@@ -121,7 +121,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="telegram" class="form-label">{{ __('Telegram') }}</label>
+                                        <label for="telegram" class="form-label">{{ __('messages.telegram') }}</label>
                                         <input name="telegram" type="text" class="form-control" id="telegram"
                                                placeholder=""
                                                value="{{ old('telegram') ?? '' }}">
@@ -131,7 +131,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <label for="site" class="form-label">{{ __('Site') }}</label>
+                                        <label for="site" class="form-label">{{ __('messages.site') }}</label>
                                         <input name="site" type="text" class="form-control" id="site" placeholder=""
                                                value="{{ old('site') ?? '' }}">
                                         <div class="invalid-feedback">
@@ -145,12 +145,12 @@
                                         <div class="col">
                                             <button class="w-100 btn btn-secondary" type="submit"
                                                     name="status"
-                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('Save Draft') }}</button>
+                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('messages.save_draft') }}</button>
                                         </div>
                                         <div class="col">
                                             <button class="w-100 btn btn-success" type="submit"
                                                     name="status"
-                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('Publish') }}</button>
+                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('messages.publish') }}</button>
                                         </div>
                                     </div>
                                 </form>

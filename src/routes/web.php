@@ -27,7 +27,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Account\AccountController::class, 'dashboard'])->name('dashboard');
-    Route::get('/setting', [\App\Http\Controllers\Account\AccountController::class, 'setting'])->name('setting');
+    Route::get('/settings', [\App\Http\Controllers\Account\AccountController::class, 'settings'])->name('settings');
     Route::group(['middleware' => 'role:manager'], function () {
         Route::resource('/users', 'App\Http\Controllers\Account\UserController');
         Route::resource('/permissions', 'App\Http\Controllers\Account\Permission\PermissionController')->except('show');

@@ -8,13 +8,13 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('All Contacts') }}</h1>
+            <h1 class="mb-4">{{ __('messages.all_contacts') }}</h1>
 
             <!-- Button -->
             <div class="text-end mb-4">
                 <a class="btn btn-success" href="{{ route('contacts.create') }}">
                     <i class="fa-solid fa-plus"></i>
-                    {{ __('New Contact') }}
+                    {{ __('messages.new') }}
                 </a>
             </div>
 
@@ -26,12 +26,12 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ __('Title') }}</th>
-                        <th scope="col">{{ __('Status') }}</th>
+                        <th scope="col">{{ __('messages.title') }}</th>
+                        <th scope="col">{{ __('messages.status') }}</th>
                         @role('manager')
-                        <th scope="col">{{ __('Category') }}</th>
+                        <th scope="col">{{ __('messages.category') }}</th>
                         @endrole
-                        <th scope="col">{{ __('Actions') }}</th>
+                        <th scope="col">{{ __('messages.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -100,7 +100,7 @@
                 </table>
             @else
                 <p class="text-start">
-                    {{ __('No Contacts') }}
+                    {{ __('messages.no_contacts') }}
                 </p>
             @endif
             <!-- Pagination -->

@@ -9,7 +9,7 @@
         <a class="btn btn-success border-0 text-decoration-none p-3" href="{{ route('contacts.create') }}">
             <i class="fa-solid fa-plus fa-xl py-2"></i>
         </a>
-        <a class="btn btn-success border-0 text-decoration-none p-3" href="{{ route('setting') }}">
+        <a class="btn btn-success border-0 text-decoration-none p-3" href="{{ route('settings') }}">
             <i class="fa-solid fa-gear fa-xl py-2"></i>
         </a>
         <a class="btn btn-success border-0 text-decoration-none p-3" href="{{ route('logout') }}" onclick=" event.preventDefault();

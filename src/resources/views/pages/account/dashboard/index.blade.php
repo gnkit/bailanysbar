@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Dashboard') }}</h1>
+            <h1 class="mb-4">{{ __('messages.dashboard') }}</h1>
 
         </div>
 

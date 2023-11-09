@@ -27,14 +27,14 @@
                         <a href="{{ route('dashboard') }}"
                            class="nav-link {{ request()->is('user/dashboard') ? 'active' : 'link-dark' }}">
                             <i class="fa-regular fa-chart-bar"></i>
-                            {{ __('Dashboard') }}
+                            {{ __('messages.dashboard') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('contacts.index') }}"
                            class="nav-link {{ request()->is('user/contacts/*') || request()->is('user/contacts') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-paperclip"></i>
-                            {{ __('Contacts') }}
+                            {{ __('messages.contacts') }}
                             @if(0 < count(auth()->user()->unreadNotifications))
                                 @role('manager')
                                 <span class="badge rounded-pill bg-warning text-dark float-end">
@@ -49,35 +49,35 @@
                         <a href="{{ route('categories.index') }}"
                            class="nav-link {{ request()->is('user/categories/*') || request()->is('user/categories') ? 'active' : 'link-dark' }}">
                             <i class="fa-regular fa-bookmark"></i>
-                            {{ __('Categories') }}
+                            {{ __('messages.categories') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('tickets.index') }}"
                            class="nav-link {{ request()->is('user/tickets/*') || request()->is('user/tickets') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-ticket"></i>
-                            {{ __('Tickets') }}
+                            {{ __('messages.tickets') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}"
                            class="nav-link {{ request()->is('user/users/*') || request()->is('user/users') ? 'active' : 'link-dark' }}">
                             <i class="fa-regular fa-user"></i>
-                            {{ __('Users') }}
+                            {{ __('messages.users') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('roles.index') }}"
                            class="nav-link {{ request()->is('user/roles/*') || request()->is('user/roles') ? 'active' : 'link-dark' }}">
                             <i class="fa-regular fa-pen-to-square"></i>
-                            {{ __('Roles') }}
+                            {{ __('messages.roles') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('permissions.index') }}"
                            class="nav-link {{ request()->is('user/permissions/*') || request()->is('user/permissions') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-shield-halved"></i>
-                            {{ __('Permissions') }}
+                            {{ __('messages.permissions') }}
                         </a>
                     </li>
 
@@ -85,10 +85,10 @@
 
                     @endrole
                     <li class="nav-item">
-                        <a href="{{ route('setting') }}"
-                           class="nav-link {{ request()->is('user/setting') ? 'active' : 'link-dark' }}">
+                        <a href="{{ route('settings') }}"
+                           class="nav-link {{ request()->is('user/settings') ? 'active' : 'link-dark' }}">
                             <i class="fa-solid fa-gear"></i>
-                            {{ __('Setting') }}
+                            {{ __('messages.settings') }}
                         </a>
                     </li>
                     <li class="nav-item">
@@ -97,7 +97,7 @@
                     document.getElementById('logout-form').submit();
                    ">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            {{ __('Logout') }}
+                            {{ __('messages.logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

@@ -22,10 +22,10 @@ class AccountController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function setting()
+    public function settings()
     {
         $account = auth()->user();
 
-        return view('pages.account.setting.index', compact('account'));
+        return view('pages.account.settings.index', compact('account'));
     }
 }

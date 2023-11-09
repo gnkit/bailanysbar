@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Account') }}</h1>
+            <h1 class="mb-4">{{ __('messages.account') }}</h1>
 
             <div class="row g-3">
                 <div class="col-md-8 col-sm-12 col-lg-6">
@@ -29,11 +29,11 @@
                                     <div class="col">
                                         <a class="w-100 btn btn-secondary"
                                            href="{{ route('password.reset', $account->id) }}"
-                                           type="submit">{{ __('Reset Password') }}</a>
+                                           type="submit">{{ __('messages.reset_password') }}</a>
                                     </div>
                                     <div class="col">
                                         <button class="w-100 btn btn-danger"
-                                                type="submit">{{ __('Account Delete') }}</button>
+                                                type="submit">{{ __('messages.account_delete') }}</button>
                                     </div>
                                 </div>
                             </form>
