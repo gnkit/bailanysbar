@@ -44,7 +44,7 @@ class RoleController extends Controller
     {
         UpsertRoleAction::execute($data);
 
-        return redirect()->route('roles.index')->with('success', 'Role created successfully.')->withInput();
+        return redirect()->route('roles.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
     /**
@@ -66,7 +66,7 @@ class RoleController extends Controller
     {
         UpsertRoleAction::execute($data);
 
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully.')->withInput();
+        return redirect()->route('roles.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
     /**
@@ -77,6 +77,6 @@ class RoleController extends Controller
     {
         DeleteRoleAction::execute($role);
 
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully.');
+        return redirect()->route('roles.index')->with('success', __('messages.deleted_successfully'));
     }
 }

@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('Edit User') }}</h1>
+            <h1 class="mb-4">{{ __('messages.edit_user') }}</h1>
 
             @include('partials.flash_message')
 
@@ -24,7 +24,7 @@
                                 @csrf
 
                                 <div class="col">
-                                    <label for="name" class="form-label">{{ __('Name')  }}*</label>
+                                    <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ $user->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
@@ -33,7 +33,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="email" class="form-label">{{ __('Email') }}*</label>
+                                    <label for="email" class="form-label">{{ __('messages.email') }}*</label>
                                     <input name="email" type="email" class="form-control" id="email" placeholder=""
                                            value="{{ $user->email ?? old('email') }}">
                                     <div class="invalid-feedback">
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="password" class="form-label">{{ __('Password') }}*</label>
+                                    <label for="password" class="form-label">{{ __('messages.password') }}*</label>
                                     <input name="password" type="password" class="form-control" id="password"
                                            placeholder=""
                                            value="{{ old('password') ?? '' }}">
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="role" class="form-label">{{ __('Role') }}*</label>
+                                    <label for="role" class="form-label">{{ __('messages.role') }}*</label>
                                     <select name="role_id" class="form-select" id="role" required>
                                         @foreach($roles as $role)
                                             <option
@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <label for="status" class="form-label">{{ __('Status') }}</label>
+                                    <label for="status" class="form-label">{{ __('messages.status') }}</label>
                                     <select name="status" class="form-select" id="status">
                                         @foreach(\Domain\Account\Enums\User\UserStatus::cases() as $status)
                                             <option value="{{ $status->value }}"
@@ -83,7 +83,7 @@
 
                                 <div class="row g-3">
                                     <div class="col">
-                                        <button class="w-100 btn btn-success" type="submit">{{ __('Update') }}</button>
+                                        <button class="w-100 btn btn-success" type="submit">{{ __('messages.update') }}</button>
                                     </div>
                                 </div>
                             </form>

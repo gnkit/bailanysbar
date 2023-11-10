@@ -44,7 +44,7 @@ class CategoryController extends Controller
     {
         UpsertCategoryAction::execute($data);
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.')->withInput();
+        return redirect()->route('categories.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryController extends Controller
     {
         UpsertCategoryAction::execute($data);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.')->withInput();
+        return redirect()->route('categories.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
     /**
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         try {
             DeleteCategoryAction::execute($category);
 
-            return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+            return redirect()->route('categories.index')->with('success', __('messages.deleted_successfully'));
         } catch (\Throwable $exception) {
             return redirect()->route('categories.index')->with('error', $exception->getMessage());
         }

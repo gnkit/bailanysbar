@@ -8,7 +8,7 @@
         <div class="col-sm-9 bg-white p-4">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('User') }}</h1>
+            <h1 class="mb-4">{{ __('messages.user') }}</h1>
 
             <!-- Content -->
             <div class="row g-3">
@@ -33,7 +33,7 @@
 
                             <hr class="my-4">
 
-                            <p class="card-text fw-bold text-center">{{ __('User\'s Contacts') }}</p>
+                            <p class="card-text fw-bold text-center">{{ __('messages.user_contacts') }}</p>
 
                             @if(0 < $user->contacts->count())
                                 <ol class="list-group list-group-numbered list-group-flush">
@@ -58,11 +58,11 @@
                                     <div class="col">
                                         <a class="w-100 btn btn-secondary"
                                            href="{{ route('users.edit', $user->id) }}"
-                                           type="submit">{{ __('Edit') }}</a>
+                                           type="submit">{{ __('messages.edit') }}</a>
                                     </div>
                                     <div class="col">
                                         <button class="w-100 btn btn-danger"
-                                                type="submit">{{ __('Delete') }}</button>
+                                                type="submit">{{ __('messages.delete') }}</button>
                                     </div>
 
                                 </div>

@@ -41,7 +41,7 @@ class PermissionController extends Controller
     {
         UpsertPermissionAction::execute($data);
 
-        return redirect()->route('permissions.index')->with('success', 'Permission created successfully.')->withInput();
+        return redirect()->route('permissions.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
     /**
@@ -61,7 +61,7 @@ class PermissionController extends Controller
     {
         UpsertPermissionAction::execute($data);
 
-        return redirect()->route('permissions.index')->with('success', 'Permission updated successfully.')->withInput();
+        return redirect()->route('permissions.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
     /**
@@ -72,6 +72,6 @@ class PermissionController extends Controller
     {
         DeletePermissionAction::execute($permission);
 
-        return redirect()->route('permissions.index')->with('success', 'Permission deleted successfully.');
+        return redirect()->route('permissions.index')->with('success', __('messages.deleted_successfully'));
     }
 }

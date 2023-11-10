@@ -63,12 +63,12 @@ class ContactController extends Controller
     public function store(ContactData $data, Request $request)
     {
         if (!\auth()->user()->isCanPublishContact()) {
-            return redirect()->route('contacts.index')->with('error', 'You cannot create a contact. Your limit has been reached.')->withInput();
+            return redirect()->route('contacts.index')->with('error', __('messages.cannot_create_contact.'))->withInput();
         }
         $contact = UpsertContactAction::execute($data, $request->user());
         $this->notificationContactService->sendNotificationContactCreatedToManager($contact);
 
-        return redirect()->route('contacts.index')->with('success', 'Contact created successfully.')->withInput();
+        return redirect()->route('contacts.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
     /**
@@ -79,7 +79,7 @@ class ContactController extends Controller
     {
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
-            return redirect()->refresh()->with('success', 'Contact read.');
+            return redirect()->refresh()->with('success', __('messages.contact_read_notice'));
         };
 
         return view('pages.contact.show', compact('contact'));
@@ -93,7 +93,7 @@ class ContactController extends Controller
     {
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
-            return redirect()->refresh()->with('success', 'Contact read.');
+            return redirect()->refresh()->with('success', __('messages.contact_read_notice'));
         };
 
         $categories = GetAllParentCategoriesAction::execute();
@@ -110,7 +110,7 @@ class ContactController extends Controller
     {
         UpsertContactAction::execute($data, $request->user());
 
-        return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.')->withInput();
+        return redirect()->route('contacts.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
     /**
@@ -122,6 +122,6 @@ class ContactController extends Controller
         DeleteContactAction::execute($contact);
         $this->imageUploadContactService->destroy($contact);
 
-        return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
+        return redirect()->route('contacts.index')->with('success', __('messages.deleted_successfully'));
     }
 }

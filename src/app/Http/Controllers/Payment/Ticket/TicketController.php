@@ -44,7 +44,7 @@ class TicketController extends Controller
     {
         UpsertTicketAction::execute($ticketData);
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.')->withInput();
+        return redirect()->route('tickets.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
     /**
@@ -64,7 +64,7 @@ class TicketController extends Controller
     {
         UpsertTicketAction::execute($ticketData);
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket updated successfully.')->withInput();
+        return redirect()->route('tickets.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
     /**
@@ -75,6 +75,6 @@ class TicketController extends Controller
     {
         DeleteTicketAction::execute($ticket);
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully.');
+        return redirect()->route('tickets.index')->with('success', __('messages.deleted_successfully'));
     }
 }
