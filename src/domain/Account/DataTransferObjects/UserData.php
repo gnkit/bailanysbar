@@ -30,10 +30,21 @@ final class UserData extends Data
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'email:rfc,dns', Rule::unique('users', 'email')->ignore(request()->user)],
 //             'email' => ['required', 'unique:users', 'email:rfc,dns'],
-            'password' => ['sometimes'],
+            'password' => ['required', 'sometimes'],
 //             'password' => ['sometimes', Password::min(8)->mixedCase()->numbers()->symbols()],
             'status' => ['sometimes', new Enum(UserStatus::class)],
             'role_id' => ['required', 'numeric', 'exists:roles,id'],
+        ];
+    }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'name' => __('messages.name'),
+            'email' => __('messages.email'),
+            'password' => __('messages.password'),
+            'status' => __('messages.status'),
+            'role_id' => __('messages.role'),
         ];
     }
 

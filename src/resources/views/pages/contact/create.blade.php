@@ -47,6 +47,7 @@
                                     <div class="col">
                                         <label for="category" class="form-label">{{ __('messages.category') }}*</label>
                                         <select name="category_id" class="form-select" id="category" required>
+                                            <option value="0">{{ __('messages.select_category') }}</option>
                                             @foreach($categories as $category)
                                                 <option
                                                     value="{{ $category->id }}" {{ $category->id != old('category') ?: 'selected' }}>{{ $category->name }}</option>

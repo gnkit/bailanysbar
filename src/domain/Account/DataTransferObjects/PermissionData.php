@@ -22,6 +22,13 @@ final class PermissionData extends Data
         ];
     }
 
+    public static function attributes(...$args): array
+    {
+        return [
+            'name' => __('messages.name'),
+        ];
+    }
+
     public static function fromRequest(Request $request): self
     {
         return self::from([

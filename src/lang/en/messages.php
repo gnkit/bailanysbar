@@ -89,6 +89,6 @@ return [
     'created_successfully' => 'Created successfully.',
     'updated_successfully' => 'Updated successfully.',
     'deleted_successfully' => 'Deleted successfully.',
-    'messages.contact_read_notice' => 'Contact read.',
-    'messages.cannot_create_contact' => 'You cannot create a contact. Your limit has been reached.',
+    'contact_read_notice' => 'Contact read.',
+    'cannot_create_contact' => 'You cannot create a contact. Your limit has been reached.',
 ];

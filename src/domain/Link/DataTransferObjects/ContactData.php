@@ -45,15 +45,24 @@ final class ContactData extends Data
             'name' => ['nullable', 'sometimes', 'string', 'max:255'],
             'description' => ['nullable', 'sometimes', 'string', 'max:4096'],
             'address' => ['nullable', 'sometimes', 'string', 'max:255'],
-            'phone' => ['sometimes', 'string', 'max:12'],
+            'phone' => ['required', 'string', 'max:12'],
             'instagram' => ['nullable', 'sometimes', 'string', 'max:255'],
             'telegram' => ['nullable', 'sometimes', 'string', 'max:255'],
             'whatsapp' => ['nullable', 'sometimes', 'string', 'max:255'],
             'site' => ['nullable', 'sometimes', 'string', 'max:255'],
             'status' => ['sometimes', new Enum(ContactStatus::class)],
             'user_id' => ['sometimes'],
-            'category_id' => ['required'],
+            'category_id' => ['required', 'exists:categories,id'],
             'image' => ['sometimes', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:1024'],
+        ];
+    }
+
+    public static function attributes(...$args): array
+    {
+        return [
+            'title' => __('messages.title'),
+            'phone' => __('messages.phone'),
+            'category_id' => __('messages.category'),
         ];
     }
 

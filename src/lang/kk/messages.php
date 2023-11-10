@@ -89,6 +89,6 @@ return [
     'created_successfully' => 'Сәтті енгізілді.',
     'updated_successfully' => 'Сәтті жаңартылды.',
     'deleted_successfully' => 'Сәтті жойылды.',
-    'messages.contact_read_notice' => 'Байланыс оқылды.',
-    'messages.cannot_create_contact' => 'Сіз байланысты жасай алмайсыз. Сіздің лимитіңіз аяқталған.',
+    'contact_read_notice' => 'Байланыс оқылды.',
+    'cannot_create_contact' => 'Сіз байланысты жасай алмайсыз. Сіздің лимитіңіз аяқталған.',
 ];

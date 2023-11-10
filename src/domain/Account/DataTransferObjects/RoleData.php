@@ -24,6 +24,14 @@ final class RoleData extends Data
         ];
     }
 
+    public static function attributes(...$args): array
+    {
+        return [
+            'name' => __('messages.name'),
+            'permissions' => __('messages.permissions'),
+        ];
+    }
+
     public static function fromRequest(Request $request): self
     {
         return self::from([

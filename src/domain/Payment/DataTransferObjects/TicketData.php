@@ -24,6 +24,13 @@ final class TicketData extends Data
         ];
     }
 
+    public static function attributes(...$args): array
+    {
+        return [
+            'limit' => __('messages.limit'),
+        ];
+    }
+
     public static function fromRequest(Request $request): self
     {
         return self::from([

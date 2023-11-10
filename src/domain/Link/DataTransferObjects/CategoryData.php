@@ -26,6 +26,14 @@ final class CategoryData extends Data
         ];
     }
 
+    public static function attributes(...$args): array
+    {
+        return [
+            'name' => __('messages.name'),
+            'icon' => __('messages.icon'),
+        ];
+    }
+
     public static function fromRequest(Request $request): self
     {
         return self::from([
