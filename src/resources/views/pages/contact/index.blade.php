@@ -71,7 +71,7 @@
                                                     bg-warning
 
                                             @endswitch
-                                            ">{{ $contact->status->value ?? '' }}
+                                            ">{{ $contact->selectStatus($contact->status->value) ?? '' }}
                                         </span>
                             </td>
                             @role('manager')

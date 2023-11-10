@@ -92,4 +92,8 @@ return [
     'contact_read_notice' => 'Contact read.',
     'cannot_create_contact' => 'You cannot create a contact. Your limit has been reached.',
     'unread' => 'unread',
+    'draft' => 'draft',
+    'pending' => 'pending',
+    'published' => 'published',
+    'cancelled' => 'cancelled',
 ];

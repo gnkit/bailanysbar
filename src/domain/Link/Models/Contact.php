@@ -49,4 +49,27 @@ final class Contact extends BaseModel
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * @param $status
+     * @return array|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Translation\Translator|string|void|null
+     */
+    public function selectStatus($status)
+    {
+        if (ContactStatus::DRAFT->value === $status) {
+            return __('messages.draft');
+        }
+
+        if (ContactStatus::PENDING->value === $status) {
+            return __('messages.pending');
+        }
+
+        if (ContactStatus::PUBLISHED->value === $status) {
+            return __('messages.published');
+        }
+
+        if (ContactStatus::CANCELLED->value === $status) {
+            return __('messages.cancelled');
+        }
+    }
 }
