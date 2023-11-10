@@ -42,7 +42,7 @@
                                 {{ str()->limit($contact->title, 25) ?? '' }}
                                 @foreach (auth()->user()->unreadNotifications as $notification)
                                     @if($notification->data['contact_id'] === $contact->id)
-                                        <span class="badge bg-warning">unread</span>
+                                        <span class="badge bg-warning">{{ __('messages.unread') }}</span>
                                     @else
                                         {{ '' }}
                                     @endif

@@ -91,4 +91,5 @@ return [
     'deleted_successfully' => 'Сәтті жойылды.',
     'contact_read_notice' => 'Байланыс оқылды.',
     'cannot_create_contact' => 'Сіз байланысты жасай алмайсыз. Сіздің лимитіңіз аяқталған.',
+    'unread' => 'оқылмаған',
 ];

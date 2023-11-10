@@ -91,4 +91,5 @@ return [
     'deleted_successfully' => 'Deleted successfully.',
     'contact_read_notice' => 'Contact read.',
     'cannot_create_contact' => 'You cannot create a contact. Your limit has been reached.',
+    'unread' => 'unread',
 ];

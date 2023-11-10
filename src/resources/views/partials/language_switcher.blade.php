@@ -3,7 +3,7 @@
         @if($available_locale === $current_locale)
             <span class="fi fi-{{ $locale_name }}"></span>
         @else
-            <a class="text-decoration-none mx-1" href="language/{{ $available_locale }}">
+            <a class="text-decoration-none mx-1" href="/language/{{ $available_locale }}">
                 <span class="fi fi-{{ $locale_name }}"></span>
             </a>
         @endif
