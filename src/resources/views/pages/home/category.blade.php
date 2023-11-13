@@ -55,36 +55,46 @@
                                 <div class="collapse" id="socid{{ $contact->id }}">
                                     <div
                                         class="socials p-4 text-white text-center row flex-wrap justify-content-center gap-2">
-                                        <a href="tel:{{ $contact->phone ?? '' }}"
-                                           class="btn btn-square btn-light border-0 text-success phone"
-                                           style="padding-top: 30px"
-                                           target="_blank">
-                                            <i class="fa-solid fa-square-phone fa-2xl"></i>
-                                        </a>
-                                        <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}"
-                                           class="btn btn-square btn-light border-0 text-success whatsapp"
-                                           style="padding-top: 30px"
-                                           target="_blank">
-                                            <i class="fa-brands fa-whatsapp fa-2xl"></i>
-                                        </a>
-                                        <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}"
-                                           class="btn btn-square btn-light border-0 text-success instagram"
-                                           style="padding-top: 30px"
-                                           target="_blank">
-                                            <i class="fa-brands fa-instagram fa-2xl"></i>
-                                        </a>
-                                        <a href="https://t.me/{{ $contact->telegram ?? '' }}"
-                                           class="btn btn-square btn-light border-0 text-success telegram"
-                                           style="padding-top: 30px"
-                                           target="_blank">
-                                            <i class="fa-brands fa-telegram fa-2xl"></i>
-                                        </a>
-                                        <a href="{{ $contact->site ?? '' }}"
-                                           class="btn btn-square btn-light border-0 text-success chrome"
-                                           style="padding-top: 30px"
-                                           target="_blank">
-                                            <i class="fa-brands fa-chrome fa-2xl"></i>
-                                        </a>
+                                        @if($contact->phone)
+                                            <a href="tel:{{ $contact->phone ?? '' }}"
+                                               class="btn btn-square btn-light border-0 text-success phone"
+                                               style="padding-top: 30px"
+                                               target="_blank">
+                                                <i class="fa-solid fa-square-phone fa-2xl"></i>
+                                            </a>
+                                        @endif
+                                        @if($contact->whatsapp)
+                                            <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}"
+                                               class="btn btn-square btn-light border-0 text-success whatsapp"
+                                               style="padding-top: 30px"
+                                               target="_blank">
+                                                <i class="fa-brands fa-whatsapp fa-2xl"></i>
+                                            </a>
+                                        @endif
+                                        @if($contact->instagram)
+                                            <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}"
+                                               class="btn btn-square btn-light border-0 text-success instagram"
+                                               style="padding-top: 30px"
+                                               target="_blank">
+                                                <i class="fa-brands fa-instagram fa-2xl"></i>
+                                            </a>
+                                        @endif
+                                        @if($contact->telegram)
+                                            <a href="https://t.me/{{ $contact->telegram ?? '' }}"
+                                               class="btn btn-square btn-light border-0 text-success telegram"
+                                               style="padding-top: 30px"
+                                               target="_blank">
+                                                <i class="fa-brands fa-telegram fa-2xl"></i>
+                                            </a>
+                                        @endif
+                                        @if($contact->site)
+                                            <a href="{{ $contact->site ?? '' }}"
+                                               class="btn btn-square btn-light border-0 text-success chrome"
+                                               style="padding-top: 30px"
+                                               target="_blank">
+                                                <i class="fa-brands fa-chrome fa-2xl"></i>
+                                            </a>
+                                        @endif
                                         <a data-bs-toggle="collapse"
                                            class="btn btn-square btn-light border-0 text-success"
                                            style="padding-top: 30px"

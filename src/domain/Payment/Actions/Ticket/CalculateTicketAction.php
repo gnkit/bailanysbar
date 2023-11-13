@@ -15,10 +15,15 @@ final class CalculateTicketAction
      */
     public static function execute(User $user): Ticket
     {
+        if (\auth()->user()->isManager()) {
+            $ticketValue = 0;
+        } else {
+            $ticketValue = TicketLimit::DEFAULT->value;
+        }
         $ticketData = TicketData::from([
             'id' => $user->ticket->id,
             'user_id' => $user->id,
-            'limit' => ($user->ticket->limit) - (TicketLimit::DEFAULT->value),
+            'limit' => ($user->ticket->limit) - $ticketValue,
         ]);
         $ticket = UpsertTicketAction::execute($ticketData);
 
