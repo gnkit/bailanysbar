@@ -53,7 +53,7 @@ final class ContactData extends Data
             'status' => ['sometimes', new Enum(ContactStatus::class)],
             'user_id' => ['sometimes'],
             'category_id' => ['required', 'exists:categories,id'],
-            'image' => ['sometimes', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:1024'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:1024'],
         ];
     }
 
