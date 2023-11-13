@@ -36,6 +36,8 @@ return [
     'phone' => 'Телефон',
     'image' => 'Сурет',
     'name' => 'Аты',
+    'name_en' => 'Ағылшынша аты',
+    'name_ru' => 'Орысша аты',
     'address' => 'Мекен жайы',
     'description' => 'Сипаттамасы',
     'whatsapp' => 'Whatsapp',

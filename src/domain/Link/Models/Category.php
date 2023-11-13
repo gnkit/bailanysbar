@@ -12,6 +12,8 @@ final class Category extends BaseModel
      */
     protected $fillable = [
         'name',
+        'name_en',
+        'name_ru',
         'slug',
         'icon',
         'parent_id',

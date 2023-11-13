@@ -14,7 +14,7 @@ final class GetAllParentCategoriesPaginationAction
     public static function execute($quantity): Paginator
     {
         $categories = Category::where('parent_id', '=', null)
-            ->select('id', 'name', 'icon')
+            ->select('id', 'name', 'name_en', 'name_ru', 'icon')
             ->orderByDesc('created_at')
             ->simplePaginate($quantity);
 

@@ -32,6 +32,24 @@
                             </div>
 
                             <div class="col">
+                                <label for="name_en" class="form-label">{{ __('messages.name_en')  }}*</label>
+                                <input name="name_en" type="text" class="form-control" id="name_en" placeholder=""
+                                       value="{{ old('name_en') ?? '' }}" required>
+                                <div class="invalid-feedback">
+                                    {{ __('Valid name is required.') }}
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <label for="name_ru" class="form-label">{{ __('messages.name_ru')  }}*</label>
+                                <input name="name_ru" type="text" class="form-control" id="name_ru" placeholder=""
+                                       value="{{ old('name_ru') ?? '' }}" required>
+                                <div class="invalid-feedback">
+                                    {{ __('Valid name is required.') }}
+                                </div>
+                            </div>
+
+                            <div class="col">
                                 <label for="icon" class="form-label">{{ __('messages.icon')  }}</label>
                                 <input name="icon" type="text" class="form-control" id="icon" placeholder=""
                                        value="{{ old('icon') ?? '' }}">

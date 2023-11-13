@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('name_en');
+            $table->string('name_ru');
             $table->string('slug');
             $table->string('icon');
             $table->unsignedBigInteger('parent_id')->unsigned()->nullable();

@@ -13,7 +13,7 @@ final class GetAllParentCategoriesAction
     public static function execute(): Collection
     {
         $categories = Category::where('parent_id', '=', null)
-            ->select('id', 'name', 'icon')
+            ->select('id', 'name', 'name_en', 'name_ru', 'icon')
             ->orderByDesc('created_at')
             ->get();
 

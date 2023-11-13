@@ -20,6 +20,8 @@ final class UpsertCategoryAction
             ],
             [
                 'name' => $data->name,
+                'name_en' => $data->name_en,
+                'name_ru' => $data->name_ru,
                 'slug' => Str::slug($data->name),
                 'icon' => $data->icon,
                 'parent_id' => $data->parent_id,

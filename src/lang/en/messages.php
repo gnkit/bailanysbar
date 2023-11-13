@@ -36,6 +36,8 @@ return [
     'phone' => 'Phone',
     'image' => 'Image',
     'name' => 'Name',
+    'name_en' => 'Name in english',
+    'name_ru' => 'Name in russian',
     'address' => 'Address',
     'description' => 'Description',
     'whatsapp' => 'Whatsapp',
@@ -124,5 +126,5 @@ return [
     'goods_kids' => 'Goods for kids',
     'pets' => 'Pets',
     'media' => 'Media',
-    'help_information_systems' => 'Help and Information Systems',
+    'help_information_systems' => 'Help and information systems',
 ];

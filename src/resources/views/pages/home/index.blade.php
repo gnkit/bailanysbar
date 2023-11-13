@@ -14,7 +14,15 @@
                                 <div class="">
                                     <i class="{{ $category->icon }}"></i>
                                     <br>
-                                    <span class="small fw-bolder"> {{ $category->name ?? '' }}</span>
+                                    <span class="small fw-bolder">
+                                        @if(app()->getLocale() == 'en')
+                                            {{ $category->name_en ?? '' }}
+                                        @elseif( app()->getLocale() == 'ru' )
+                                            {{ $category->name_ru ?? '' }}
+                                        @else
+                                            {{ $category->name ?? '' }}
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                         </div>

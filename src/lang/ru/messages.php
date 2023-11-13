@@ -36,6 +36,8 @@ return [
     'phone' => 'Телефон',
     'image' => 'Изображение',
     'name' => 'Имя',
+    'name_en' => 'Имя на английском',
+    'name_ru' => 'Имя на русском',
     'address' => 'Адрес',
     'description' => 'Описание',
     'whatsapp' => 'Whatsapp',

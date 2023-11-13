@@ -7,12 +7,28 @@
             <div class="col text-center p-4">
                 <div class="container filter">
                     <button class="button btn btn-primary m-1 border-0" data-filter="all">
-                        <span id="all" class="lead">{{ $category->name }}</span>
+                        <span id="all" class="lead">
+                            @if(app()->getLocale() == 'en')
+                                {{ $category->name_en ?? '' }}
+                            @elseif( app()->getLocale() == 'ru' )
+                                {{ $category->name_ru ?? '' }}
+                            @else
+                                {{ $category->name ?? '' }}
+                            @endif
+                        </span>
                     </button>
                     @foreach($category->children as $child)
                         <button class="button btn btn-secondary m-1 border-0" data-filter="{{ $child->slug }}">
                             <i class="{{ $child->icon ?? '' }}"></i>
-                            <span class="lead">{{ $child->name }}</span>
+                            <span class="lead">
+                                @if(app()->getLocale() == 'en')
+                                    {{ $child->name_en ?? '' }}
+                                @elseif( app()->getLocale() == 'ru' )
+                                    {{ $child->name_ru ?? '' }}
+                                @else
+                                    {{ $child->name ?? '' }}
+                                @endif
+                            </span>
                         </button>
                     @endforeach
                 </div>

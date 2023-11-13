@@ -34,7 +34,7 @@ class ContactFactory extends Factory
             'site' => fake()->url(),
             'status' => $this->faker->randomElement(['draft', 'published', 'pending']),
             'user_id' => fake()->numberBetween($min = 1, $max = 10),
-            'category_id' => fake()->numberBetween($min = 1, $max = 10),
+            'category_id' => fake()->numberBetween($min = 1, $max = 29),
             'image' => 'default/contact.png',
         ];
     }
