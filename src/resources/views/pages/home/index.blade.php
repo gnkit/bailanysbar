@@ -7,14 +7,14 @@
     <div class="container">
         <div class="row g-2">
             @foreach ($categories as $category)
-                <div class="col-sm-4 col-lg-3 col-6">
-                    <a class="text-white text-decoration-none lead" href="{{ url('/category' , [$category->id]) }}">
+                <div class="col-6">
+                    <a class="text-white text-decoration-none" href="{{ url('/category' , [$category->id]) }}">
                         <div class="category card bg-success border-0 h-100">
                             <div class="card-body text-center">
-                                <div class="">
-                                    <i class="{{ $category->icon }}"></i>
+                                <div class="my-2">
+                                    <i class="fs-2 mb-2 {{ $category->icon }}"></i>
                                     <br>
-                                    <span class="small fw-bolder">
+                                    <p class="card-text">
                                         @if(app()->getLocale() == 'en')
                                             {{ $category->name_en ?? '' }}
                                         @elseif( app()->getLocale() == 'ru' )
@@ -22,7 +22,7 @@
                                         @else
                                             {{ $category->name ?? '' }}
                                         @endif
-                                    </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
