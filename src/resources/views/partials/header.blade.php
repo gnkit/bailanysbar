@@ -1,5 +1,5 @@
 <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white mb-2">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'BailanysBar') }}
@@ -12,20 +12,20 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a href="{{ route('about') }}"
-                           class="nav-link px-2 {{ request()->is('about') ? 'active' : '' }}">{{ __('messages.page_link_about') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('guide') }}"
-                           class="nav-link px-2 {{ request()->is('guide') ? 'active' : '' }}">{{ __('messages.page_link_guide') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pricing') }}"
-                           class="nav-link px-2 {{ request()->is('pricing') ? 'active' : '' }}">{{ __('messages.page_link_price') }}</a>
-                    </li>
-                </ul>
+{{--                <ul class="navbar-nav me-auto">--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route('about') }}"--}}
+{{--                           class="nav-link px-2 {{ request()->is('about') ? 'active' : '' }}">{{ __('messages.page_link_about') }}</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route('guide') }}"--}}
+{{--                           class="nav-link px-2 {{ request()->is('guide') ? 'active' : '' }}">{{ __('messages.page_link_guide') }}</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{ route('pricing') }}"--}}
+{{--                           class="nav-link px-2 {{ request()->is('pricing') ? 'active' : '' }}">{{ __('messages.page_link_price') }}</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
@@ -66,9 +66,6 @@
                         </li>
                     @endguest
                 </ul>
-
-                <!-- Language Switcher -->
-                @include('partials/language_switcher')
             </div>
         </div>
     </nav>

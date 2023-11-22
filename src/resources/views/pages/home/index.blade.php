@@ -8,8 +8,8 @@
         <div class="row g-2">
             @foreach ($categories as $category)
                 <div class="col-6">
-                    <a class="text-white text-decoration-none" href="{{ url('/category' , [$category->id]) }}">
-                        <div class="category card bg-success border-0 h-100">
+                    <a class="text-dark text-decoration-none" href="{{ url('/category' , [$category->id]) }}">
+                        <div class="category card bg-light border-0 h-100">
                             <div class="card-body text-center">
                                 <div class="my-2">
                                     <i class="fs-2 mb-2 {{ $category->icon }}"></i>
