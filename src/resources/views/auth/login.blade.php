@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Log in') }}</div>
+                    <div class="card-header">{{ __('messages.login') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
@@ -13,12 +13,12 @@
 
                             <div class="row mb-3">
                                 <span class="text-end">
-                                    <small>{{ __('Need an account?') }}
-                                        <a href="{{ route('register') }}">{{ __('Sign up') }}</a>
+                                    <small>{{ __('messages.need_an_account') }}
+                                        <a href="{{ route('register') }}">{{ __('messages.signup') }}</a>
                                     </small>
                                 </span>
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Email') }}
+                                       class="col-md-4 col-form-label text-md-end">{{ __('messages.email') }}
                                 </label>
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -35,7 +35,7 @@
 
                             <div class="row mb-3">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('messages.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -57,7 +57,7 @@
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('messages.remember_me') }}
                                         </label>
                                     </div>
                                 </div>
@@ -66,12 +66,12 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Log in') }}
+                                        {{ __('messages.login') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('messages.forgot_your_password') }}
                                         </a>
                                     @endif
                                 </div>

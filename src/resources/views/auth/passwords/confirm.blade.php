@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Confirm Password') }}</div>
+                    <div class="card-header">{{ __('messages.confirm_password') }}</div>
 
                     <div class="card-body">
                         {{ __('Please confirm your password before continuing.') }}
@@ -15,7 +15,7 @@
 
                             <div class="row mb-3">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-end">{{ __('messages.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -33,12 +33,12 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Confirm Password') }}
+                                        {{ __('messages.confirm_password') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('messages.forgot_your_password') }}
                                         </a>
                                     @endif
                                 </div>

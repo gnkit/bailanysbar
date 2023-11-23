@@ -1,6 +1,19 @@
 <?php
 
 return [
+    'need_an_account' => 'Аккаунт керек пе?',
+    'signup' => 'Тіркелу',
+    'remember_me' => 'Мені есте сақтау',
+    'forgot_your_password' => 'Құпиясөзді ұмыттыңыз ба?',
+    'already_have_an_account' => 'Сіздің аккаунтыңыз бар ма?',
+    'confirm_password' => 'Құпиясөзді растау',
+    'send_password_reset_link' => 'Құпиясөзді қалпына келтіру сілтемесін жіберу',
+    'please_confirm_your_password_before_continuing' => 'Жалғастырмас бұрын құпия сөзіңізді растаңыз.',
+    'verify_your_email_address' => 'Электрондық поштаңызды растаңыз',
+    'a_fresh_verification_link_has_been_sent_to_your_email_address' => 'Жаңа растау сілтемесі электрондық поштаңызға жіберілді.',
+    'before_proceeding_please_check_your_email_for_a_verification_link' => 'Жалғастырмас бұрын растау сілтемесі бар-жоғын электрондық поштаңызды тексеріңіз.',
+    'if_you_did_not_receive_the_email' => 'Электрондық хатты алмаған болсаңыз',
+    'click_here_to_request_another' => 'басқа сұрау үшін мұнда басыңыз',
     'logged_in' => 'Сіз жүйеге кірдіңіз!',
     'intro_title' => 'Qaratay',
     'intro_text' => 'Барлық байланыс сіздің қолыңызда',
@@ -64,7 +77,7 @@ return [
     'parent_category' => 'Жоғарғы категория',
     'delete_parent_category' => 'Жоғарғы категорияны жою',
     'all_tickets' => 'Барлық тикеттер',
-    'email' => 'Email',
+    'email' => 'Эл.пошта',
     'limit' => 'Лимит',
     'created' => 'Жасалған',
     'updated' => 'Жаңартылған',

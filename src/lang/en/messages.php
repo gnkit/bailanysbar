@@ -1,6 +1,19 @@
 <?php
 
 return [
+	'need_an_account' => 'Need an account?',
+	'signup' => 'Sign up',
+	'remember_me' => 'Remember me',
+    'forgot_your_password' => 'Forgot your password?',
+    'already_have_an_account' => 'Already have an account?',
+    'confirm_password' => 'Confirm password',
+    'send_password_reset_link' => 'Send password reset link',
+    'please_confirm_your_password_before_continuing' => 'Please confirm your password before continuing.',
+    'verify_your_email_address' => 'Verify Your Email Address',
+    'a_fresh_verification_link_has_been_sent_to_your_email_address' => 'A fresh verification link has been sent to your email address.',
+    'before_proceeding_please_check_your_email_for_a_verification_link' => 'Before proceeding, please check your email for a verification link.',
+    'if_you_did_not_receive_the_email' => 'If you did not receive the email',
+    'click_here_to_request_another' => 'click here to request another',
 	'logged_in' => 'You are logged in!',
     'intro_title' => 'Karatau',
     'intro_text' => 'All communication is at your fingertips',

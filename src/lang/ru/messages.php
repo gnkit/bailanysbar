@@ -1,6 +1,19 @@
 <?php
 
 return [
+    'need_an_account' => 'Нужен аккаунт?',
+    'signup' => 'Зарегистрироваться',
+    'remember_me' => 'Запомнить меня',
+    'forgot_your_password' => 'Забыли пароль?',
+    'already_have_an_account' => 'У вас уже есть аккаунт?',
+    'confirm_password' => 'Подтвердить пароль',
+    'send_password_reset_link' => 'Отправить ссылку сброса пароля',
+    'please_confirm_your_password_before_continuing' => 'Пожалуйста, подтвердите свой пароль, прежде чем продолжить.',
+    'verify_your_email_address' => 'Подтвердите Ваш адрес электронной почты',
+    'a_fresh_verification_link_has_been_sent_to_your_email_address' => 'Новая ссылка подтверждения отправлена на Ваш адрес электронной почты.',
+    'before_proceeding_please_check_your_email_for_a_verification_link' => 'Прежде чем продолжить, проверьте свою электронную почту на наличие ссылки для подтверждения.',
+    'if_you_did_not_receive_the_email' => 'Если Вы не получили письмо',
+    'click_here_to_request_another' => 'нажмите здесь для запроса другой ссылки',
 	'logged_in' => 'Вы вошли в систему!',
     'intro_title' => 'Каратау',
     'intro_text' => 'Вся связь у вас под рукой',
