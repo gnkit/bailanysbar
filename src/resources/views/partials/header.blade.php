@@ -66,6 +66,10 @@
                         </li>
                     @endguest
                 </ul>
+
+                <!-- Language Switcher -->
+                @include('partials/language_switcher')
+
             </div>
         </div>
     </nav>

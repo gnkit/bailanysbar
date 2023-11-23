@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<div id="app" class="container bg-light shadow-lg mt-4 py-2" style="min-height: 100vh; max-width: 573px; margin-bottom: 6rem;">
+<div id="app" class="container bg-light shadow-lg mt-4 py-2" style="min-height: 70vh; max-width: 573px; margin-bottom: 6rem;">
 
     @include('partials.header')
 
@@ -32,7 +32,7 @@
 
 </div>
 
-{{--@include('partials.footer')--}}
+@include('partials.footer')
 @include('partials.footer_bar')
 @include('partials.scripts')
 

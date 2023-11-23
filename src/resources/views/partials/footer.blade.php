@@ -1,6 +1,6 @@
-@if(!request()->is('user/*'))
+@guest
 
-    <footer class="container pb-2 mb-5">
+    <footer class="container pb-2">
         <ul class="nav justify-content-center mb-2">
             <li class="nav-item"><a href="{{ route('about') }}"
                                     class="nav-link px-2 text-muted">{{ __('messages.page_link_about') }}</a></li>
@@ -13,10 +13,7 @@
                                     class="nav-link px-2 text-muted">{{ __('messages.page_link_privacy') }}</a></li>
         </ul>
 
-        <!-- Language Switcher -->
-        @include('partials/language_switcher')
-
         <div class="text-center text-muted">© {{ date('Y') }} {{ __('Bailanys Bar') }}</div>
     </footer>
 
-@endif
+@endguest
