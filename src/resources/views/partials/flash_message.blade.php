@@ -40,7 +40,7 @@
 @endif
 
 <script>
-    var elem = document.getElementsByClassName("alert")[0];
+    let elem = document.getElementsByClassName("alert")[0];
     // ** FADE OUT FUNCTION **
     (function fadeOut(el) {
         el.style.opacity = 1;

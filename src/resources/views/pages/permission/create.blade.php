@@ -5,15 +5,15 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.create_permission') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.create_permission') }}</h1>
 
             @include('partials.flash_message')
 
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
 
@@ -22,7 +22,7 @@
                               class="needs-validation" novalidate>
                                 @csrf
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ old('name') ?? '' }}" required>
@@ -30,8 +30,6 @@
                                         {{ __('Valid name is required.') }}
                                     </div>
                                 </div>
-
-                                <hr class="my-4">
 
                                 <div class="row g-3">
                                     <div class="col">

@@ -5,15 +5,15 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.create_contact') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.create_contact') }}</h1>
 
             @include('partials.flash_message')
 
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
 
@@ -26,7 +26,7 @@
                                       class="needs-validation" novalidate enctype="multipart/form-data">
                                     @csrf
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="title" class="form-label">{{ __('messages.title')  }}*</label>
                                         <input name="title" type="text" class="form-control" id="title" placeholder=""
                                                value="{{ old('title') ?? '' }}" required>
@@ -35,7 +35,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="phone" class="form-label">{{ __('messages.phone') }}*</label>
                                         <input name="phone" type="tel" class="form-control" id="phone" placeholder=""
                                                value="{{ old('phone') ?? '' }}">
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="category" class="form-label">{{ __('messages.category') }}*</label>
                                         <select name="category_id" class="form-select" id="category" required>
                                             <option value="0">{{ __('messages.select_category') }}</option>
@@ -64,8 +64,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
-                                        <label for="image" class="form-label">{{ __('messages.image')  }}</label>
+                                    <div class="col mb-3">
+                                        <label for="image" class="form-label">{{ __('messages.image')  }} (500x500px)</label>
                                         <input name="image" type="file" class="form-control" id="image" placeholder=""
                                                value="{{ old('image') ?? '' }}">
                                         <div class="invalid-feedback">
@@ -73,7 +73,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="name" class="form-label">{{ __('messages.name')  }}</label>
                                         <input name="name" type="text" class="form-control" id="name" placeholder=""
                                                value="{{ old('name') ?? '' }}">
@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="address" class="form-label">{{ __('messages.address')  }}</label>
                                         <input name="address" type="text" class="form-control" id="address"
                                                placeholder=""
@@ -92,8 +92,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
-                                        <label for="description" class="form-label">{{ __('messages.description') }}</label>
+                                    <div class="col mb-3">
+                                        <label for="description"
+                                               class="form-label">{{ __('messages.description') }}</label>
                                         <textarea name="description" type="text" class="form-control" id="description"
                                                   placeholder="" rows="3">{{ old('description') ?? '' }}</textarea>
                                         <div class="invalid-feedback">
@@ -101,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="whatsapp" class="form-label">{{ __('messages.whatsapp') }}</label>
                                         <input name="whatsapp" type="text" class="form-control" id="whatsapp"
                                                placeholder=""
@@ -111,7 +112,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="instagram" class="form-label">{{ __('messages.instagram') }}</label>
                                         <input name="instagram" type="text" class="form-control" id="instagram"
                                                placeholder=""
@@ -121,7 +122,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="telegram" class="form-label">{{ __('messages.telegram') }}</label>
                                         <input name="telegram" type="text" class="form-control" id="telegram"
                                                placeholder=""
@@ -131,7 +132,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col mb-3">
                                         <label for="site" class="form-label">{{ __('messages.site') }}</label>
                                         <input name="site" type="text" class="form-control" id="site" placeholder=""
                                                value="{{ old('site') ?? '' }}">
@@ -139,8 +140,6 @@
                                             {{ __('Valid site is required.') }}
                                         </div>
                                     </div>
-
-                                    <hr class="my-4">
 
                                     <div class="row g-3">
                                         <div class="col">

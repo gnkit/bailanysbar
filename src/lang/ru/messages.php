@@ -24,7 +24,7 @@ return [
     'page_link_privacy' => 'Конфиденциальность',
     'login' => 'Логин',
     'register' => 'Регистрация',
-    'dashboard' => 'Панель управления',
+    'dashboard' => 'Дашборд',
     'logout' => 'Выйти',
     'contacts' => 'Контакты',
     'categories' => 'Категории',

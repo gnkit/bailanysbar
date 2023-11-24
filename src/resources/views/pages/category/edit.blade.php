@@ -5,15 +5,15 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.edit_category') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_category') }}</h1>
 
             @include('partials.flash_message')
 
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
 
@@ -23,7 +23,7 @@
                                 @method('PUT')
                                 @csrf
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ $category->name ?? old('name') }}" required>
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="name_en" class="form-label">{{ __('messages.name_en')  }}*</label>
                                     <input name="name_en" type="text" class="form-control" id="name_en" placeholder=""
                                            value="{{ $category->name_en ?? old('name_en') }}" required>
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="name_ru" class="form-label">{{ __('messages.name_ru')  }}*</label>
                                     <input name="name_ru" type="text" class="form-control" id="name_ru" placeholder=""
                                            value="{{ $category->name_ru ?? old('name_ru') }}" required>
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="icon" class="form-label">{{ __('messages.icon')  }}</label>
                                     <input name="icon" type="text" class="form-control" id="icon" placeholder=""
                                            value="{{ $category->icon ?? old('icon') }}">
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="category" class="form-label">{{ __('messages.category') }}</label>
                                     <select name="parent_id" class="form-select" id="category" required>
                                         @foreach($categories as $category_another)
@@ -77,8 +77,6 @@
                                         {{ __('Please category a valid status.') }}
                                     </div>
                                 </div>
-
-                                <hr class="my-4">
 
                                 <div class="row g-3">
                                     <div class="col">

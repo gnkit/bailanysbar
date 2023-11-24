@@ -5,14 +5,14 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.user') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.user') }}</h1>
 
             <!-- Content -->
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <p class="card-text"><i
@@ -31,12 +31,10 @@
                                     class="fa-solid fa-ticket me-2"></i>{{ $user->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}
                             </p>
 
-                            <hr class="my-4">
-
                             <p class="card-text fw-bold text-center">{{ __('messages.user_contacts') }}</p>
 
                             @if(0 < $user->contacts->count())
-                                <ol class="list-group list-group-numbered list-group-flush">
+                                <ol class="list-group list-group-numbered list-group-flush mb-3">
                                     @foreach($user->contacts as $contact)
                                         <li class="list-group-item list-group-item-action">
                                             <a class="text-decoration-none link-dark"
@@ -47,8 +45,6 @@
                                     @endforeach
                                 </ol>
                             @endif
-
-                            <hr class="my-4">
 
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf

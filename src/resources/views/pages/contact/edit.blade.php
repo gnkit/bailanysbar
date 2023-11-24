@@ -5,15 +5,15 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.edit_contact') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_contact') }}</h1>
 
             @include('partials.flash_message')
 
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
 
@@ -23,7 +23,7 @@
                                 @method('PUT')
                                 @csrf
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="title" class="form-label">{{ __('messages.title')  }}*</label>
                                     <input name="title" type="text" class="form-control" id="title" placeholder=""
                                            value="{{ $contact->title ?? old('title') }}" required>
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="phone" class="form-label">{{ __('messages.phone') }}*</label>
                                     <input name="phone" type="tel" class="form-control" id="phone" placeholder=""
                                            value="{{ $contact->phone ?? old('phone') }}">
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="category" class="form-label">{{ __('messages.category') }}*</label>
                                     <select name="category_id" class="form-select" id="category" required>
                                         @foreach($categories as $category)
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     @if(null !== $contact->image)
                                         <img src="{{ asset('storage/images/' . $contact->image) }}"
                                              class="top-0 end-0 rounded-circle m-2 p-2 card-img-top"
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ $contact->name ?? old('name') }}">
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="address" class="form-label">{{ __('messages.address')  }}</label>
                                     <input name="address" type="text" class="form-control" id="address"
                                            placeholder=""
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="description" class="form-label">{{ __('messages.description') }}</label>
                                     <textarea name="description" type="text" class="form-control" id="description"
                                               placeholder=""
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="whatsapp" class="form-label">{{ __('messages.whatsapp') }}</label>
                                     <input name="whatsapp" type="text" class="form-control" id="whatsapp"
                                            placeholder=""
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="instagram" class="form-label">{{ __('messages.instagram') }}</label>
                                     <input name="instagram" type="text" class="form-control" id="instagram"
                                            placeholder=""
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="telegram" class="form-label">{{ __('messages.telegram') }}</label>
                                     <input name="telegram" type="text" class="form-control" id="telegram"
                                            placeholder=""
@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="site" class="form-label">{{ __('messages.site') }}</label>
                                     <input name="site" type="text" class="form-control" id="site" placeholder=""
                                            value="{{ $contact->site ?? old('site') }}">
@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="status" class="form-label">{{ __('messages.status') }}</label>
                                     <input name="status" type="text"
                                            class="form-control" id="status"
@@ -154,8 +154,6 @@
                                         {{ __('Valid status is required.') }}
                                     </div>
                                 </div>
-
-                                <hr class="my-4">
 
                                 <div class="row g-3">
                                     <div class="col">

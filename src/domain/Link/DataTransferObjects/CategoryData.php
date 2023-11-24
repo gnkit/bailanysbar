@@ -9,14 +9,15 @@ use Illuminate\Validation\Rule;
 final class CategoryData extends Data
 {
     public function __construct(
-        public readonly ?int $id,
-        public readonly string $name,
-        public readonly string $name_en,
-        public readonly string $name_ru,
+        public readonly ?int    $id,
+        public readonly string  $name,
+        public readonly string  $name_en,
+        public readonly string  $name_ru,
         public readonly ?string $slug,
         public readonly ?string $icon,
-        public readonly ?int $parent_id,
-    ) {
+        public readonly ?int    $parent_id,
+    )
+    {
     }
 
     public static function rules(): array

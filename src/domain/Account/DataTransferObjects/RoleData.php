@@ -9,11 +9,12 @@ use Illuminate\Validation\Rule;
 final class RoleData extends Data
 {
     public function __construct(
-        public readonly ?int $id,
-        public readonly string $name,
+        public readonly ?int    $id,
+        public readonly string  $name,
         public readonly ?string $slug,
-        public readonly ?array $permissions,
-    ) {
+        public readonly ?array  $permissions,
+    )
+    {
     }
 
     public static function rules(): array

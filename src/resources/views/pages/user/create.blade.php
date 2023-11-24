@@ -5,15 +5,15 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.create_user') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.create_user') }}</h1>
 
             @include('partials.flash_message')
 
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
 
@@ -22,7 +22,7 @@
                                   class="needs-validation" novalidate>
                                 @csrf
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder=""
                                            value="{{ old('name') ?? '' }}" required>
@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="email" class="form-label">{{ __('messages.email') }}*</label>
                                     <input name="email" type="email" class="form-control" id="email" placeholder=""
                                            value="{{ old('email') ?? '' }}" required>
@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="password" class="form-label">{{ __('messages.password') }}*</label>
                                     <input name="password" type="password" class="form-control" id="password"
                                            placeholder=""
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="role" class="form-label">{{ __('messages.role') }}*</label>
                                     <select name="role_id" class="form-select" id="role" required>
                                         @foreach($roles as $role)
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col mb-3">
                                     <label for="status" class="form-label">{{ __('messages.status') }}*</label>
                                     <select name="status" class="form-select" id="status" required>
                                         @foreach(\Domain\Account\Enums\User\UserStatus::cases() as $status)
@@ -75,8 +75,6 @@
                                         {{ __('Please status a valid status.') }}
                                     </div>
                                 </div>
-
-                                <hr class="my-4">
 
                                 <div class="row g-3">
                                     <div class="col">

@@ -12,6 +12,7 @@ class ContactCreated extends Notification
     use Queueable;
 
     private $contact;
+
     /**
      * Create a new notification instance.
      *
@@ -25,7 +26,7 @@ class ContactCreated extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -36,7 +37,7 @@ class ContactCreated extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     // public function toMail($notifiable)
@@ -50,7 +51,7 @@ class ContactCreated extends Notification
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)

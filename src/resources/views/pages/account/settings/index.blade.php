@@ -5,13 +5,13 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.account') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.account') }}</h1>
 
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <p class="card-text"><i class="fa-regular fa-circle-user me-2"></i>{{ $account->name ?? '' }}</p>
@@ -20,7 +20,7 @@
                             <p class="card-text"><i class="fa-regular fa-pen-to-square me-2"></i>{{ $account->role->name ?? '' }}</p>
                             <p class="card-text"><i class="fa-solid fa-ticket me-2"></i>{{ $account->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}</p>
 
-                            <hr class="my-4">
+                            <hr>
 
                             <form action="{{ route('users.destroy', $account->id) }}" method="POST">
                                 @csrf

@@ -5,10 +5,10 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.all_categories') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.all_categories') }}</h1>
 
             <!-- Button -->
             <div class="text-end mb-4">
@@ -34,18 +34,20 @@
                     @foreach ($categories as $category)
                         <tr>
                             <th class="col-1">{{ ++$i }}</th>
-                            <td class="col-5">{{ $category->name ?? '' }}</td>
-                            <td class="col-6">
+                            <td class="col-8">{{ $category->name ?? '' }}</td>
+                            <td class="col-3">
                                 <form action="{{ route('categories.destroy', $category->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a class="btn btn-success btn-sm"
-                                       href="{{ route('categories.edit', $category->id) }}"><i
-                                            class="fa-solid fa-pen-to-square"></i></a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fa-solid fa-trash-can"></i>
-                                    </button>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success btn-sm"
+                                           href="{{ route('categories.edit', $category->id) }}"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </div>
                                 </form>
                             </td>
                         </tr>

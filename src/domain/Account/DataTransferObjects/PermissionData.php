@@ -9,10 +9,11 @@ use Illuminate\Validation\Rule;
 final class PermissionData extends Data
 {
     public function __construct(
-        public readonly ?int $id,
-        public readonly string $name,
+        public readonly ?int    $id,
+        public readonly string  $name,
         public readonly ?string $slug,
-    ) {
+    )
+    {
     }
 
     public static function rules(): array

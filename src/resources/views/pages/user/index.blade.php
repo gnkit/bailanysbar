@@ -5,10 +5,10 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.all_users') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.all_users') }}</h1>
 
             <!-- Button -->
             <div class="text-end mb-4">
@@ -29,7 +29,6 @@
                         <th scope="col">{{ __('messages.name') }}</th>
                         <th scope="col">{{ __('messages.status') }}</th>
                         <th scope="col">{{ __('messages.ticket') }}</th>
-                        <th scope="col">{{ __('messages.role') }}</th>
                         <th scope="col">{{ __('messages.actions') }}</th>
                     </tr>
                     </thead>
@@ -37,23 +36,25 @@
                     @foreach ($users as $user)
                         <tr>
                             <td class="col-1">{{ ++$i }}</td>
-                            <td class="col-2">{{ $user->name ?? '' }}</td>
-                            <td class="col-1">{{ $user->status ?? '' }}</td>
+                            <td class="col-5">{{ $user->name ?? '' }}</td>
+                            <td class="col-2">{{ $user->status ?? '' }}</td>
                             <td class="col-1">{{ $user->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}</td>
-                            <td class="col-2">{{ $user->role->name ?? '' }}</td>
-                            <td class="col-5">
+                            <td class="col-3">
                                 <form action="{{ route('users.destroy', $user->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a class="btn btn-outline-secondary btn-sm"
-                                       href="{{ route('users.show', $user->id) }}"><i class="fa-solid fa-eye"></i></a>
-                                    <a class="btn btn-success btn-sm"
-                                       href="{{ route('users.edit', $user->id) }}"><i
-                                            class="fa-solid fa-pen-to-square"></i></a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fa-solid fa-trash-can"></i>
-                                    </button>
+                                    <div class="btn-group">
+                                        <a class="btn btn-outline-secondary btn-sm"
+                                           href="{{ route('users.show', $user->id) }}"><i
+                                                class="fa-solid fa-eye"></i></a>
+                                        <a class="btn btn-success btn-sm"
+                                           href="{{ route('users.edit', $user->id) }}"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </div>
                                 </form>
                             </td>
                         </tr>

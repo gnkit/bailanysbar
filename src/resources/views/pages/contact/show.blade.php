@@ -5,20 +5,20 @@
 
         @include('partials.sidebar')
 
-        <div class="col-sm-9 bg-white p-4">
+        <div class="col bg-white p-2">
 
             <!-- Title -->
-            <h1 class="mb-4">{{ __('messages.contact') }}</h1>
+            <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.contact') }}</h1>
 
             <!-- Content -->
             <div class="row g-3">
-                <div class="col-md-8 col-sm-12 col-lg-6">
+                <div class="col">
                     <div class="card shadow-lg position-relative">
                         <img src="{{ asset('storage/images/' . $contact->image) }}"
                              class="position-absolute top-0 end-0 rounded-circle m-2 p-2 card-img-top" alt="Avatar"
-                             style="height: 11rem; width: 11rem;"/>
+                             style="height: 5rem; width: 5rem;"/>
                         <form action="{{ route('contact.image.reset', $contact) }}" method="POST"
-                              class="position-absolute end-0 p-2" style="margin: 11rem 3.5rem 0.5rem 0.5rem;">
+                              class="position-absolute end-0 p-2" style="margin: 5rem 0.5rem 0.5rem 0.5rem;">
                             @method('PUT')
                             @csrf
                             <div class="row g-3">
@@ -47,7 +47,7 @@
                             <p class="card-text"><i
                                     class="fa-regular fa-file-lines me-2"></i>{{ $contact->description ?? '' }}
                             </p>
-                            <hr>
+
                             <p class="card-text"><i
                                     class="fa-brands fa-whatsapp me-2"></i>{{ $contact->whatsapp ?? '' }}
                             </p>
@@ -60,8 +60,6 @@
                             <p class="card-text"><i
                                     class="fa-brands fa-chrome me-2"></i>{{ $contact->site ?? '' }}
                             </p>
-
-                            <hr class="my-4">
 
                             <form action="{{ route('contacts.destroy', $contact->id) }}" method="POST">
                                 @csrf
