@@ -14,12 +14,15 @@ services:
 
   app:
     build:
+      args:
+        user: ubuntu
+        uid: 1000
       context: .
       dockerfile: _docker/app/Dockerfile
     volumes:
       - ./src:/var/www
     depends_on:
-        - db
+      - db
     container_name: bailanysbar_app
 
   db:
@@ -28,9 +31,21 @@ services:
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
-        MYSQL_DATABASE: bailanysbar
-        MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bailanysbar
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - 8301:3306
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     container_name: bailanysbar_db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    container_name: bailanysbar_phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - 8302:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
