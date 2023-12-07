@@ -27,9 +27,11 @@ class CategoryFactory extends Factory
 
         return [
             'name' => $name,
+            'name_ru' => $name . '_ru',
+            'name_en' => $name . '_en',
             'slug' => Str::slug($name),
-            'icon' => 'fa-solid fa-paperclip',
-            'parent_id'=> fake()->randomElement([null, 1, 2]),
+            'icon' => 'fa-solid fa-money-bill',
+            'parent_id' => null,
         ];
     }
 }
