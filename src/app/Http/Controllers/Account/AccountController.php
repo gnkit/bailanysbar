@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use Domain\Account\Actions\User\DeleteUserAction;
+use Domain\Account\Models\User;
+use Illuminate\Http\RedirectResponse;
 
 class AccountController extends Controller
 {
@@ -27,5 +30,16 @@ class AccountController extends Controller
         $account = auth()->user();
 
         return view('pages.account.settings.index', compact('account'));
+    }
+
+    /**
+     * @param User $user
+     * @return RedirectResponse
+     */
+    public function destroy(User $user): RedirectResponse
+    {
+        DeleteUserAction::execute($user);
+
+        return redirect()->route('home')->with('success', __('messages.deleted_successfully'));
     }
 }

@@ -22,7 +22,7 @@
 
                             <hr>
 
-                            <form action="{{ route('users.destroy', $account->id) }}" method="POST">
+                            <form action="{{ route('destroy', $account->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div class="row g-3">

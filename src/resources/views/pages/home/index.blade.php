@@ -6,6 +6,9 @@
 
     <div class="container">
         <div class="row g-2">
+
+            @include('partials.flash_message')
+
             @foreach ($categories as $category)
                 <div class="col-6">
                     <a class="text-dark text-decoration-none" href="{{ url('/category' , [$category->id]) }}">
