@@ -3,10 +3,10 @@
 namespace Domain\Account\DataTransferObjects;
 
 use Domain\Account\Actions\Role\GetBySlugRoleAction;
-use Domain\Account\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Validation\Rules\Password;
 use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;
 use Domain\Account\Enums\User\UserStatus;
@@ -29,9 +29,7 @@ final class UserData extends Data
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'email:rfc,dns', Rule::unique('users', 'email')->ignore(request()->user)],
-//             'email' => ['required', 'unique:users', 'email:rfc,dns'],
-            'password' => ['required', 'sometimes'],
-//             'password' => ['sometimes', Password::min(8)->mixedCase()->numbers()->symbols()],
+            'password' => ['sometimes', Password::min(8)->mixedCase()->numbers()->symbols()],
             'status' => ['sometimes', new Enum(UserStatus::class)],
             'role_id' => ['required', 'numeric', 'exists:roles,id'],
         ];
