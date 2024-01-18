@@ -36,9 +36,9 @@
                     @foreach ($tickets as $ticket)
                         <tr>
                             <td class="col-1">{{ ++$i }}</td>
-                            <td class="col-5 text-break">{{ $ticket->user->email ?? '' }}</td>
+                            <td class="col-4 text-break">{{ $ticket->user->email ?? '' }}</td>
                             <td class="col-1">{{ $ticket->limit ?? '' }}</td>
-                            <td class="col-2">{{ $ticket->updated_at ?? '' }}</td>
+                            <td class="col-3">{{ $ticket->updated_at ?? '' }}</td>
                             <td class="col-3">
                                 <form action="{{ route('tickets.destroy', $ticket->id) }}"
                                       method="POST">

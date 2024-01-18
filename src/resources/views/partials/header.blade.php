@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <nav class="navbar navbar-expand-sm navbar-light bg-white mb-2">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">

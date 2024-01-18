@@ -1,5 +1,5 @@
 @role('manager')
-    <div class="col-4 d-flex flex-column flex-shrink-0 p-2 text-white bg-dark">
+    <div class="col-2 d-flex flex-column flex-shrink-0 p-2 text-white bg-dark">
         <nav class="navbar navbar-expand-sm">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
