@@ -12,7 +12,7 @@ final class GetAllRolesAction
      */
     public static function execute(): Collection
     {
-        $roles = Role::select('id', 'name')
+        $roles = Role::with('permissions')->select('id', 'name')
             ->orderByDesc('created_at')
             ->get();
 
