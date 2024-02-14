@@ -4,27 +4,19 @@ namespace Domain\Link\Actions\Category;
 
 use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Link\Models\Category;
+use Illuminate\Database\Eloquent\Collection;
 
 final class GetParentCategoriesHasContactPublishedAction
 {
     /**
-     * @return array
+     * @return Collection
      */
-    public static function execute(): array
+    public static function execute(): Collection
     {
-        $categoriesParent = Category::where('parent_id', '=', null)->get();
+        $categories = Category::where('parent_id', '=', null)->with('contacts')->whereHas('contacts', function ($query) {
+            $query->where('status', '=', ContactStatus::PUBLISHED);
+        })->get();
 
-        $categories = [];
-        foreach ($categoriesParent as $category) {
-            if (0 < $category->contacts->count()) {
-                foreach ($category->contacts as $contact) {
-                    if ($contact->status === ContactStatus::PUBLISHED) {
-                        $categories[] = $category;
-                    }
-                }
-            }
-        }
-
-        return array_unique($categories);
+        return $categories;
     }
 }
