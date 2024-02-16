@@ -4,13 +4,15 @@
 
     @include('partials.intro')
 
+    @include('partials.search')
+
     <div class="container">
         <div class="row g-2">
 
             @include('partials.flash_message')
 
             @foreach ($categories as $category)
-                <div class="col-6">
+                <div class="col-lg-3 col-md-4 col-6">
                     <a class="text-dark text-decoration-none" href="{{ url('/category' , [$category->id]) }}">
                         <div class="category card bg-light border-0 h-100">
                             <div class="card-body text-center">

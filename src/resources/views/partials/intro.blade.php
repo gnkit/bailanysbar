@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="card text-center mb-2">
+<div class="container mb-4">
+    <div class="card text-center">
         <img src="https://sun9-72.userapi.com/impg/uN2pZkZ_nqMvsJqQ2pVH5Qym5STCDEjw2ool8Q/eDNqipaRzac.jpg?size=604x469&quality=96&sign=fa8d5133eda20ec8818f304c06322af2&c_uniq_tag=G2-nbsACoKyHl_XDZzctqPgZWyqhXDxUHBMnveREK8s&type=album" class="card-img" alt="" width="576" height="191">
         <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.7);">
             <div class="p-4 d-flex justify-content-center align-items-center">
