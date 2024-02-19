@@ -35,82 +35,117 @@
             </div>
         </div>
 
-        <div class="row g-2 contacts">
-            <div class="contact col-12 {{ $contact->category->slug }}">
-                <div class="card bg-light border-0">
-                    <div class="card-body text-center">
-                        @if(null !== $contact->image)
-                            <img src="{{ asset('storage/images/' . $contact->image) }}"
-                                 class="top-0 end-0 rounded-circle card-img-top p-1"
-                                 alt="Avatar" style="height: 5rem; width: 5rem;"/>
-                        @endif
-                        <br>
-                        <a class="p-2 text-decoration-none text-dark lead w-100" data-bs-toggle="collapse"
-                           href="#socid{{ $contact->id }}" role="button" aria-expanded="false"
-                           aria-controls="#socid{{ $contact->id }}">
-                            {{ $contact->title ?? '' }}
-                        </a>
-                        <div class="collapse text-center" id="socid{{ $contact->id }}">
-                            <div
-                                class="socials btn-group pt-2">
-                                @if($contact->phone)
-                                    <a href="tel:{{ $contact->phone ?? '' }}"
-                                       class="btn btn-light border-0 p-2 phone"
-                                       target="_blank">
-                                        <i class="fa-solid fa-square-phone fa-2xl"></i>
-                                    </a>
-                                @endif
-                                @if($contact->whatsapp)
-                                    <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}"
-                                       class="btn btn-light border-0 p-2 whatsapp"
-                                       target="_blank">
-                                        <i class="fa-brands fa-whatsapp fa-2xl"></i>
-                                    </a>
-                                @endif
-                                @if($contact->instagram)
-                                    <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}"
-                                       class="btn btn-light border-0 p-2 instagram"
-                                       target="_blank">
-                                        <i class="fa-brands fa-instagram fa-2xl"></i>
-                                    </a>
-                                @endif
-                                @if($contact->telegram)
-                                    <a href="https://t.me/{{ $contact->telegram ?? '' }}"
-                                       class="btn btn-light border-0 p-2 telegram"
-                                       target="_blank">
-                                        <i class="fa-brands fa-telegram fa-2xl"></i>
-                                    </a>
-                                @endif
-                                @if($contact->site)
-                                    <a href="{{ $contact->site ?? '' }}"
-                                       class="btn btn-light border-0 p-2 chrome"
-                                       target="_blank">
-                                        <i class="fa-brands fa-chrome fa-2xl"></i>
-                                    </a>
-                                @endif
-                                @if($contact->name || $contact->address || $contact->description)
-                                    <a data-bs-toggle="collapse"
-                                       class="btn btn-light border-0 p-2"
-                                       href="#desid{{ $contact->id }}" role="button"
-                                       aria-expanded="false"
-                                       aria-controls="desid{{ $contact->id }}">
-                                        <i class="fa-solid fa-circle-info fa-2xl"></i>
-                                    </a>
-                                @endif
+        <div class="row contacts justify-content-center">
+            <div class="contact card rounded-0" style="max-width: 30rem">
+                <div class="card-body">
+                    @if(null !== $contact->image)
+                        <img src="{{ asset('storage/images/' . $contact->image) }}"
+                             class="top-0 end-0 rounded-circle card-img-top p-1 mb-2"
+                             alt="Avatar" style="height: 3rem; width: 3rem;"/>
+                    @endif
+                    <div class="card-title">{{ $contact->title ?? '' }}</div>
+                    <hr>
+                    <div class="text-start mb-4 small" style="">
+                        @if($contact->name)
+                            <div class="d-flex align-items-center mb-1">
+                                <span class="me-1">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <div>{{ $contact->name ?? '' }}</div>
                             </div>
-                            @if($contact->name || $contact->address || $contact->description)
-                                <div class="collapse description p-4 text-start"
-                                     id="desid{{ $contact->id }}">
-                                    <p><i class="fa-solid fa-user me-2"></i>{{ $contact->name ?? '' }}</p>
-                                    <p>
-                                        <i class="fa-solid fa-location-dot me-2"></i>{{ $contact->address ?? '' }}
-                                    </p>
-                                    <p>
-                                        <i class="fa-solid fa-file-lines me-2"></i>{{ $contact->description ?? '' }}
-                                    </p>
+                        @endif
+                        @if($contact->phone)
+                            <div class="d-flex align-items-center mb-1">
+                                <span class="me-1">
+                                    <i class="fa-solid fa-square-phone"></i>
+                                </span>
+                                <div>{{ $contact->phone ?? '' }}</div>
+                            </div>
+                        @endif
+                        @if($contact->address)
+                            <div class="d-flex align-items-center mb-1">
+                                <span class="me-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </span>
+                                <div>{{ $contact->address ?? '' }}</div>
+                            </div>
+                        @endif
+                        @if($contact->description)
+                            <div class="d-flex align-items-center mb-1">
+                                <span class="me-1">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                </span>
+                                <div data-bs-toggle="modal" data-toggle="tooltip" data-placement="top"
+                                     title="{{ __('Сипаттаманы толық көру үшін тексті басыңыз.') }}"
+                                     data-bs-target="#description">
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        {{ mb_substr($contact->description, 0,  40) }}...
+                                    </a>
                                 </div>
-                            @endif
+                            </div>
+                        @endif
+
+                        <div class="modal fade" id="description" tabindex="-1" aria-labelledby="description"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <a type="button" class="btn-close ms-auto p-2"
+                                       data-bs-dismiss="modal"
+                                       aria-label="Close"></a>
+                                    <div class="modal-body">
+                                        {{ $contact->description ?? '' }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        @if($contact->phone)
+                            <a href="tel:{{ $contact->phone ?? '' }}"
+                               class="btn btn-success border-0 rounded-circle me-2"
+                               target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #68217a;">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <i class="fa-solid fa-phone p-2"></i>
+                                </div>
+                            </a>
+                        @endif
+                        @if($contact->whatsapp)
+                            <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}"
+                               class="btn btn-success border-0 rounded-circle me-2"
+                               target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #128c7e;">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <i class="fa-brands fa-whatsapp p-2"></i>
+                                </div>
+                            </a>
+                        @endif
+                        @if($contact->instagram)
+                            <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}"
+                               class="btn btn-success border-0 rounded-circle me-2"
+                               target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #e1306c;">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <i class="fa-brands fa-instagram p-2"></i>
+                                </div>
+                            </a>
+                        @endif
+                        @if($contact->telegram)
+                            <a href="https://t.me/{{ $contact->telegram ?? '' }}"
+                               class="btn btn-success border-0 rounded-circle me-2"
+                               target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #0088cc;">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <i class="fa-brands fa-telegram p-2"></i>
+                                </div>
+                            </a>
+                        @endif
+                        @if($contact->site)
+                            <a href="{{ $contact->site ?? '' }}"
+                               class="btn btn-success border-0 rounded-circle me-2"
+                               target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #005670;">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <i class="fa-solid fa-square-arrow-up-right p-2"></i>
+                                </div>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

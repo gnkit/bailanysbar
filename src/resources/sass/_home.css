@@ -1,6 +1,6 @@
 div.contacts > .contact > div.card:hover,
 div.category.card:hover {
-    filter: brightness(75%);
+    filter: brightness(90%);
     transition: 0.2s;
 }
 

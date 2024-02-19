@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\Home\HomeController::class, 'index'])->name('home');
 Route::get('/category/{category}/', [\App\Http\Controllers\Home\HomeController::class, 'category']);
-Route::get('/contact/{contact}/', [\App\Http\Controllers\Home\HomeController::class, 'contact']);
+Route::get('/contact/{contact}/', [\App\Http\Controllers\Home\HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'about'])->name('about');
 Route::get('/guide', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'guide'])->name('guide');
 Route::get('/pricing', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'pricing'])->name('pricing');
