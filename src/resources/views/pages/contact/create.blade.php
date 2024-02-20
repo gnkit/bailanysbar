@@ -28,7 +28,7 @@
 
                                     <div class="col mb-3">
                                         <label for="title" class="form-label">{{ __('messages.title')  }}*</label>
-                                        <input name="title" type="text" class="form-control" id="title" placeholder=""
+                                        <input name="title" type="text" class="form-control" id="title" placeholder="{{ __('"Байланыс" ЖШС | ЖК') }}"
                                                value="{{ old('title') ?? '' }}" required>
                                         <div class="invalid-feedback">
                                             {{ __('Valid title is required.') }}
@@ -37,7 +37,7 @@
 
                                     <div class="col mb-3">
                                         <label for="phone" class="form-label">{{ __('messages.phone') }}*</label>
-                                        <input name="phone" type="tel" class="form-control" id="phone" placeholder=""
+                                        <input name="phone" type="tel" class="form-control" id="phone" placeholder="{{ __('+77001112233') }}"
                                                value="{{ old('phone') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid phone is required.') }}
@@ -45,16 +45,16 @@
                                     </div>
 
                                     <div class="col mb-3">
-                                        <label for="category" class="form-label">{{ __('messages.category') }}*</label>
-                                        <select name="category_id" class="form-select" id="category" required>
+                                        <label for="category_id" class="form-label">{{ __('messages.category') }}*</label>
+                                        <select name="category_id" class="form-select" id="category_id" required>
                                             <option value="0">{{ __('messages.select_category') }}</option>
                                             @foreach($categories as $category)
                                                 <option
-                                                    value="{{ $category->id }}" {{ $category->id != old('category') ?: 'selected' }}>{{ $category->name }}</option>
+                                                    value="{{ $category->id }}" {{ $category->id != old('category_id') ?: 'selected' }}>{{ $category->name }}</option>
                                                 @if(0 < $category->children->count())
                                                     @foreach($category->children as $child)
                                                         <option
-                                                            value="{{ $child->id }}" {{ $child->id != old('category') ?: 'selected' }}>{{ '--- ' . $child->name }}</option>
+                                                            value="{{ $child->id }}" {{ $child->id != old('category_id') ?: 'selected' }}>{{ '--- ' . $child->name }}</option>
                                                     @endforeach
                                                 @endif
                                             @endforeach
@@ -75,7 +75,7 @@
 
                                     <div class="col mb-3">
                                         <label for="name" class="form-label">{{ __('messages.name')  }}</label>
-                                        <input name="name" type="text" class="form-control" id="name" placeholder=""
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="{{ __('Аты жөні') }}"
                                                value="{{ old('name') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid name is required.') }}
@@ -85,7 +85,7 @@
                                     <div class="col mb-3">
                                         <label for="address" class="form-label">{{ __('messages.address')  }}</label>
                                         <input name="address" type="text" class="form-control" id="address"
-                                               placeholder=""
+                                               placeholder="{{ __('Мекен жайы') }}"
                                                value="{{ old('address') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid address is required.') }}
@@ -96,7 +96,7 @@
                                         <label for="description"
                                                class="form-label">{{ __('messages.description') }}</label>
                                         <textarea name="description" type="text" class="form-control" id="description"
-                                                  placeholder="" rows="3">{{ old('description') ?? '' }}</textarea>
+                                                  placeholder="{{ __('Түсінікті, толық сипаттама') }}" rows="3">{{ old('description') ?? '' }}</textarea>
                                         <div class="invalid-feedback">
                                             {{ __('Valid description is required.') }}
                                         </div>
@@ -105,7 +105,7 @@
                                     <div class="col mb-3">
                                         <label for="whatsapp" class="form-label">{{ __('messages.whatsapp') }}</label>
                                         <input name="whatsapp" type="text" class="form-control" id="whatsapp"
-                                               placeholder=""
+                                               placeholder="{{ __('???') }}"
                                                value="{{ old('whatsapp') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid whatsapp is required.') }}
@@ -115,7 +115,7 @@
                                     <div class="col mb-3">
                                         <label for="instagram" class="form-label">{{ __('messages.instagram') }}</label>
                                         <input name="instagram" type="text" class="form-control" id="instagram"
-                                               placeholder=""
+                                               placeholder="{{ __('Инстаграмдағы қолданушы аты: bailanysbar') }}"
                                                value="{{ old('instagram') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid instagram is required.') }}
@@ -125,7 +125,7 @@
                                     <div class="col mb-3">
                                         <label for="telegram" class="form-label">{{ __('messages.telegram') }}</label>
                                         <input name="telegram" type="text" class="form-control" id="telegram"
-                                               placeholder=""
+                                               placeholder="{{ __('Телеграмдағы қолданушы аты: bailanysbar') }}"
                                                value="{{ old('telegram') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid telegram is required.') }}
@@ -134,7 +134,7 @@
 
                                     <div class="col mb-3">
                                         <label for="site" class="form-label">{{ __('messages.site') }}</label>
-                                        <input name="site" type="text" class="form-control" id="site" placeholder=""
+                                        <input name="site" type="text" class="form-control" id="site" placeholder="{{ __('Сайттың толық сілтемесі: https://example.com') }}"
                                                value="{{ old('site') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid site is required.') }}
