@@ -108,7 +108,8 @@ class ContactController extends Controller
      */
     public function update(ContactData $data, Request $request)
     {
-        UpsertContactAction::execute($data, $request->user());
+        $contact = UpsertContactAction::execute($data, $request->user());
+        $this->notificationContactService->sendNotificationContactUpdatedToManager($contact);
 
         return redirect()->route('contacts.index')->with('success', __('messages.updated_successfully'))->withInput();
     }

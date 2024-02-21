@@ -4,6 +4,7 @@ namespace Domain\Link\Services\Notification;
 
 use Domain\Account\Models\User;
 use Domain\Link\Notifications\ContactCreated;
+use Domain\Link\Notifications\ContactUpdated;
 use Illuminate\Support\Facades\Notification;
 
 final class NotificationContactService
@@ -17,6 +18,17 @@ final class NotificationContactService
         $user = new User;
 
         Notification::send($user->managers(), new ContactCreated($contact));
+    }
+
+    /**
+     * @param $contact
+     * @return void
+     */
+    public function sendNotificationContactUpdatedToManager($contact)
+    {
+        $user = new User;
+
+        Notification::send($user->managers(), new ContactUpdated($contact));
     }
 
     /**
