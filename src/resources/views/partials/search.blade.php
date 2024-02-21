@@ -6,7 +6,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
 
-                <input type="search" class="search form-control rounded border-0" placeholder="Search"
+                <input type="search" class="search form-control rounded border-0" placeholder="{{ __('messages.search_contacts') }}"
                        name="search" id="search"
                        aria-label="Search"
                        aria-describedby="search-addon">
