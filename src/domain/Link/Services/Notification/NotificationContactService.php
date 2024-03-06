@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Notification;
 final class NotificationContactService
 {
     /**
-     * @param $contact
      * @return void
      */
     public function sendNotificationContactCreatedToManager($contact)
@@ -21,7 +20,6 @@ final class NotificationContactService
     }
 
     /**
-     * @param $contact
      * @return void
      */
     public function sendNotificationContactUpdatedToManager($contact)
@@ -32,7 +30,6 @@ final class NotificationContactService
     }
 
     /**
-     * @param $contact
      * @return true|void
      */
     public function readNotificationContact($contact)
@@ -44,7 +41,7 @@ final class NotificationContactService
                 $notification->markAsRead();
 
                 return true;
-            };
+            }
         }
     }
 }

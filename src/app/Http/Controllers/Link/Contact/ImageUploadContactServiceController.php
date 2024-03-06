@@ -9,15 +9,11 @@ use Domain\Link\Services\Image\ImageUploadContactService;
 
 class ImageUploadContactServiceController extends Controller
 {
-    /**
-     * @param ImageUploadContactService $imageUploadContactService
-     */
     public function __construct(private ImageUploadContactService $imageUploadContactService)
     {
     }
 
     /**
-     * @param Contact $contact
      * @return \Illuminate\Http\RedirectResponse
      */
     public function reset(Contact $contact)

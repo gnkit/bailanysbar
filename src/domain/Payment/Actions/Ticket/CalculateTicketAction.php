@@ -9,10 +9,6 @@ use Domain\Payment\Models\Ticket;
 
 final class CalculateTicketAction
 {
-    /**
-     * @param User $user
-     * @return Ticket
-     */
     public static function execute(User $user): Ticket
     {
         if (\auth()->user()->isManager()) {

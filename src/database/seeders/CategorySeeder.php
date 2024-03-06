@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Domain\Link\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -248,7 +247,6 @@ class CategorySeeder extends Seeder
             'icon' => 'fa-solid fa-tower-broadcast',
             'parent_id' => null,
         ]);
-
 
     }
 }

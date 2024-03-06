@@ -5,7 +5,6 @@ namespace Domain\Link\Models;
 use Domain\Account\Models\User;
 use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Shared\Models\BaseModel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Contact extends BaseModel
@@ -34,24 +33,17 @@ final class Contact extends BaseModel
         'status' => ContactStatus::class,
     ];
 
-    /**
-     * @return BelongsTo
-     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     * @param $status
      * @return array|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Translation\Translator|string|void|null
      */
     public function selectStatus($status)

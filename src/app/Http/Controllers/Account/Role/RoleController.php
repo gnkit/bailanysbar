@@ -37,7 +37,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param RoleData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(RoleData $data)
@@ -48,7 +47,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Role $role
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Role $role)
@@ -59,7 +57,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param RoleData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(RoleData $data)
@@ -70,7 +67,6 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Role $role)

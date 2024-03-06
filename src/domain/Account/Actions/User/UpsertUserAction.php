@@ -7,15 +7,11 @@ use Domain\Account\Models\User;
 
 final class UpsertUserAction
 {
-    /**
-     * @param UserData $data
-     * @return User
-     */
     public static function execute(UserData $data): User
     {
         $user = User::updateOrCreate(
             [
-                'id' => $data->id
+                'id' => $data->id,
             ],
             [
                 'name' => $data->name,

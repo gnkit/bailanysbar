@@ -7,8 +7,8 @@ use Domain\Link\Models\Category;
 final class DeleteCategoryAction
 {
     /**
-     * @param Category $category
      * @return void
+     *
      * @throws \Exception
      */
     public static function execute(Category $category)

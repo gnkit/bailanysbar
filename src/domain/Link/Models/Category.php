@@ -19,18 +19,11 @@ final class Category extends BaseModel
         'parent_id',
     ];
 
-    /**
-     * @return HasMany
-     */
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class);
     }
 
-
-    /**
-     * @return HasMany
-     */
     public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id');

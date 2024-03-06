@@ -37,7 +37,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param CategoryData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryData $data)
@@ -48,7 +47,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param Category $category
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Category $category)
@@ -59,7 +57,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param CategoryData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(CategoryData $data)
@@ -70,7 +67,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param Category $category
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Category $category)

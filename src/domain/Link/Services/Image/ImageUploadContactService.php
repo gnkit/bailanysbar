@@ -2,20 +2,18 @@
 
 namespace Domain\Link\Services\Image;
 
-use Illuminate\Http\Request;
-use Domain\Link\Models\Contact;
 use Domain\Link\Enums\Contact\ContactImageDefault;
+use Domain\Link\Models\Contact;
+use Illuminate\Http\Request;
 
 final class ImageUploadContactService
 {
     /**
-     * @param Request $request
-     * @param Contact|null $contact
      * @return mixed|string
      */
     public function upload(Request $request, ?Contact $contact)
     {
-        if (null === $contact) {
+        if ($contact === null) {
 
             if ($request->hasFile('image')) {
 
@@ -40,14 +38,13 @@ final class ImageUploadContactService
     }
 
     /**
-     * @param Contact $contact
      * @return string|void
      */
     public function reset(Contact $contact)
     {
         if ($contact->image !== ContactImageDefault::PATH->value) {
 
-            $image_path = (public_path('storage') . '/images/' . $contact->image);
+            $image_path = (public_path('storage').'/images/'.$contact->image);
 
             if (file_exists($image_path)) {
                 unlink($image_path);
@@ -62,14 +59,13 @@ final class ImageUploadContactService
     }
 
     /**
-     * @param Contact $contact
      * @return void
      */
     public function destroy(Contact $contact)
     {
         if ($contact->image !== ContactImageDefault::PATH->value) {
 
-            $image_path = (public_path('storage') . '/images/' . $contact->image);
+            $image_path = (public_path('storage').'/images/'.$contact->image);
 
             if (file_exists($image_path)) {
                 unlink($image_path);
@@ -78,13 +74,11 @@ final class ImageUploadContactService
     }
 
     /**
-     * @param Request $request
-     * @param Contact|null $contact
      * @return string
      */
     private function store(Request $request, ?Contact $contact)
     {
-        if (null !== $contact) {
+        if ($contact !== null) {
             $this->destroy($contact);
         }
 

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Domain\Account\Models\Role;
 use Domain\Account\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

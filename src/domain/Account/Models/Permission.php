@@ -3,7 +3,6 @@
 namespace Domain\Account\Models;
 
 use Domain\Shared\Models\BaseModel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class Permission extends BaseModel
@@ -16,9 +15,6 @@ final class Permission extends BaseModel
         'slug',
     ];
 
-    /**
-     * @return BelongsToMany
-     */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'roles_permissions');

@@ -7,10 +7,6 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 final class GetAllParentCategoriesPaginationAction
 {
-    /**
-     * @param $quantity
-     * @return Paginator
-     */
     public static function execute($quantity): Paginator
     {
         $categories = Category::with('parent', 'children')

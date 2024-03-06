@@ -9,10 +9,6 @@ use Illuminate\Support\Str;
 
 final class UpsertRoleAction
 {
-    /**
-     * @param RoleData $data
-     * @return Role
-     */
     public static function execute(RoleData $data): Role
     {
         $role = Role::updateOrCreate(

@@ -23,7 +23,7 @@ class CategoryTest extends TestCase
     public function testCategoryIndex()
     {
         $user = User::factory()->create([
-            'role_id' => 1
+            'role_id' => 1,
         ]);
         $i = 1;
         $categories = GetAllParentCategoriesPaginationAction::execute(10);
@@ -37,7 +37,7 @@ class CategoryTest extends TestCase
     public function testCategoryCreate()
     {
         $user = User::factory()->create([
-            'role_id' => 1
+            'role_id' => 1,
         ]);
         $categories = GetAllParentCategoriesAction::execute();
 
@@ -52,7 +52,7 @@ class CategoryTest extends TestCase
     public function testCategoryStore()
     {
         $user = User::factory()->create([
-            'role_id' => 1
+            'role_id' => 1,
         ]);
         $request = [
             'name' => 'category',
@@ -77,7 +77,7 @@ class CategoryTest extends TestCase
     public function testCategoryEdit()
     {
         $user = User::factory()->create([
-            'role_id' => 1
+            'role_id' => 1,
         ]);
         $categories = GetAllParentCategoriesAction::execute();
         $category = Category::factory()->create();
@@ -91,7 +91,7 @@ class CategoryTest extends TestCase
     public function testCategoryUpdate()
     {
         $user = User::factory()->create([
-            'role_id' => 1
+            'role_id' => 1,
         ]);
         $request = [
             'name' => 'category',
@@ -123,14 +123,13 @@ class CategoryTest extends TestCase
         $this->followingRedirects()->get(route('categories.index'))->assertStatus(200);
     }
 
-
     public function testCategoryDestroy()
     {
         $user = User::factory()->create([
-            'role_id' => 1
+            'role_id' => 1,
         ]);
         $category = Category::factory()->create([
-            'id' => 100
+            'id' => 100,
         ]);
 
         $this->assertDatabaseHas('categories', [

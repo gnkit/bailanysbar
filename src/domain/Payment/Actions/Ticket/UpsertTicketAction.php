@@ -7,10 +7,6 @@ use Domain\Payment\Models\Ticket;
 
 final class UpsertTicketAction
 {
-    /**
-     * @param TicketData $data
-     * @return Ticket
-     */
     public static function execute(TicketData $data): Ticket
     {
         $ticket = Ticket::updateOrCreate(

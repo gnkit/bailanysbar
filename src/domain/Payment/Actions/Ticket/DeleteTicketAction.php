@@ -7,7 +7,6 @@ use Domain\Payment\Models\Ticket;
 final class DeleteTicketAction
 {
     /**
-     * @param Ticket $ticket
      * @return void
      */
     public static function execute(Ticket $ticket)

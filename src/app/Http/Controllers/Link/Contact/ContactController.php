@@ -16,15 +16,10 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    /**
-     * @param NotificationContactService $notificationContactService
-     * @param ImageUploadContactService $imageUploadContactService
-     */
     public function __construct(
         private NotificationContactService $notificationContactService,
-        private ImageUploadContactService  $imageUploadContactService
-    )
-    {
+        private ImageUploadContactService $imageUploadContactService
+    ) {
     }
 
     /**
@@ -56,13 +51,11 @@ class ContactController extends Controller
     }
 
     /**
-     * @param ContactData $data
-     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ContactData $data, Request $request)
     {
-        if (!\auth()->user()->isCanPublishContact()) {
+        if (! \auth()->user()->isCanPublishContact()) {
             return redirect()->route('contacts.index')->with('error', __('messages.cannot_create_contact.'))->withInput();
         }
         $contact = UpsertContactAction::execute($data, $request->user());
@@ -72,7 +65,6 @@ class ContactController extends Controller
     }
 
     /**
-     * @param Contact $contact
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Contact $contact)
@@ -80,13 +72,12 @@ class ContactController extends Controller
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
             return redirect()->refresh()->with('success', __('messages.contact_read_notice'));
-        };
+        }
 
         return view('pages.contact.show', compact('contact'));
     }
 
     /**
-     * @param Contact $contact
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Contact $contact)
@@ -94,7 +85,7 @@ class ContactController extends Controller
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
             return redirect()->refresh()->with('success', __('messages.contact_read_notice'));
-        };
+        }
 
         $categories = GetAllParentCategoriesAction::execute();
 
@@ -102,8 +93,6 @@ class ContactController extends Controller
     }
 
     /**
-     * @param ContactData $data
-     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ContactData $data, Request $request)
@@ -115,7 +104,6 @@ class ContactController extends Controller
     }
 
     /**
-     * @param Contact $contact
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Contact $contact)

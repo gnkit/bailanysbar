@@ -3,25 +3,24 @@
 namespace Domain\Account\DataTransferObjects;
 
 use Domain\Account\Actions\Role\GetBySlugRoleAction;
+use Domain\Account\Enums\User\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\Validation\Rules\Password;
 use Spatie\LaravelData\Data;
-use Illuminate\Validation\Rule;
-use Domain\Account\Enums\User\UserStatus;
 
 final class UserData extends Data
 {
     public function __construct(
-        public readonly ?int       $id,
-        public readonly string     $name,
-        public readonly string     $email,
-        public readonly ?string    $password,
+        public readonly ?int $id,
+        public readonly string $name,
+        public readonly string $email,
+        public readonly ?string $password,
         public readonly UserStatus $status,
-        public readonly int        $role_id,
-    )
-    {
+        public readonly int $role_id,
+    ) {
     }
 
     public static function rules(): array

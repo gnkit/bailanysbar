@@ -7,10 +7,6 @@ use Illuminate\Pagination\Paginator;
 
 final class GetOwnContactsPaginationAction
 {
-    /**
-     * @param $quantity
-     * @return Paginator
-     */
     public static function execute($quantity): Paginator
     {
         $contacts = Contact::where('user_id', '=', auth()->id())

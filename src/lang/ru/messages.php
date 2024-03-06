@@ -14,7 +14,7 @@ return [
     'before_proceeding_please_check_your_email_for_a_verification_link' => 'Прежде чем продолжить, проверьте свою электронную почту на наличие ссылки для подтверждения.',
     'if_you_did_not_receive_the_email' => 'Если Вы не получили письмо',
     'click_here_to_request_another' => 'нажмите здесь для запроса другой ссылки',
-	'logged_in' => 'Вы вошли в систему!',
+    'logged_in' => 'Вы вошли в систему!',
     'intro_title' => 'Каратау',
     'intro_text' => 'Вся связь у вас под рукой',
     'intro_button' => 'Перейти',

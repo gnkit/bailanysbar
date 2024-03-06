@@ -2,7 +2,6 @@
 
 namespace Domain\Link\Enums\Contact;
 
-
 enum ContactStatus: string
 {
     case DRAFT = 'draft';

@@ -34,7 +34,6 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param PermissionData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(PermissionData $data)
@@ -45,7 +44,6 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param Permission $permission
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Permission $permission)
@@ -54,7 +52,6 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param PermissionData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(PermissionData $data)
@@ -65,7 +62,6 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param Permission $permission
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Permission $permission)

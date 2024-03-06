@@ -3,39 +3,37 @@
 namespace Domain\Link\DataTransferObjects;
 
 use Domain\Account\Models\User;
+use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Link\Models\Category;
 use Domain\Link\Models\Contact;
+use Domain\Link\Services\Image\ImageUploadContactService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\LaravelData\Attributes\Validation\Enum;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Data;
-use Domain\Link\Enums\Contact\ContactStatus;
-use Domain\Link\Enums\Contact\ContactImageDefault;
-use Domain\Link\Services\Image\ImageUploadContactService;
 
 final class ContactData extends Data
 {
     public function __construct(
-        public readonly ?int          $id,
-        public readonly string        $title,
-        public readonly ?string       $name,
-        public readonly ?string       $description,
-        public readonly ?string       $address,
-        public readonly string        $phone,
-        public readonly ?string       $instagram,
-        public readonly ?string       $telegram,
-        public readonly ?string       $whatsapp,
-        public readonly ?string       $site,
+        public readonly ?int $id,
+        public readonly string $title,
+        public readonly ?string $name,
+        public readonly ?string $description,
+        public readonly ?string $address,
+        public readonly string $phone,
+        public readonly ?string $instagram,
+        public readonly ?string $telegram,
+        public readonly ?string $whatsapp,
+        public readonly ?string $site,
         #[Enum(ContactStatus::class)]
         public readonly ContactStatus $status,
         #[Exists(User::class)]
-        public readonly ?int          $user_id,
+        public readonly ?int $user_id,
         #[Exists(Category::class)]
-        public readonly int           $category_id,
-        public readonly string        $image,
-    )
-    {
+        public readonly int $category_id,
+        public readonly string $image,
+    ) {
     }
 
     public static function rules(): array

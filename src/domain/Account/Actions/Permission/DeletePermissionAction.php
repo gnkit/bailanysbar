@@ -7,12 +7,11 @@ use Domain\Account\Models\Permission;
 final class DeletePermissionAction
 {
     /**
-     * @param Permission $permission
      * @return void
      */
     public static function execute(Permission $permission)
     {
-        if (0 < $permission->roles()->count()) {
+        if ($permission->roles()->count() > 0) {
             $permission->roles()->detach();
         }
         $permission->delete();

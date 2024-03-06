@@ -17,7 +17,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-
 final class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -49,58 +48,36 @@ final class User extends Authenticatable
         'status' => UserStatus::class,
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
 
-    /**
-     * @return HasMany
-     */
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class);
     }
 
-    /**
-     * @return HasOne
-     */
     public function ticket(): HasOne
     {
         return $this->hasOne(Ticket::class);
     }
 
-    /**
-     * @param $role
-     * @return bool
-     */
     public function hasRole($role): bool
     {
         return $this->role->slug === $role ?? false;
     }
 
-    /**
-     * @return bool
-     */
     public function isManager(): bool
     {
         return \auth()->user()->role->slug === 'manager' ?? false;
     }
 
-    /**
-     * @return Collection
-     */
     public function managers(): Collection
     {
         return GetByRoleIdUserCollectionAction::execute();
     }
 
-    /**
-     * @return bool
-     */
     public function isCanPublishContact(): bool
     {
         $ticket = GetByUserIdTicketAction::execute(\auth()->user()->id);

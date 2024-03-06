@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetByRoleIdUserCollectionAction
 {
-    /**
-     * @return Collection
-     */
     public static function execute(): Collection
     {
         $role = GetBySlugRoleAction::execute('manager');

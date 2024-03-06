@@ -3,17 +3,16 @@
 namespace Domain\Account\DataTransferObjects;
 
 use Illuminate\Http\Request;
-use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;
+use Spatie\LaravelData\Data;
 
 final class PermissionData extends Data
 {
     public function __construct(
-        public readonly ?int    $id,
-        public readonly string  $name,
+        public readonly ?int $id,
+        public readonly string $name,
         public readonly ?string $slug,
-    )
-    {
+    ) {
     }
 
     public static function rules(): array

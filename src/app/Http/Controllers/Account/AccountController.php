@@ -11,7 +11,7 @@ class AccountController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth');
+        //        $this->middleware('auth');
     }
 
     /**
@@ -32,10 +32,6 @@ class AccountController extends Controller
         return view('pages.account.settings.index', compact('account'));
     }
 
-    /**
-     * @param User $user
-     * @return RedirectResponse
-     */
     public function destroy(User $user): RedirectResponse
     {
         DeleteUserAction::execute($user);

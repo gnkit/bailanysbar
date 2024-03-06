@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetAllParentCategoriesAction
 {
-    /**
-     * @return Collection
-     */
     public static function execute(): Collection
     {
         $categories = Category::where('parent_id', '=', null)

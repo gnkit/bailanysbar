@@ -8,9 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class ContactController extends Controller
 {
-    /**
-     * @return JsonResponse
-     */
     public function index(): JsonResponse
     {
         return GetAllContactsPublishedAction::execute();

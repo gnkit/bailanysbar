@@ -10,11 +10,6 @@ use Domain\Payment\Actions\Ticket\CalculateTicketAction;
 
 final class UpsertContactAction
 {
-    /**
-     * @param ContactData $data
-     * @param User $user
-     * @return Contact
-     */
     public static function execute(ContactData $data, User $user): Contact
     {
         $contact = Contact::updateOrCreate(

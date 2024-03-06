@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetParentCategoriesHasContactPublishedAction
 {
-    /**
-     * @return Collection
-     */
     public static function execute(): Collection
     {
         $categories = Category::where('parent_id', '=', null)->with('contacts')->whereHas('contacts', function ($query) {

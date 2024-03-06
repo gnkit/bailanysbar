@@ -37,7 +37,6 @@ class TicketController extends Controller
     }
 
     /**
-     * @param TicketData $ticketData
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(TicketData $ticketData)
@@ -48,7 +47,6 @@ class TicketController extends Controller
     }
 
     /**
-     * @param Ticket $ticket
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Ticket $ticket)
@@ -57,7 +55,6 @@ class TicketController extends Controller
     }
 
     /**
-     * @param TicketData $ticketData
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(TicketData $ticketData)
@@ -68,7 +65,6 @@ class TicketController extends Controller
     }
 
     /**
-     * @param Ticket $ticket
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Ticket $ticket)

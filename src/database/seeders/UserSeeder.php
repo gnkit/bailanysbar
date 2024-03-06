@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Domain\Account\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder

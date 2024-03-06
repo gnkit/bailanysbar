@@ -8,9 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 final class GetAllContactsPublishedAction
 {
-    /**
-     * @return JsonResponse
-     */
     public static function execute(): JsonResponse
     {
         $contacts = Contact::select('id', 'title')

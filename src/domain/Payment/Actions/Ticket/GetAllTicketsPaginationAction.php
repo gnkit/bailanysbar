@@ -7,10 +7,6 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 final class GetAllTicketsPaginationAction
 {
-    /**
-     * @param $quantity
-     * @return Paginator
-     */
     public static function execute($quantity): Paginator
     {
         $tickets = Ticket::with('user')

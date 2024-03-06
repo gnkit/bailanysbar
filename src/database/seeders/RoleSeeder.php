@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Domain\Account\Models\Permission;
 use Domain\Account\Models\Role;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 

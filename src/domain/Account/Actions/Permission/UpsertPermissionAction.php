@@ -8,10 +8,6 @@ use Illuminate\Support\Str;
 
 final class UpsertPermissionAction
 {
-    /**
-     * @param PermissionData $data
-     * @return Permission
-     */
     public static function execute(PermissionData $data): Permission
     {
         $permission = Permission::updateOrCreate(

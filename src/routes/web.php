@@ -25,7 +25,6 @@ Route::get('/sale', [\App\Http\Controllers\StaticPage\StaticPageController::clas
 
 Auth::routes();
 
-
 Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Account\AccountController::class, 'dashboard'])->name('dashboard');
     Route::get('/settings', [\App\Http\Controllers\Account\AccountController::class, 'settings'])->name('settings');

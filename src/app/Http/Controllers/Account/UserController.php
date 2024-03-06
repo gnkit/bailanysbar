@@ -37,7 +37,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param UserData $userData
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserData $userData)
@@ -48,7 +47,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(User $user)
@@ -59,7 +57,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(User $user)
@@ -70,7 +67,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param UserData $data
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserData $data)
@@ -81,7 +77,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)

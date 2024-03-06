@@ -22,7 +22,6 @@ class HomeController extends Controller
     }
 
     /**
-     * @param Category $category
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function category(Category $category)

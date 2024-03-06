@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetAllPermissionsAction
 {
-    /**
-     * @return Collection
-     */
     public static function execute(): Collection
     {
         $permissions = Permission::select('id', 'name')

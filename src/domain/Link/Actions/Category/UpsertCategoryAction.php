@@ -8,10 +8,6 @@ use Illuminate\Support\Str;
 
 final class UpsertCategoryAction
 {
-    /**
-     * @param CategoryData $data
-     * @return Category
-     */
     public static function execute(CategoryData $data): Category
     {
         $category = Category::updateOrCreate(
