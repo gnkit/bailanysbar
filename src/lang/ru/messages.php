@@ -150,4 +150,5 @@ return [
     'media' => 'Средства массовой информации',
     'help_information_systems' => 'Справочно-информационные системы',
     'search_contacts' => 'Поиск',
+    'color' => 'Цвет',
 ];

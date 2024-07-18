@@ -16,6 +16,7 @@ final class CategoryData extends Data
         public readonly ?string $slug,
         public readonly ?string $icon,
         public readonly ?int $parent_id,
+        public readonly ?string $color,
     ) {
     }
 
@@ -27,6 +28,7 @@ final class CategoryData extends Data
             'name_ru' => ['required', 'string', Rule::unique('categories')->ignore(request('category'))],
             'icon' => ['nullable', 'sometimes', 'string'],
             'parent_id' => ['nullable', 'sometimes', 'int', 'different:id'],
+            'color' => ['nullable', 'sometimes', 'string'],
         ];
     }
 
@@ -49,6 +51,7 @@ final class CategoryData extends Data
             'name_ru' => $request->name_ru,
             'icon' => $request->icon,
             'parent_id' => $request->parent_id,
+            'color' => $request->color,
         ]);
     }
 }

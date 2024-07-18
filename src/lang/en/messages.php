@@ -150,4 +150,5 @@ return [
     'media' => 'Media',
     'help_information_systems' => 'Help and information systems',
     'search_contacts' => 'Search',
+    'color' => 'Color',
 ];

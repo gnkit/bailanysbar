@@ -150,4 +150,5 @@ return [
     'media' => 'Бұқаралық ақпарат құралдары',
     'help_information_systems' => 'Анықтама және ақпараттық жүйелер',
     'search_contacts' => 'Іздеу',
+    'color' => 'Түс',
 ];

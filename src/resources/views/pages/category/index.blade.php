@@ -27,6 +27,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">{{ __('messages.name') }}</th>
+                        <th scope="col">{{ __('messages.color') }}</th>
                         <th scope="col">{{ __('messages.actions') }}</th>
                     </tr>
                     </thead>
@@ -35,6 +36,9 @@
                         <tr>
                             <th class="col-1">{{ ++$i }}</th>
                             <td class="col-8">{{ $category->name ?? '' }}</td>
+                            <td class="col-8">
+                                <input type="color" value="{{ $category->color ?? '' }}" readonly disabled>
+                            </td>
                             <td class="col-3">
                                 <form action="{{ route('categories.destroy', $category->id) }}"
                                       method="POST">

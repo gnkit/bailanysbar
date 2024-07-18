@@ -32,6 +32,7 @@ class CategoryFactory extends Factory
             'slug' => Str::slug($name),
             'icon' => 'fa-solid fa-money-bill',
             'parent_id' => null,
+            'color' => null,
         ];
     }
 }

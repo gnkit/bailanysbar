@@ -17,6 +17,7 @@ final class Category extends BaseModel
         'slug',
         'icon',
         'parent_id',
+        'color',
     ];
 
     public function contacts(): HasMany

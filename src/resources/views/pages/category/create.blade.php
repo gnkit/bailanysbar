@@ -58,6 +58,15 @@
                                 </div>
                             </div>
 
+                            <div class="col-1 mb-3">
+                                <label for="color" class="form-label">{{ __('messages.color')  }}</label>
+                                <input name="color" type="color" class="form-control" id="color" placeholder=""
+                                       value="{{ old('color') ?? '' }}">
+                                <div class="invalid-feedback">
+                                    {{ __('Valid color is required.') }}
+                                </div>
+                            </div>
+
                             <div class="col mb-3">
                                 <label for="category" class="form-label">{{ __('messages.category') }}</label>
                                 <select name="parent_id" class="form-select" id="category" required>

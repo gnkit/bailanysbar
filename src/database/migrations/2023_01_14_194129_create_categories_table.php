@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name_ru');
             $table->string('slug');
             $table->string('icon');
+            $table->string('color')->nullable();
             $table->unsignedBigInteger('parent_id')->unsigned()->nullable();
             $table->timestamps();
         });
