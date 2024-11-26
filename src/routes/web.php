@@ -46,3 +46,6 @@ Route::get('/language/{locale}', function ($locale) {
 
     return redirect()->back();
 });
+
+Route::get('/google/redirect', [App\Http\Controllers\Auth\Socialite\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/google/callback', [App\Http\Controllers\Auth\Socialite\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');

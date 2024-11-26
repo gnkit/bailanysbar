@@ -97,6 +97,11 @@
                                     </button>
                                 </div>
                             </div>
+                            <div class="row m-auto mt-4 ">
+                                <a href="{{ route('google.redirect') }}" class="btn btn-dark">
+                                    {{ __('auth.login_with_google') }}
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
