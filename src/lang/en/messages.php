@@ -151,4 +151,5 @@ return [
     'help_information_systems' => 'Help and information systems',
     'search_contacts' => 'Search',
     'color' => 'Color',
+    'check_user_ban' => 'Your account has been suspended. Please contact administrator.',
 ];

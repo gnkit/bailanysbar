@@ -7,6 +7,8 @@
                 <div class="card">
                     <div class="card-header">{{ __('messages.login') }}</div>
 
+                    @include('partials.flash_message')
+                    
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf

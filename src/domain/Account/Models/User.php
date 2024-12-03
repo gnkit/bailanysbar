@@ -90,4 +90,9 @@ final class User extends Authenticatable
             return false;
         }
     }
+
+    public function isBanned(): bool
+    {
+        return auth()->user()->status->value === 'ban' ?? false;
+    }
 }
