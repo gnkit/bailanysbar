@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.user') }}</h1>
@@ -13,7 +13,7 @@
             <!-- Content -->
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card border-0">
                         <div class="card-body">
                             <p class="card-text"><i
                                     class="fa-regular fa-user me-2"></i>{{ $user->name ?? '' }}

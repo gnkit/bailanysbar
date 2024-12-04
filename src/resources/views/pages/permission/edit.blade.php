@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_permission') }}</h1>
@@ -14,7 +14,7 @@
 
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card  border-0">
                         <div class="card-body">
 
                             <!-- Form -->
@@ -26,7 +26,7 @@
 
                                 <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder=""
+                                    <input name="name" type="text" class="form-control border-0" id="name" placeholder=""
                                            value="{{ $permission->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid name is required.') }}

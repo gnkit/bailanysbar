@@ -5,14 +5,14 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.account') }}</h1>
 
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card border-0">
                         <div class="card-body">
                             <p class="card-text"><i class="fa-regular fa-circle-user me-2"></i>{{ $account->name ?? '' }}</p>
                             <p class="card-text"><i class="fa-regular fa-envelope me-2"></i>{{ $account->email ?? '' }}</p>

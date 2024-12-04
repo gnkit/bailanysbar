@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.create_ticket') }}</h1>
@@ -14,7 +14,7 @@
 
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card border-0">
                         <div class="card-body">
 
                             <!-- Form -->
@@ -24,7 +24,7 @@
 
                                 <div class="col mb-3">
                                     <label for="user_id" class="form-label">{{ __('messages.user') }}*</label>
-                                    <select name="user_id" class="form-select" id="user_id" required>
+                                    <select name="user_id" class="form-select border-0" id="user_id" required>
                                         @foreach($users as $user)
                                             <option
                                                 value="{{ $user->id }}" {{ $user->id != old('user_id') ?: 'selected' }}>{{ $user->email }}</option>
@@ -37,7 +37,7 @@
 
                                 <div class="col mb-3">
                                     <label for="ticket" class="form-label">{{ __('messages.ticket') }}*</label>
-                                    <input name="limit" type="number" class="form-control" id="ticket"
+                                    <input name="limit" type="number" class="form-control border-0" id="ticket"
                                            min="1" max="5" placeholder=""
                                            value="{{ old('ticket') ?? \Domain\Payment\Enums\Ticket\TicketLimit::DEFAULT->value }}"
                                            required>

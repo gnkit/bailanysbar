@@ -5,12 +5,17 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.dashboard') }}</h1>
-            <p class="text-center">Сайттағы өзгерістер мен жаңалықтарды осы беттен оқи аласыз.</p>
-        </div>
 
+            <div class="card border-0">
+                <div class="card-body">
+                    <p class="text-center">Сайттағы өзгерістер мен жаңалықтарды осы беттен оқи аласыз.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 @endsection

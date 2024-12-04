@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.all_users') }}</h1>
@@ -20,54 +20,60 @@
 
             @include('partials.flash_message')
 
-            @if(0 < $users->count())
-                <!-- Table -->
-                <table class="table table-hover table-responsive table-sm table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">{{ __('messages.name') }}</th>
-                        <th scope="col">{{ __('messages.status') }}</th>
-                        <th scope="col">{{ __('messages.ticket') }}</th>
-                        <th scope="col">{{ __('messages.actions') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <td class="col-1">{{ ++$i }}</td>
-                            <td class="col-5">{{ $user->name ?? '' }}</td>
-                            <td class="col-2">{{ $user->status ?? '' }}</td>
-                            <td class="col-1">{{ $user->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}</td>
-                            <td class="col-3">
-                                <form action="{{ route('users.destroy', $user->id) }}"
-                                      method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <div class="btn-group">
-                                        <a class="btn btn-outline-secondary btn-sm"
-                                           href="{{ route('users.show', $user->id) }}"><i
-                                                class="fa-solid fa-eye"></i></a>
-                                        <a class="btn btn-success btn-sm"
-                                           href="{{ route('users.edit', $user->id) }}"><i
-                                                class="fa-solid fa-pen-to-square"></i></a>
-                                        <button type="submit" class="btn btn-danger btn-sm"><i
-                                                class="fa-solid fa-trash-can"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            @else
-                <p class="text-start">
-                    {{ __('messages.no_users') }}
-                </p>
-            @endif
-            <!-- Pagination -->
-            {{ $users->links() }}
+            <div class="card border-0">
+                <div class="card-body">
+                    @if (0 < $users->count())
+                        <!-- Table -->
+                        <table class="table table-hover table-responsive table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">{{ __('messages.name') }}</th>
+                                    <th scope="col">{{ __('messages.status') }}</th>
+                                    <th scope="col">{{ __('messages.ticket') }}</th>
+                                    <th scope="col">{{ __('messages.actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td class="col-1">{{ ++$i }}</td>
+                                        <td class="col-5">{{ $user->name ?? '' }}</td>
+                                        <td class="col-2">{{ $user->status ?? '' }}</td>
+                                        <td class="col-1">
+                                            {{ $user->ticket->limit ?? \Domain\Payment\Enums\Ticket\TicketLimit::NULL }}
+                                        </td>
+                                        <td class="col-3">
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="btn-group">
+                                                    <a class="btn btn-outline-secondary btn-sm"
+                                                        href="{{ route('users.show', $user->id) }}"><i
+                                                            class="fa-solid fa-eye"></i></a>
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="{{ route('users.edit', $user->id) }}"><i
+                                                            class="fa-solid fa-pen-to-square"></i></a>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa-solid fa-trash-can"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <p class="text-start">
+                            {{ __('messages.no_users') }}
+                        </p>
+                    @endif
+                    <!-- Pagination -->
+                    {{ $users->links() }}
+                </div>
+            </div>
+            
         </div>
     </div>
 @endsection

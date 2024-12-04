@@ -36,7 +36,7 @@
         </div>
 
         <div class="row contacts justify-content-center">
-            <div class="contact card rounded-0" style="max-width: 30rem">
+            <div class="contact card border-0" style="max-width: 30rem">
                 <div class="card-body">
                     @if(null !== $contact->image)
                         <img src="{{ asset('storage/images/' . $contact->image) }}"

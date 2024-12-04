@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_user') }}</h1>
@@ -14,7 +14,7 @@
 
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card border-0">
                         <div class="card-body">
 
                             <!-- Form -->
@@ -25,7 +25,7 @@
 
                                 <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder=""
+                                    <input name="name" type="text" class="form-control border-0" id="name" placeholder=""
                                            value="{{ $user->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid name is required.') }}
@@ -34,7 +34,7 @@
 
                                 <div class="col mb-3">
                                     <label for="email" class="form-label">{{ __('messages.email') }}*</label>
-                                    <input name="email" type="email" class="form-control" id="email" placeholder=""
+                                    <input name="email" type="email" class="form-control border-0" id="email" placeholder=""
                                            value="{{ $user->email ?? old('email') }}">
                                     <div class="invalid-feedback">
                                         {{ __('Valid email is required.') }}
@@ -43,7 +43,7 @@
 
                                 <div class="col mb-3">
                                     <label for="password" class="form-label">{{ __('messages.password') }}*</label>
-                                    <input name="password" type="password" class="form-control" id="password"
+                                    <input name="password" type="password" class="form-control border-0" id="password"
                                            placeholder=""
                                            value="{{ old('password') ?? '' }}">
                                     <div class="invalid-feedback">
@@ -53,7 +53,7 @@
 
                                 <div class="col mb-3">
                                     <label for="role" class="form-label">{{ __('messages.role') }}*</label>
-                                    <select name="role_id" class="form-select" id="role" required>
+                                    <select name="role_id" class="form-select border-0" id="role" required>
                                         @foreach($roles as $role)
                                             <option
                                                 value="{{ $role->id }}" {{ $role->id != old('role_id', $user->role_id) ? '' : 'selected' }}>{{ $role->name }}</option>
@@ -66,7 +66,7 @@
 
                                 <div class="col mb-3">
                                     <label for="status" class="form-label">{{ __('messages.status') }}</label>
-                                    <select name="status" class="form-select" id="status">
+                                    <select name="status" class="form-select border-0" id="status">
                                         @foreach(\Domain\Account\Enums\User\UserStatus::cases() as $status)
                                             <option value="{{ $status->value }}"
                                                 {{ $status->value != old('status', $user->status->value) ? '' : 'selected' }}>

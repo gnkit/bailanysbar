@@ -6,8 +6,8 @@
 
     @include('partials.search')
 
-    <div class="container">
-        <div class="row g-2">
+    <div class="mb-4">
+        <div class="row">
 
             @include('partials.flash_message')
 

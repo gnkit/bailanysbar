@@ -1,4 +1,4 @@
-<div class="container mb-4">
+<div class="mb-4">
     <div class="row">
         <div class="col-lg-6 ms-auto me-auto">
             <div class="input-group rounded border">

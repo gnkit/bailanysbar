@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_category') }}</h1>
@@ -14,7 +14,7 @@
 
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card border-0">
                         <div class="card-body">
 
                             <!-- Form -->
@@ -25,7 +25,7 @@
 
                                 <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}*</label>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder=""
+                                    <input name="name" type="text" class="form-control border-0" id="name" placeholder=""
                                            value="{{ $category->name ?? old('name') }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid name is required.') }}
@@ -34,7 +34,7 @@
 
                                 <div class="col mb-3">
                                     <label for="name_en" class="form-label">{{ __('messages.name_en')  }}*</label>
-                                    <input name="name_en" type="text" class="form-control" id="name_en" placeholder=""
+                                    <input name="name_en" type="text" class="form-control border-0" id="name_en" placeholder=""
                                            value="{{ $category->name_en ?? old('name_en') }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid name is required.') }}
@@ -43,7 +43,7 @@
 
                                 <div class="col mb-3">
                                     <label for="name_ru" class="form-label">{{ __('messages.name_ru')  }}*</label>
-                                    <input name="name_ru" type="text" class="form-control" id="name_ru" placeholder=""
+                                    <input name="name_ru" type="text" class="form-control border-0" id="name_ru" placeholder=""
                                            value="{{ $category->name_ru ?? old('name_ru') }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid name is required.') }}
@@ -52,7 +52,7 @@
 
                                 <div class="col mb-3">
                                     <label for="icon" class="form-label">{{ __('messages.icon')  }}</label>
-                                    <input name="icon" type="text" class="form-control" id="icon" placeholder=""
+                                    <input name="icon" type="text" class="form-control border-0" id="icon" placeholder=""
                                            value="{{ $category->icon ?? old('icon') }}">
                                     <div class="invalid-feedback">
                                         {{ __('Valid icon is required.') }}
@@ -61,7 +61,7 @@
 
                                 <div class="col-1 mb-3">
                                     <label for="color" class="form-label">{{ __('messages.color')  }}</label>
-                                    <input name="color" type="color" class="form-control" id="color" placeholder=""
+                                    <input name="color" type="color" class="form-control border-0" id="color" placeholder=""
                                            value="{{ $category->color ?? old('icon') }}">
                                     <div class="invalid-feedback">
                                         {{ __('Valid color is required.') }}
@@ -70,7 +70,7 @@
 
                                 <div class="col mb-3">
                                     <label for="category" class="form-label">{{ __('messages.category') }}</label>
-                                    <select name="parent_id" class="form-select" id="category" required>
+                                    <select name="parent_id" class="form-select border-0" id="category" required>
                                         @foreach($categories as $category_another)
                                             @continue($category->id === $category_another->id)
                                             <option

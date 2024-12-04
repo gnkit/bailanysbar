@@ -5,7 +5,7 @@
 
         @include('partials.sidebar')
 
-        <div class="col bg-white p-2">
+        <div class="col p-2">
 
             <!-- Title -->
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_contact') }}</h1>
@@ -14,7 +14,7 @@
 
             <div class="row g-3">
                 <div class="col">
-                    <div class="card shadow-lg">
+                    <div class="card border-0">
                         <div class="card-body">
 
                             <!-- Form -->
@@ -25,7 +25,7 @@
 
                                 <div class="col mb-3">
                                     <label for="title" class="form-label">{{ __('messages.title')  }}*</label>
-                                    <input name="title" type="text" class="form-control" id="title" placeholder="{{ __('messages.title.placeholder') }}"
+                                    <input name="title" type="text" class="form-control border-0" id="title" placeholder="{{ __('messages.title.placeholder') }}"
                                            value="{{ $contact->title ?? old('title') }}" required>
                                     <div class="invalid-feedback">
                                         {{ __('Valid title is required.') }}
@@ -34,7 +34,7 @@
 
                                 <div class="col mb-3">
                                     <label for="phone" class="form-label">{{ __('messages.phone') }}*</label>
-                                    <input name="phone" type="tel" class="form-control" id="phone" placeholder="{{ __('messages.phone.placeholder') }}"
+                                    <input name="phone" type="tel" class="form-control border-0" id="phone" placeholder="{{ __('messages.phone.placeholder') }}"
                                            value="{{ $contact->phone ?? old('phone') }}">
                                     <div class="invalid-feedback">
                                         {{ __('Valid phone is required.') }}
@@ -43,7 +43,7 @@
 
                                 <div class="col mb-3">
                                     <label for="category" class="form-label">{{ __('messages.category') }}*</label>
-                                    <select name="category_id" class="form-select" id="category" required>
+                                    <select name="category_id" class="form-select border-0" id="category" required>
                                         @foreach($categories as $category)
                                             <option
                                                 value="{{ $category->id }}" {{ $category->id != old('category', $contact->category->id) ? '' : 'selected' }}>{{ $category->name }}</option>
@@ -68,7 +68,7 @@
                                     @endif
                                     <br>
                                     <label for="image" class="form-label">{{ __('messages.image')  }}</label>
-                                    <input name="image" type="file" class="form-control" id="image"
+                                    <input name="image" type="file" class="form-control border-0" id="image"
                                            placeholder=""
                                            value="{{ $contact->image ?? old('image') ?? '' }}">
                                     <div class="invalid-feedback">
@@ -78,7 +78,7 @@
 
                                 <div class="col mb-3">
                                     <label for="name" class="form-label">{{ __('messages.name')  }}</label>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="{{ __('messages.name.placeholder') }}"
+                                    <input name="name" type="text" class="form-control border-0" id="name" placeholder="{{ __('messages.name.placeholder') }}"
                                            value="{{ $contact->name ?? old('name') }}">
                                     <div class="invalid-feedback">
                                         {{ __('Valid name is required.') }}
@@ -87,7 +87,7 @@
 
                                 <div class="col mb-3">
                                     <label for="address" class="form-label">{{ __('messages.address')  }}</label>
-                                    <input name="address" type="text" class="form-control" id="address"
+                                    <input name="address" type="text" class="form-control border-0" id="address"
                                            placeholder="{{ __('messages.address.placeholder') }}"
                                            value="{{ $contact->address ?? old('address') }}">
                                     <div class="invalid-feedback">
@@ -97,7 +97,7 @@
 
                                 <div class="col mb-3">
                                     <label for="description" class="form-label">{{ __('messages.description') }}</label>
-                                    <textarea name="description" type="text" class="form-control" id="description"
+                                    <textarea name="description" type="text" class="form-control border-0" id="description"
                                               placeholder="{{ __('messages.description.placeholder') }}"
                                               rows="3">{{ $contact->description ?? old('description') }}</textarea>
                                     <div class="invalid-feedback">
@@ -107,7 +107,7 @@
 
                                 <div class="col mb-3">
                                     <label for="whatsapp" class="form-label">{{ __('messages.whatsapp') }}</label>
-                                    <input name="whatsapp" type="text" class="form-control" id="whatsapp"
+                                    <input name="whatsapp" type="text" class="form-control border-0" id="whatsapp"
                                            placeholder="{{ __('messages.whatsapp.placeholder') }}"
                                            value="{{ $contact->whatsapp ?? old('whatsapp') }}">
                                     <div class="invalid-feedback">
@@ -117,7 +117,7 @@
 
                                 <div class="col mb-3">
                                     <label for="instagram" class="form-label">{{ __('messages.instagram') }}</label>
-                                    <input name="instagram" type="text" class="form-control" id="instagram"
+                                    <input name="instagram" type="text" class="form-control border-0" id="instagram"
                                            placeholder="{{ __('messages.instagram.placeholder') }}"
                                            value="{{ $contact->instagram ?? old('instagram') }}">
                                     <div class="invalid-feedback">
@@ -127,7 +127,7 @@
 
                                 <div class="col mb-3">
                                     <label for="telegram" class="form-label">{{ __('messages.telegram') }}</label>
-                                    <input name="telegram" type="text" class="form-control" id="telegram"
+                                    <input name="telegram" type="text" class="form-control border-0" id="telegram"
                                            placeholder="{{ __('messages.telegram.placeholder') }}"
                                            value="{{ $contact->telegram ?? old('telegram') }}">
                                     <div class="invalid-feedback">
@@ -137,7 +137,7 @@
 
                                 <div class="col mb-3">
                                     <label for="site" class="form-label">{{ __('messages.site') }}</label>
-                                    <input name="site" type="text" class="form-control" id="site" placeholder="{{ __('messages.site.placeholder') }}"
+                                    <input name="site" type="text" class="form-control border-0" id="site" placeholder="{{ __('messages.site.placeholder') }}"
                                            value="{{ $contact->site ?? old('site') }}">
                                     <div class="invalid-feedback">
                                         {{ __('Valid site is required.') }}
@@ -147,7 +147,7 @@
                                 <div class="col mb-3">
                                     <label for="status" class="form-label">{{ __('messages.status') }}</label>
                                     <input name="status" type="text"
-                                           class="form-control" id="status"
+                                           class="form-control border-0" id="status"
                                            placeholder=""
                                            value="{{ $contact->status ?? old('status') }}" disabled>
                                     <div class="invalid-feedback">
