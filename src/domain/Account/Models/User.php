@@ -6,7 +6,7 @@ namespace Domain\Account\Models;
 use Domain\Account\Actions\User\GetByRoleIdUserCollectionAction;
 use Domain\Account\Enums\User\UserStatus;
 use Domain\Link\Models\Contact;
-use Domain\Payment\Actions\Ticket\GetByUserIdTicketAction;
+use Domain\Payment\Actions\Ticket\CalculateTicketAction;
 use Domain\Payment\Models\Ticket;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -80,15 +80,7 @@ final class User extends Authenticatable
 
     public function isCanPublishContact(): bool
     {
-        $ticket = GetByUserIdTicketAction::execute(\auth()->user()->id);
-
-        if ($ticket->limit > 0) {
-
-            return true;
-        } else {
-
-            return false;
-        }
+        return CalculateTicketAction::execute(auth()->user());
     }
 
     public function isBanned(): bool
