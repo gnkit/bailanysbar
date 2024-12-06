@@ -11,6 +11,7 @@
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.edit_contact') }}</h1>
 
             @include('partials.flash_message')
+            @include('pages.contact.modal_crop')
 
             <div class="row g-3">
                 <div class="col">
@@ -66,13 +67,14 @@
 
                                 <div class="col mb-3">
                                     @if (null !== $contact->image)
-                                        <img src="{{ asset('storage/images/' . $contact->image) }}" class="top-0 end-0"
-                                            alt="Avatar" style="height: 7rem; width: 7rem;" />
+                                        <img src="{{ asset('storage/images/' . $contact->image) }}" style="width: 10rem;"
+                                            class="form-control p-0 border-0 show-avatar" alt="Avatar" />
                                     @endif
                                     <br>
-                                    <label for="image" class="form-label">{{ __('messages.image') }}</label>
-                                    <input name="image" type="file" class="form-control border-0" id="image"
-                                        placeholder="" value="{{ $contact->image ?? (old('image') ?? '') }}">
+                                    <label for="avatar" class="form-label">{{ __('messages.image') }}</label>
+                                    <input name="avatar" type="file" class="form-control avatar border-0" placeholder=""
+                                        value="{{ $contact->image ?? (old('avatar') ?? '') }}" accept="image/*">
+                                    <input type="hidden" name="image" value="">
                                     <div class="invalid-feedback">
                                         {{ __('Valid image is required.') }}
                                     </div>

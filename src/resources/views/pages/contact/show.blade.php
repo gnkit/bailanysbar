@@ -12,23 +12,24 @@
 
             <!-- Content -->
             <div class="row g-3">
-                <div class="col">
-                    <div class="card border-0 position-relative">
-                        <img src="{{ asset('storage/images/' . $contact->image) }}" class="top-0 end-0 card-img-top"
-                            alt="Avatar" />
-                        <form action="{{ route('contact.image.reset', $contact) }}" method="POST" class="fs-6">
-                            @method('PUT')
-                            @csrf
-                            <div class="row g-3">
-                                <div class="col">
-                                    <button class="btn btn-sm btn-danger text-white position-absolute top-0 end-0 mt-2 me-2"
-                                        type="submit">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
+                <div class="col d-flex justify-content-center">
+                    <div class="card border-0" style="max-width: 30rem;">
+                        <div class="card-body position-relative">
+                            <img src="{{ asset('storage/images/' . $contact->image) }}" class="top-0 end-0 card-img-top mb-3"
+                                alt="Avatar" />
+                            <form action="{{ route('contact.image.reset', $contact) }}" method="POST" class="fs-6">
+                                @method('PUT')
+                                @csrf
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <button
+                                            class="btn btn-sm btn-danger text-white position-absolute top-0 end-0 mt-4 me-4"
+                                            type="submit">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <div class="card-body">
+                            </form>
                             <p class="card-text"><i class="fa-solid fa-paperclip me-2"></i>{{ $contact->title ?? '' }}
                             </p>
                             <p class="card-text"><i class="fa-regular fa-user me-2"></i>{{ $contact->name ?? '' }}

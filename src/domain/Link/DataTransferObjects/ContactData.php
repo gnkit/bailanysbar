@@ -51,7 +51,7 @@ final class ContactData extends Data
             'status' => ['sometimes', new Enum(ContactStatus::class)],
             'user_id' => ['sometimes'],
             'category_id' => ['required', 'exists:categories,id'],
-            'image' => ['sometimes', 'nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:1024'],
+            'image' => ['sometimes', 'nullable', 'base64image', 'base64mimes:jpeg,png,jpg,gif,svg', 'base64max:1024'],
         ];
     }
 

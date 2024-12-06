@@ -5,6 +5,7 @@ namespace Domain\Link\Services\Image;
 use Domain\Link\Enums\Contact\ContactImageDefault;
 use Domain\Link\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 final class ImageUploadContactService
 {
@@ -15,21 +16,18 @@ final class ImageUploadContactService
     {
         if ($contact === null) {
 
-            if ($request->hasFile('image')) {
+            if ($request->has('image')) {
 
                 return $this->store($request, $contact);
-
             } else {
 
                 return ContactImageDefault::PATH->value;
             }
-
         } else {
 
-            if ($request->hasFile('image')) {
+            if ($request->has('image') && (! is_null($request->image))) {
 
                 return $this->store($request, $contact);
-
             } else {
 
                 return $contact->image;
@@ -55,7 +53,6 @@ final class ImageUploadContactService
 
             return ContactImageDefault::PATH->value;
         }
-
     }
 
     /**
@@ -82,10 +79,15 @@ final class ImageUploadContactService
             $this->destroy($contact);
         }
 
-        $file = $request->file('image');
-        $name = $file->hashName();
-        $file->storeAs('public/images', $name);
+        $image_64 = $request->image;
+        $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];
+        $replace = substr($image_64, 0, strpos($image_64, ',') + 1);
+        $image = str_replace($replace, '', $image_64);
+        $image = str_replace(' ', '+', $image);
+        $imageName = hash('sha256', time()).'.'.$extension;
 
-        return $name;
+        Storage::disk('public')->put('/images/'.$imageName, base64_decode($image));
+
+        return $imageName;
     }
 }

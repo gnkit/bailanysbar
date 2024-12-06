@@ -11,26 +11,27 @@
             <h1 class="mb-2 fs-4 fw-bold text-end">{{ __('messages.create_contact') }}</h1>
 
             @include('partials.flash_message')
+            @include('pages.contact.modal_crop')
 
             <div class="row g-3">
                 <div class="col">
                     <div class="card border-0">
                         <div class="card-body">
 
-                            @if(!\auth()->user()->isCanPublishContact())
+                            @if (!\auth()->user()->isCanPublishContact())
                                 <p>{{ __('messages.limit_create_contact') }}</p>
                                 <a href="{{ route('sale') }}">{{ __('messages.buy_tickets') }}</a>
                             @else
                                 <!-- Form -->
                                 <form method="POST" action="{{ route('contacts.store') }}" id="createContact"
-                                      class="needs-validation" novalidate enctype="multipart/form-data">
+                                    class="needs-validation" novalidate enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="col mb-3">
-                                        <label for="title" class="form-label">{{ __('messages.title')  }}*</label>
+                                        <label for="title" class="form-label">{{ __('messages.title') }}*</label>
                                         <input name="title" type="text" class="form-control border-0" id="title"
-                                               placeholder="{{ __('messages.title.placeholder') }}"
-                                               value="{{ old('title') ?? '' }}" required>
+                                            placeholder="{{ __('messages.title.placeholder') }}"
+                                            value="{{ old('title') ?? '' }}" required>
                                         <div class="invalid-feedback">
                                             {{ __('Valid title is required.') }}
                                         </div>
@@ -39,8 +40,8 @@
                                     <div class="col mb-3">
                                         <label for="phone" class="form-label">{{ __('messages.phone') }}*</label>
                                         <input name="phone" type="tel" class="form-control border-0" id="phone"
-                                               placeholder="{{ __('messages.phone.placeholder') }}"
-                                               value="{{ old('phone') ?? '' }}">
+                                            placeholder="{{ __('messages.phone.placeholder') }}"
+                                            value="{{ old('phone') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid phone is required.') }}
                                         </div>
@@ -51,25 +52,25 @@
                                             *</label>
                                         <select name="category_id" class="form-select border-0" id="category_id" required>
                                             <option value="0">{{ __('messages.select_category') }}</option>
-                                            @foreach($categories as $category)
-                                                <option
-                                                    value="{{ $category->id }}" {{ $category->id != old('category_id') ?: 'selected' }}>
-                                                    @if(app()->getLocale() == 'en')
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ $category->id != old('category_id') ?: 'selected' }}>
+                                                    @if (app()->getLocale() == 'en')
                                                         {{ $category->name_en ?? '' }}
-                                                    @elseif( app()->getLocale() == 'ru' )
+                                                    @elseif(app()->getLocale() == 'ru')
                                                         {{ $category->name_ru ?? '' }}
                                                     @else
                                                         {{ $category->name ?? '' }}
                                                     @endif
                                                 </option>
-                                                @if(0 < $category->children->count())
-                                                    @foreach($category->children as $child)
-                                                        <option
-                                                            value="{{ $child->id }}" {{ $child->id != old('category_id') ?: 'selected' }}>
+                                                @if (0 < $category->children->count())
+                                                    @foreach ($category->children as $child)
+                                                        <option value="{{ $child->id }}"
+                                                            {{ $child->id != old('category_id') ?: 'selected' }}>
                                                             {{ '--- ' }}
-                                                            @if(app()->getLocale() == 'en')
+                                                            @if (app()->getLocale() == 'en')
                                                                 {{ $child->name_en ?? '' }}
-                                                            @elseif( app()->getLocale() == 'ru' )
+                                                            @elseif(app()->getLocale() == 'ru')
                                                                 {{ $child->name_ru ?? '' }}
                                                             @else
                                                                 {{ $child->name ?? '' }}
@@ -85,30 +86,32 @@
                                     </div>
 
                                     <div class="col mb-3">
-                                        <label for="image" class="form-label">{{ __('messages.image')  }}
-                                            (500x500px)</label>
-                                        <input name="image" type="file" class="form-control border-0 opacity:0" id="image" placeholder=""
-                                               value="{{ old('image') ?? '' }}">
+                                        <img src="" style="width: 10rem; display:none;"
+                                            class="form-control p-0 border-0 show-avatar" alt="Avatar" />
+                                        <label for="avatar" class="form-label">{{ __('messages.image') }}</label>
+                                        <input name="avatar" type="file" class="form-control avatar border-0"
+                                            placeholder="" value="{{ old('avatar') ?? '' }}" accept="image/*">
+                                        <input type="hidden" name="image">
                                         <div class="invalid-feedback">
                                             {{ __('Valid image is required.') }}
                                         </div>
                                     </div>
 
                                     <div class="col mb-3">
-                                        <label for="name" class="form-label">{{ __('messages.name')  }}</label>
+                                        <label for="name" class="form-label">{{ __('messages.name') }}</label>
                                         <input name="name" type="text" class="form-control border-0" id="name"
-                                               placeholder="{{ __('messages.name.placeholder') }}"
-                                               value="{{ old('name') ?? '' }}">
+                                            placeholder="{{ __('messages.name.placeholder') }}"
+                                            value="{{ old('name') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid name is required.') }}
                                         </div>
                                     </div>
 
                                     <div class="col mb-3">
-                                        <label for="address" class="form-label">{{ __('messages.address')  }}</label>
+                                        <label for="address" class="form-label">{{ __('messages.address') }}</label>
                                         <input name="address" type="text" class="form-control border-0" id="address"
-                                               placeholder="{{ __('messages.address.placeholder') }}"
-                                               value="{{ old('address') ?? '' }}">
+                                            placeholder="{{ __('messages.address.placeholder') }}"
+                                            value="{{ old('address') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid address is required.') }}
                                         </div>
@@ -116,10 +119,9 @@
 
                                     <div class="col mb-3">
                                         <label for="description"
-                                               class="form-label">{{ __('messages.description') }}</label>
+                                            class="form-label">{{ __('messages.description') }}</label>
                                         <textarea name="description" type="text" class="form-control border-0" id="description"
-                                                  placeholder="{{ __('messages.description.placeholder') }}"
-                                                  rows="3">{{ old('description') ?? '' }}</textarea>
+                                            placeholder="{{ __('messages.description.placeholder') }}" rows="3">{{ old('description') ?? '' }}</textarea>
                                         <div class="invalid-feedback">
                                             {{ __('Valid description is required.') }}
                                         </div>
@@ -128,8 +130,8 @@
                                     <div class="col mb-3">
                                         <label for="whatsapp" class="form-label">{{ __('messages.whatsapp') }}</label>
                                         <input name="whatsapp" type="text" class="form-control border-0" id="whatsapp"
-                                               placeholder="{{ __('messages.whatsapp.placeholder') }}"
-                                               value="{{ old('whatsapp') ?? '' }}">
+                                            placeholder="{{ __('messages.whatsapp.placeholder') }}"
+                                            value="{{ old('whatsapp') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid whatsapp is required.') }}
                                         </div>
@@ -137,9 +139,9 @@
 
                                     <div class="col mb-3">
                                         <label for="instagram" class="form-label">{{ __('messages.instagram') }}</label>
-                                        <input name="instagram" type="text" class="form-control border-0" id="instagram"
-                                               placeholder="{{ __('messages.instagram.placeholder') }}"
-                                               value="{{ old('instagram') ?? '' }}">
+                                        <input name="instagram" type="text" class="form-control border-0"
+                                            id="instagram" placeholder="{{ __('messages.instagram.placeholder') }}"
+                                            value="{{ old('instagram') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid instagram is required.') }}
                                         </div>
@@ -147,9 +149,9 @@
 
                                     <div class="col mb-3">
                                         <label for="telegram" class="form-label">{{ __('messages.telegram') }}</label>
-                                        <input name="telegram" type="text" class="form-control border-0" id="telegram"
-                                               placeholder="{{ __('messages.telegram.placeholder') }}"
-                                               value="{{ old('telegram') ?? '' }}">
+                                        <input name="telegram" type="text" class="form-control border-0"
+                                            id="telegram" placeholder="{{ __('messages.telegram.placeholder') }}"
+                                            value="{{ old('telegram') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid telegram is required.') }}
                                         </div>
@@ -157,9 +159,9 @@
 
                                     <div class="col mb-3">
                                         <label for="site" class="form-label">{{ __('messages.site') }}</label>
-                                        <input name="site" type="text" class="form-control border-0" id="site"
-                                               placeholder="{{ __('messages.site.placeholder') }}"
-                                               value="{{ old('site') ?? '' }}">
+                                        <input name="site" type="text" class="form-control border-0"
+                                            id="site" placeholder="{{ __('messages.site.placeholder') }}"
+                                            value="{{ old('site') ?? '' }}">
                                         <div class="invalid-feedback">
                                             {{ __('Valid site is required.') }}
                                         </div>
@@ -167,14 +169,12 @@
 
                                     <div class="row g-3">
                                         <div class="col">
-                                            <button class="w-100 btn btn-secondary" type="submit"
-                                                    name="status"
-                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('messages.save_draft') }}</button>
+                                            <button class="w-100 btn btn-secondary" type="submit" name="status"
+                                                value="{{ \Domain\Link\Enums\Contact\ContactStatus::DRAFT }}">{{ __('messages.save_draft') }}</button>
                                         </div>
                                         <div class="col">
-                                            <button class="w-100 btn btn-success" type="submit"
-                                                    name="status"
-                                                    value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('messages.publish') }}</button>
+                                            <button class="w-100 btn btn-success" type="submit" name="status"
+                                                value="{{ \Domain\Link\Enums\Contact\ContactStatus::PENDING }}">{{ __('messages.publish') }}</button>
                                         </div>
                                     </div>
                                 </form>

@@ -24,7 +24,7 @@
         })
 
         contacts.forEach((contact) => {
-            contact.ontransitionend = function () {
+            contact.ontransitionend = function() {
                 if (contact.classList.contains('anime')) {
                     contact.classList.add('hide');
                 }
@@ -39,8 +39,10 @@
     <script>
         function onClick(e) {
             e.preventDefault();
-            grecaptcha.ready(function () {
-                grecaptcha.execute('{{config('services.recaptcha.site_key')}}', {action: 'register'}).then(function (token) {
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+                    action: 'register'
+                }).then(function(token) {
                     document.getElementById("g-recaptcha-response").value = token;
                     document.getElementById("register-form").submit();
                 });
@@ -87,7 +89,8 @@
             const options = getOptions(this.value, contacts);
             console.log('this.options >> ', options);
             if (options.length < 1) {
-                const htmlNotFound = `<div class="text-secondary">{{ __('Сіздің сұрауыңыз бойынша ештеңе табылмады.') }}</div>`;
+                const htmlNotFound =
+                    `<div class="text-secondary">{{ __('Сіздің сұрауыңыз бойынша ештеңе табылмады.') }}</div>`;
                 searchOptions.innerHTML = htmlNotFound;
             } else {
 
@@ -109,5 +112,75 @@
 
         searchInput.addEventListener('change', displayOptions);
         searchInput.addEventListener('keyup', displayOptions);
+    </script>
+@endif
+
+@if (request()->is('user/contacts/*'))
+    <script>
+        var $modal = $('#modal');
+        var avatar = $('#avatar')[0];
+        var cropper;
+        console.log('avatar');
+
+        var file;
+        /** Image Change Event **/
+        $("body").on("change", ".avatar", function(e) {
+            var files = e.target.files;
+            console.log(files);
+            var done = function(url) {
+                avatar.src = url;
+                $modal.modal('show');
+            };
+            var reader;
+            var url;
+            if (files && files.length > 0) {
+                file = files[0];
+                console.log(file['type']);
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function(e) {
+                        done(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+        /** Show Model Event **/
+        $modal.on('shown.bs.modal', function() {
+            cropper = new Cropper(avatar, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: '.preview',
+                cropBoxResizable: false,
+                minCropBoxWidth: 300,
+                minCropBoxHeight: 300,
+                dragMode: 'move',
+            });
+        }).on('hidden.bs.modal', function() {
+            cropper.destroy();
+            cropper = null;
+        });
+        /** Crop Button Click Event **/
+        $("#crop").click(function() {
+            canvas = cropper.getCroppedCanvas({
+                width: 300,
+                height: 300,
+            });
+            canvas.toBlob(function(blob) {
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function() {
+                    var base64data = reader.result;
+                    console.log(base64data);
+                    $("input[name='image']").val(base64data);
+                    $(".show-avatar").show();
+                    $(".show-avatar").attr("src", base64data);
+                    $("#modal").modal('toggle');
+                }
+            }, file['type']);
+        });
     </script>
 @endif
