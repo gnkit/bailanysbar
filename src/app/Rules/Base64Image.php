@@ -37,7 +37,7 @@ class Base64Image implements Rule
             return false;
         }
 
-        if (strlen(base64_decode($data)) > 2 * 1024) {
+        if (strlen(base64_decode($data)) > 2 * 1024 * 1024) {
             return false;
         }
 
