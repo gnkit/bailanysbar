@@ -2,6 +2,7 @@
 
 namespace Domain\Link\DataTransferObjects;
 
+use App\Rules\Base64Image;
 use Domain\Account\Models\User;
 use Domain\Link\Enums\Contact\ContactStatus;
 use Domain\Link\Models\Category;
@@ -51,7 +52,7 @@ final class ContactData extends Data
             'status' => ['sometimes', new Enum(ContactStatus::class)],
             'user_id' => ['sometimes'],
             'category_id' => ['required', 'exists:categories,id'],
-            'image' => ['sometimes', 'nullable', 'base64image', 'base64mimes:jpeg,png,jpg,gif,svg', 'base64max:1024'],
+            'image' => ['sometimes', 'nullable', new Base64Image],
         ];
     }
 

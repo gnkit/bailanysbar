@@ -152,4 +152,5 @@ return [
     'search_contacts' => 'Іздеу',
     'color' => 'Түс',
     'check_user_ban' => 'Есептік жазбаңыз уақытша тоқтатылды. Әкімшіге хабарласыңыз.',
+    'check_base64_image' => ':attribute ең үлкен өлшемі 2 МБ болатын кескін (PNG, JPG, JPEG, GIF) болуы керек.',
 ];

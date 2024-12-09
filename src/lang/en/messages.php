@@ -152,4 +152,5 @@ return [
     'search_contacts' => 'Search',
     'color' => 'Color',
     'check_user_ban' => 'Your account has been suspended. Please contact administrator.',
+    'check_base64_image' => 'The :attribute must be an image (PNG, JPG, JPEG, GIF) with a maximum size of 2MB.',
 ];
