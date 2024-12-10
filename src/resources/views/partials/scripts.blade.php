@@ -184,3 +184,19 @@
         });
     </script>
 @endif
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var splide = new Splide('.splide', {
+            type: 'loop',
+            autoplay: true,
+            interval: 5000,
+            perPage: 2,
+            gap: '0.5rem',
+            fixedHeight: '7rem',
+            pagination: false,
+            arrows: false,
+        });
+        splide.mount();
+    });
+</script>

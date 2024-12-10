@@ -1,5 +1,5 @@
 @if (!request()->is('user/*'))
-    <div class="container">
+    <div class="row" style="padding:0 0.75rem 0 0.75rem ">
         <nav class="navbar navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'BailanysBar') }}

@@ -2,38 +2,34 @@
 
 @section('content')
 
-    @include('partials.intro')
-
     @include('partials.search')
+    {{-- @include('partials.intro') --}}
+    @include('partials.slider')
 
-    <div class="mb-4">
-        <div class="row">
+    <div class="row row-cols-4 mb-4">
 
-            @include('partials.flash_message')
+        @include('partials.flash_message')
 
-            @foreach ($categories as $category)
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-                    <a class="text-dark text-decoration-none" href="{{ url('/category' , [$category->id]) }}">
-                        <div class="category card bg-light border-0 h-100">
-                            <div class="card-body text-center">
-                                <div class="my-2">
-                                    <i class="fs-2 mb-2 {{ $category->icon }}" style="color:{{ $category->color }}"></i>
-                                    <br>
-                                    <p class="card-text">
-                                        @if(app()->getLocale() == 'en')
-                                            {{ $category->name_en ?? '' }}
-                                        @elseif( app()->getLocale() == 'ru' )
-                                            {{ $category->name_ru ?? '' }}
-                                        @else
-                                            {{ $category->name ?? '' }}
-                                        @endif
-                                    </p>
-                                </div>
-                            </div>
+        @foreach ($categories as $category)
+            <div class="col text-center mb-2">
+                <a class="text-dark text-decoration-none" href="{{ url('/category', [$category->id]) }}">
+                    <div class="category card bg-light border-0 h-100">
+                        <div class="card-body p-0">
+                            <i class="mb-2 fs-2 {{ $category->icon }}" style="color:{{ $category->color }}"></i>
+                            <br>
+                            <p class="m-0" style="font-size: 0.75rem;">
+                                @if (app()->getLocale() == 'en')
+                                    {{ $category->name_en ?? '' }}
+                                @elseif(app()->getLocale() == 'ru')
+                                    {{ $category->name_ru ?? '' }}
+                                @else
+                                    {{ $category->name ?? '' }}
+                                @endif
+                            </p>
                         </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+                    </div>
+                </a>
+            </div>
+        @endforeach
     </div>
 @endsection
