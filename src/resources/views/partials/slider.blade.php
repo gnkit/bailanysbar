@@ -3,9 +3,15 @@
         <section class="splide" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide rounded" style="background-color: green;">Slide 01</li>
-                    <li class="splide__slide rounded" style="background-color: red;">Slide 02</li>
-                    <li class="splide__slide rounded" style="background-color: yellow;">Slide 03</li>
+                    <li class="splide__slide">
+                        <img src="https://picsum.photos/id/77/450/300" alt="" class="w-100 h-auto rounded">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://picsum.photos/id/7/450/300" alt="" class="w-100 h-auto rounded">
+                    </li>
+                    <li class="splide__slide">
+                        <img src="https://picsum.photos/id/15/450/300" alt="" class="w-100 h-auto rounded">
+                    </li>
                 </ul>
             </div>
         </section>
