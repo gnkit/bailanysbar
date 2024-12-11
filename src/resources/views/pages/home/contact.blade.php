@@ -7,7 +7,7 @@
             <div class="col text-center p-4">
                 <div class="container filter">
                     <button class="button btn btn-dark m-1 border-0" data-filter="all">
-                        <span id="all" class="lead">
+                        <span id="all" class="small">
                             @if (app()->getLocale() == 'en')
                                 {{ $contact->category->name_en ?? '' }}
                             @elseif(app()->getLocale() == 'ru')
@@ -20,7 +20,7 @@
                     @foreach ($contact->category->children as $child)
                         <button class="button btn btn-light m-1 border-0" data-filter="{{ $child->slug }}">
                             <i class="{{ $child->icon ?? '' }}"></i>
-                            <span class="lead">
+                            <span class="small">
                                 @if (app()->getLocale() == 'en')
                                     {{ $child->name_en ?? '' }}
                                 @elseif(app()->getLocale() == 'ru')
@@ -44,7 +44,7 @@
                     @endif
                     <div class="card-title">{{ $contact->title ?? '' }}</div>
                     <hr>
-                    <div class="text-start mb-4 small" style="">
+                    <div class="text-start mb-4 small text-dark">
                         @if ($contact->name)
                             <div class="d-flex align-items-center mb-1">
                                 <span class="me-1">
@@ -101,7 +101,7 @@
                     <div class="d-flex justify-content-center">
                         @if ($contact->phone)
                             <a href="tel:{{ $contact->phone ?? '' }}" class="btn btn-success border-0 rounded-circle me-2"
-                                target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #68217a;">
+                                target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #fdb813;">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <i class="fa-solid fa-phone p-2"></i>
                                 </div>
@@ -110,7 +110,7 @@
                         @if ($contact->whatsapp)
                             <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}"
                                 class="btn btn-success border-0 rounded-circle me-2" target="_blank"
-                                style="width: 2.7rem; height: 2.7rem; background-color: #128c7e;">
+                                style="width: 2.7rem; height: 2.7rem; background-color: #25d366;">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <i class="fa-brands fa-whatsapp p-2"></i>
                                 </div>

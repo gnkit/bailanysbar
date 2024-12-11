@@ -4,10 +4,10 @@
     <div class="container">
 
         <div class="row">
-            <div class="col text-center p-4">
+            <div class="col text-center p-2">
                 <div class="container filter">
                     <button class="button btn btn-dark m-1 border-0" data-filter="all">
-                        <span id="all" class="lead">
+                        <span id="all" class="small">
                             @if (app()->getLocale() == 'en')
                                 {{ $category->name_en ?? '' }}
                             @elseif(app()->getLocale() == 'ru')
@@ -20,7 +20,7 @@
                     @foreach ($category->children as $child)
                         <button class="button btn btn-light m-1 border-0" data-filter="{{ $child->slug }}">
                             <i class="{{ $child->icon ?? '' }}"></i>
-                            <span class="lead">
+                            <span class="small">
                                 @if (app()->getLocale() == 'en')
                                     {{ $child->name_en ?? '' }}
                                 @elseif(app()->getLocale() == 'ru')
@@ -51,8 +51,8 @@
                                     </a>
                                 </div>
                                 <div class="col-8">
-                                    <div class="card-body">
-                                        <a class="text-decoration-none text-dark w-100"
+                                    <div class="card-body py-0">
+                                        <a class="text-decoration-none text-dark w-100 small"
                                             href="{{ route('contact', $contact->id) }}" role="button">
                                             {{ $contact->title ?? '' }}
                                         </a>

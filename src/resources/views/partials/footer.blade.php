@@ -1,6 +1,6 @@
 @guest
 
-    <footer class="container mb-4">
+    <footer class="container mb-4 small">
         <ul class="nav justify-content-center mb-2">
             <li class="nav-item"><a href="{{ route('about') }}"
                                     class="nav-link px-2 text-muted">{{ __('messages.page_link_about') }}</a></li>

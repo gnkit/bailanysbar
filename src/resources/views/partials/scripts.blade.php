@@ -191,11 +191,15 @@
             type: 'loop',
             autoplay: true,
             interval: 5000,
-            perPage: 2,
+            perPage: 3,
             gap: '0.5rem',
-            fixedHeight: '7rem',
             pagination: false,
             arrows: false,
+            breakpoints: {
+                640: {
+                    perPage: 2,
+                },
+            }
         });
         splide.mount();
     });
