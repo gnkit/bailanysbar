@@ -84,7 +84,7 @@ final class ImageUploadContactService
         $replace = substr($image_64, 0, strpos($image_64, ',') + 1);
         $image = str_replace($replace, '', $image_64);
         $image = str_replace(' ', '+', $image);
-        $imageName = hash('sha256', time()).'.'.$extension;
+        $imageName = auth()->id().'-'.time().'.'.$extension;
 
         Storage::disk('public')->put('/images/'.$imageName, base64_decode($image));
 
