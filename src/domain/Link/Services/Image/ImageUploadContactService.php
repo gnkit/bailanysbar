@@ -80,13 +80,15 @@ final class ImageUploadContactService
         }
 
         $image_64 = $request->image;
-        $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];
-        $replace = substr($image_64, 0, strpos($image_64, ',') + 1);
-        $image = str_replace($replace, '', $image_64);
-        $image = str_replace(' ', '+', $image);
+        $extension = explode('/', mime_content_type($image_64))[1];
+        $file = base64_decode(preg_replace(
+            '#^data:image/\w+;base64,#i',
+            '',
+            $request->input('image')
+        ));
         $imageName = auth()->id().'-'.time().'.'.$extension;
 
-        Storage::disk('public')->put('/images/'.$imageName, base64_decode($image));
+        Storage::disk('public')->put('/images/'.$imageName, $file);
 
         return $imageName;
     }
