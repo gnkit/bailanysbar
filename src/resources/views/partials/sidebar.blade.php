@@ -1,7 +1,8 @@
 @role('manager')
     <div class="d-none d-lg-block d-flex flex-column flex-shrink-0 p-3 text-white bg-dark min-vh-100 col-3">
 
-        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none fs-4" href="{{ url('/') }}">
+        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none fs-4"
+            href="{{ url('/') }}">
             {{ config('app.name', 'BailanysBar') }}
         </a>
         <hr>
@@ -21,7 +22,7 @@
                     {{ __('messages.contacts') }}
                     @if (0 < count(auth()->user()->unreadNotifications))
                         @role('manager')
-                            <span class="badge rounded-pill bg-warning text-dark float-end">
+                            <span class="badge rounded-pill bg-warning text-light float-end">
                                 {{ count(auth()->user()->unreadNotifications) }}
                             </span>
                         @endrole

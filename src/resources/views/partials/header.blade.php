@@ -1,6 +1,6 @@
 @if (!request()->is('user/*'))
     <div class="row" style="padding:0 0.75rem 0 0.75rem ">
-        <nav class="navbar navbar-expand-sm navbar-light">
+        <nav class="navbar navbar-expand navbar-light">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'BailanysBar') }}
             </a>
@@ -16,17 +16,35 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    <i class="fa-regular fa-user"></i>
+                                    {{-- {{ __('messages.login') }} --}}
+                                </a>
                             </li>
                         @endif
 
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                             </li>
-                        @endif
+                        @endif --}}
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dashboard') }}">
+                                <i class="fa-regular fa-user"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                        {{-- <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
@@ -46,7 +64,7 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li>
+                        </li> --}}
                     @endguest
                 </ul>
 

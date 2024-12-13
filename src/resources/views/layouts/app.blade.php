@@ -44,7 +44,7 @@
 
 <body>
 
-    <div id="app" class="container bg-light pb-5 mb-4">
+    <div id="app" class="container bg-light pb-5 mb-4" style="max-width: 768px">
 
         @include('partials.header')
 

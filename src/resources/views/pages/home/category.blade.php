@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body py-0">
-                                        <a class="text-decoration-none text-dark w-100 small"
+                                        <a class="text-decoration-none text-dark w-100"
                                             href="{{ route('contact', $contact->id) }}" role="button">
                                             {{ $contact->title ?? '' }}
                                         </a>

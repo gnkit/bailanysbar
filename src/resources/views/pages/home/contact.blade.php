@@ -44,7 +44,7 @@
                     @endif
                     <div class="card-title">{{ $contact->title ?? '' }}</div>
                     <hr>
-                    <div class="text-start mb-4 small text-dark">
+                    <div class="text-start mb-4 text-dark">
                         @if ($contact->name)
                             <div class="d-flex align-items-center mb-1">
                                 <span class="me-1">
@@ -100,45 +100,45 @@
 
                     <div class="d-flex justify-content-center">
                         @if ($contact->phone)
-                            <a href="tel:{{ $contact->phone ?? '' }}" class="btn btn-success border-0 rounded-circle me-2"
-                                target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #fdb813;">
+                            <a href="tel:{{ $contact->phone ?? '' }}" class="btn btn-dark border-0 rounded-circle me-2"
+                                target="_blank" style="width: 2.7rem; height: 2.7rem;">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-phone p-2"></i>
+                                    <i class="fs-2 fa-solid fa-phone p-1"></i>
                                 </div>
                             </a>
                         @endif
                         @if ($contact->whatsapp)
                             <a href="https://wa.me/{{ $contact->whatsapp ?? '' }}"
-                                class="btn btn-success border-0 rounded-circle me-2" target="_blank"
-                                style="width: 2.7rem; height: 2.7rem; background-color: #25d366;">
+                                class="btn btn-dark border-0 rounded-circle me-2" target="_blank"
+                                style="width: 2.7rem; height: 2.7rem;">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <i class="fa-brands fa-whatsapp p-2"></i>
+                                    <i class="fs-2 fa-brands fa-whatsapp p-1"></i>
                                 </div>
                             </a>
                         @endif
                         @if ($contact->instagram)
                             <a href="https://ig.me/m/{{ $contact->instagram ?? '' }}"
-                                class="btn btn-success border-0 rounded-circle me-2" target="_blank"
-                                style="width: 2.7rem; height: 2.7rem; background-color: #e1306c;">
+                                class="btn btn-dark border-0 rounded-circle me-2" target="_blank"
+                                style="width: 2.7rem; height: 2.7rem;">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <i class="fa-brands fa-instagram p-2"></i>
+                                    <i class="fs-2 fa-brands fa-instagram p-1"></i>
                                 </div>
                             </a>
                         @endif
                         @if ($contact->telegram)
                             <a href="https://t.me/{{ $contact->telegram ?? '' }}"
-                                class="btn btn-success border-0 rounded-circle me-2" target="_blank"
-                                style="width: 2.7rem; height: 2.7rem; background-color: #0088cc;">
+                                class="btn btn-dark border-0 rounded-circle me-2" target="_blank"
+                                style="width: 2.7rem; height: 2.7rem;">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <i class="fa-brands fa-telegram p-2"></i>
+                                    <i class="fs-2 fa-brands fa-telegram p-1"></i>
                                 </div>
                             </a>
                         @endif
                         @if ($contact->site)
-                            <a href="{{ $contact->site ?? '' }}" class="btn btn-success border-0 rounded-circle me-2"
-                                target="_blank" style="width: 2.7rem; height: 2.7rem; background-color: #005670;">
+                            <a href="{{ $contact->site ?? '' }}" class="btn btn-dark border-0 rounded-circle me-2"
+                                target="_blank" style="width: 2.7rem; height: 2.7rem;">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <i class="fa-solid fa-square-arrow-up-right p-2"></i>
+                                    <i class="fs-2 fa-solid fa-square-arrow-up-right p-1"></i>
                                 </div>
                             </a>
                         @endif

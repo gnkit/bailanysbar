@@ -94,7 +94,7 @@ return [
     */
     'available_locales' => [
         'kz' => 'kk',
-        'gb' => 'en',
+        // 'gb' => 'en',
         'ru' => 'ru',
     ],
 

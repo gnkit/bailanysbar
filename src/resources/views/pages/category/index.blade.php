@@ -46,10 +46,10 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="btn-group">
-                                                    <a class="btn btn-success btn-sm"
+                                                    <a class="btn btn-outline-dark btn-sm"
                                                         href="{{ route('categories.edit', $category->id) }}"><i
                                                             class="fa-solid fa-pen-to-square"></i></a>
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                    <button type="submit" class="btn btn-outline-dark btn-sm"><i
                                                             class="fa-solid fa-trash-can"></i>
                                                     </button>
                                                 </div>

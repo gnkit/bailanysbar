@@ -48,13 +48,13 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="btn-group">
-                                                    <a class="btn btn-outline-secondary btn-sm"
+                                                    <a class="btn btn-outline-dark btn-sm"
                                                         href="{{ route('users.show', $user->id) }}"><i
                                                             class="fa-solid fa-eye"></i></a>
-                                                    <a class="btn btn-success btn-sm"
+                                                    <a class="btn btn-outline-dark btn-sm"
                                                         href="{{ route('users.edit', $user->id) }}"><i
                                                             class="fa-solid fa-pen-to-square"></i></a>
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                    <button type="submit" class="btn btn-outline-dark btn-sm"><i
                                                             class="fa-solid fa-trash-can"></i>
                                                     </button>
                                                 </div>
@@ -73,7 +73,7 @@
                     {{ $users->links() }}
                 </div>
             </div>
-            
+
         </div>
     </div>
 @endsection
