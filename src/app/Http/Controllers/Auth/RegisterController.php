@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Domain\Account\Actions\Role\GetBySlugRoleAction;
+use Domain\Account\Actions\User\UpsertUserAction;
+use Domain\Account\DataTransferObjects\UserData;
 use Domain\Account\Enums\User\UserStatus;
 use Domain\Account\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -81,12 +83,14 @@ class RegisterController extends Controller
     {
         $role = GetBySlugRoleAction::execute('customer');
 
-        return User::create([
+        $userData = UserData::from([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'status' => UserStatus::ACTIVE,
             'role_id' => $role->id,
         ]);
+
+        return UpsertUserAction::execute($userData);
     }
 }

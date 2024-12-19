@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth\Socialite;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Domain\Account\Actions\Role\GetBySlugRoleAction;
+use Domain\Account\Actions\User\UpsertUserAction;
+use Domain\Account\DataTransferObjects\UserData;
 use Domain\Account\Enums\User\UserStatus;
 use Domain\Account\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -23,15 +25,19 @@ class GoogleLoginController extends Controller
         $googleUser = Socialite::driver('google')->stateless()->user();
 
         $user = User::where('email', $googleUser->email)->first();
+
         if (! $user) {
             $role = GetBySlugRoleAction::execute('customer');
-            $user = User::create([
+
+            $userData = UserData::from([
                 'name' => $googleUser->name,
                 'email' => $googleUser->email,
                 'password' => Hash::make(rand(100000, 999999)),
                 'status' => UserStatus::ACTIVE,
                 'role_id' => $role->id,
             ]);
+
+            $user = UpsertUserAction::execute($userData);
         }
 
         Auth::login($user);
