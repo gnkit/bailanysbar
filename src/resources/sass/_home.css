@@ -1,6 +1,6 @@
 div.contacts > .contact > div.card:hover,
 div.category.card:hover {
-    filter: brightness(90%);
+    filter: brightness(95%);
     transition: 0.2s;
 }
 
@@ -31,6 +31,7 @@ div.contacts.contact {
         visibility: visible;
         height: 200px;
     }
+
     100% {
         visibility: hidden;
         width: 0;

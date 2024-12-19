@@ -14,9 +14,10 @@ final class ImageUploadContactService
      */
     public function upload(Request $request, ?Contact $contact)
     {
+        // dd($request->has('image'), $contact);
         if ($contact === null) {
 
-            if ($request->has('image')) {
+            if ($request->image !== null) {
 
                 return $this->store($request, $contact);
             } else {

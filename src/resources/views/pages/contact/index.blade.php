@@ -103,8 +103,9 @@
                         </p>
                     @endif
                     <!-- Pagination -->
-                    {{ $contacts->links() }}
+
                 </div>
+                {{ $contacts->links() }}
             </div>
 
         </div>

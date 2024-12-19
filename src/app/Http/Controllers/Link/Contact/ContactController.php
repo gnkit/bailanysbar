@@ -27,7 +27,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $rows = 10;
+        $rows = 25;
 
         if (auth()->user()->isManager()) {
             $contacts = GetAllContactsPaginationAction::execute($rows);

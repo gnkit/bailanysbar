@@ -80,17 +80,17 @@
         }
 
         function displayOptions() {
-            if (this.value === '') {
+            if (this.value.trim() === '') {
                 searchOptions.style.display = 'none';
             } else {
                 searchOptions.style.display = 'flex';
             }
-            console.log('this.value >> ', this.value);
-            const options = getOptions(this.value, contacts);
+            console.log('this.value >> ', this.value.trim());
+            const options = getOptions(this.value.trim(), contacts);
             console.log('this.options >> ', options);
             if (options.length < 1) {
                 const htmlNotFound =
-                    `<div class="text-secondary">{{ __('Сіздің сұрауыңыз бойынша ештеңе табылмады.') }}</div>`;
+                    `<div class="text-dark">{{ __('Сіздің сұрауыңыз бойынша ештеңе табылмады.') }}</div>`;
                 searchOptions.innerHTML = htmlNotFound;
             } else {
 
@@ -98,10 +98,10 @@
                     .map(contact => {
                         const regex = new RegExp(this.value, 'gi');
                         const contactTitle = contact.title.replace(regex,
-                            `<span class="text-bg-danger">${this.value}</span>`
+                            `<span class="text-bg-secondary">${this.value.trim()}</span>`
                         )
 
-                        return `<a href="/contact/${contact.id}" class="link-secondary mb-2 text-decoration-none border-bottom">${contactTitle}</a>`;
+                        return `<a href="/contact/${contact.id}" class="link-dark mb-2 text-decoration-none">${contactTitle}</a>`;
                     })
                     .slice(0, 10)
                     .join('');
@@ -185,22 +185,34 @@
     </script>
 @endif
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var splide = new Splide('.splide', {
-            type: 'loop',
-            autoplay: true,
-            interval: 5000,
-            perPage: 3,
-            gap: '0.5rem',
-            pagination: false,
-            arrows: false,
-            breakpoints: {
-                640: {
-                    perPage: 2,
-                },
-            }
+@if (request()->is('/'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var splide = new Splide('.splide', {
+                type: 'loop',
+                autoplay: true,
+                interval: 5000,
+                perPage: 3,
+                gap: '0.5rem',
+                pagination: false,
+                arrows: false,
+                breakpoints: {
+                    640: {
+                        perPage: 2,
+                    },
+                }
+            });
+            splide.mount();
         });
-        splide.mount();
-    });
-</script>
+    </script>
+@endif
+
+@if (request()->is('user/*'))
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 4000);
+    </script>
+@endif

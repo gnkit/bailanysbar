@@ -39,17 +39,3 @@
     </div>
 @endif
 
-<script>
-    let elem = document.getElementsByClassName("alert")[0];
-    // ** FADE OUT FUNCTION **
-    (function fadeOut(el) {
-        el.style.opacity = 1;
-        (function fade() {
-            if ((el.style.opacity -= .005) < 0) {
-                el.style.display = "none";
-            } else {
-                requestAnimationFrame(fade);
-            }
-        })();
-    })(elem);
-</script>

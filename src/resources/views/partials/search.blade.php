@@ -10,7 +10,7 @@
                 aria-describedby="search-addon">
         </div>
         <div class="position-relative">
-            <div class="options position-absolute w-100 card p-4 my-4 overflow-scroll" id="options"
+            <div class="options position-absolute w-100 card p-2 my-2 overflow-scroll" id="options"
                 style="max-height: 20rem; z-index:1000">
             </div>
         </div>
