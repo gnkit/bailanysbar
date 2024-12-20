@@ -27,7 +27,7 @@
 @endif
 
 @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>
