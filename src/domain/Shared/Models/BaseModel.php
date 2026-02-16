@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseModel extends Model
 {
+    /** @phpstan-ignore-next-line */
     use HasFactory;
 }
