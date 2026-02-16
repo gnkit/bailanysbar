@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetAllRolesAction
 {
+    /**
+     * @return Collection<int, Role>
+     */
     public static function execute(): Collection
     {
+        /** @var Collection<int, Role> $roles */
         $roles = Role::with('permissions')->select('id', 'name')
             ->orderByDesc('created_at')
             ->get();

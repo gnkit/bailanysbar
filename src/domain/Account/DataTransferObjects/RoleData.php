@@ -8,6 +8,9 @@ use Spatie\LaravelData\Data;
 
 final class RoleData extends Data
 {
+    /**
+     * @param  array<int, string>|null  $permissions
+     */
     public function __construct(
         public readonly ?int $id,
         public readonly string $name,
@@ -15,6 +18,9 @@ final class RoleData extends Data
         public readonly ?array $permissions,
     ) {}
 
+    /**
+     * @return array<string, array<int, mixed>>
+     */
     public static function rules(): array
     {
         return [
@@ -23,6 +29,10 @@ final class RoleData extends Data
         ];
     }
 
+    /**
+     * @param  mixed  ...$args
+     * @return array<string, string>
+     */
     public static function attributes(...$args): array
     {
         return [
@@ -36,6 +46,7 @@ final class RoleData extends Data
         return self::from([
             'id' => $request->role ?? null,
             'name' => $request->name,
+            'slug' => $request->slug ?? null,
             'permissions' => $request->permissions,
         ]);
     }

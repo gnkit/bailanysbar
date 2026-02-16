@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetByRoleIdUserCollectionAction
 {
+    /**
+     * @return Collection<int, User>
+     */
     public static function execute(): Collection
     {
         $role = GetBySlugRoleAction::execute('manager');
+
+        /** @var Collection<int, User> $users */
         $users = User::where('role_id', $role->id)->get();
 
         return $users;

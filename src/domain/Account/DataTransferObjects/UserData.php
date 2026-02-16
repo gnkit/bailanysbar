@@ -4,6 +4,7 @@ namespace Domain\Account\DataTransferObjects;
 
 use Domain\Account\Actions\Role\GetBySlugRoleAction;
 use Domain\Account\Enums\User\UserStatus;
+use Domain\Account\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -22,6 +23,9 @@ final class UserData extends Data
         public readonly int $role_id,
     ) {}
 
+    /**
+     * @return array<string, array<int, mixed>>
+     */
     public static function rules(): array
     {
         return [
@@ -33,6 +37,10 @@ final class UserData extends Data
         ];
     }
 
+    /**
+     * @param  mixed  ...$args
+     * @return array<string, string>
+     */
     public static function attributes(...$args): array
     {
         return [
@@ -46,11 +54,16 @@ final class UserData extends Data
 
     public static function fromRequest(Request $request): self
     {
+        /** @var User|null $currentUser */
+        $currentUser = $request->user();
+
         return self::from([
-            'id' => $request->user ?? null,
+            'id' => $request->user instanceof User ? $request->user->id : null,
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password ? Hash::make($request->password) : $request->user()->password,
+            'password' => $request->password
+                ? Hash::make((string) $request->password)
+                : $currentUser?->password,
             'status' => $request->status ?? UserStatus::ACTIVE,
             'role_id' => $request->role_id ?? GetBySlugRoleAction::execute('customer'),
         ]);

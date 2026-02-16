@@ -7,8 +7,12 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 final class GetAllUsersPaginationAction
 {
-    public static function execute($quantity): Paginator
+    /**
+     * @return Paginator<int, User>
+     */
+    public static function execute(int $quantity): Paginator
     {
+        /** @var Paginator<int, User> $users */
         $users = User::with('role', 'ticket')->select('id', 'name', 'status', 'role_id')
             ->orderByDesc('created_at')
             ->simplePaginate($quantity);

@@ -9,7 +9,7 @@ parameters:
         - domain/
 
     # Level 10 is the highest level
-    level: 9
+    level: 8
 
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
