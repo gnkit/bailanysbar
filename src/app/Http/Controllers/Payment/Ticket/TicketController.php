@@ -9,13 +9,12 @@ use Domain\Payment\Actions\Ticket\GetAllTicketsPaginationAction;
 use Domain\Payment\Actions\Ticket\UpsertTicketAction;
 use Domain\Payment\DataTransferObjects\TicketData;
 use Domain\Payment\Models\Ticket;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class TicketController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): View
     {
         $rows = 10;
 
@@ -26,48 +25,33 @@ class TicketController extends Controller
             );
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $users = GetAllUsersDoesntHaveTicketAction::execute();
 
         return view('pages.ticket.create', compact('users'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(TicketData $ticketData)
+    public function store(TicketData $ticketData): RedirectResponse
     {
         UpsertTicketAction::execute($ticketData);
 
         return redirect()->route('tickets.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Ticket $ticket)
+    public function edit(Ticket $ticket): View
     {
         return view('pages.ticket.edit', compact('ticket'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(TicketData $ticketData)
+    public function update(TicketData $ticketData): RedirectResponse
     {
         UpsertTicketAction::execute($ticketData);
 
         return redirect()->route('tickets.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Ticket $ticket)
+    public function destroy(Ticket $ticket): RedirectResponse
     {
         DeleteTicketAction::execute($ticket);
 

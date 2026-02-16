@@ -3,19 +3,19 @@
 namespace App\Http\Middleware\Role;
 
 use Closure;
+use Domain\Account\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, string $role): Response|RedirectResponse
     {
-        if (! auth()->user()->hasRole($role)) {
+        /** @var User|null $user */
+        $user = auth()->user();
+
+        if ($user === null || ! $user->hasRole($role)) {
             abort(404);
         }
 

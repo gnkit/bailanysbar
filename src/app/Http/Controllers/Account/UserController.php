@@ -9,13 +9,12 @@ use Domain\Account\Actions\User\GetAllUsersPaginationAction;
 use Domain\Account\Actions\User\UpsertUserAction;
 use Domain\Account\DataTransferObjects\UserData;
 use Domain\Account\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): View
     {
         $rows = 10;
 
@@ -26,60 +25,42 @@ class UserController extends Controller
             );
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $roles = GetAllRolesAction::execute();
 
         return view('pages.user.create', compact('roles'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(UserData $userData)
+    public function store(UserData $userData): RedirectResponse
     {
         UpsertUserAction::execute($userData);
 
         return redirect()->route('users.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show(User $user)
+    public function show(User $user): View
     {
         $roles = GetAllRolesAction::execute();
 
         return view('pages.user.show', compact('roles', 'user'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(User $user)
+    public function edit(User $user): View
     {
         $roles = GetAllRolesAction::execute();
 
         return view('pages.user.edit', compact('roles', 'user'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(UserData $data)
+    public function update(UserData $data): RedirectResponse
     {
         UpsertUserAction::execute($data);
 
         return redirect()->route('users.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
         DeleteUserAction::execute($user);
 

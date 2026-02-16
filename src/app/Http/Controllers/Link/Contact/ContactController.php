@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Link\Contact;
 
 use App\Http\Controllers\Controller;
+use Domain\Account\Models\User;
 use Domain\Link\Actions\Category\GetAllParentCategoriesAction;
 use Domain\Link\Actions\Contact\DeleteContactAction;
 use Domain\Link\Actions\Contact\GetAllContactsPaginationAction;
@@ -12,23 +13,25 @@ use Domain\Link\DataTransferObjects\ContactData;
 use Domain\Link\Models\Contact;
 use Domain\Link\Services\Image\ImageUploadContactService;
 use Domain\Link\Services\Notification\NotificationContactService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     public function __construct(
-        private NotificationContactService $notificationContactService,
-        private ImageUploadContactService $imageUploadContactService
+        private readonly NotificationContactService $notificationContactService,
+        private readonly ImageUploadContactService $imageUploadContactService
     ) {}
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(Request $request): View
     {
         $rows = 25;
 
-        if (auth()->user()->isManager()) {
+        /** @var User $user */
+        $user = $request->user();
+
+        if ($user->isManager()) {
             $contacts = GetAllContactsPaginationAction::execute($rows);
         } else {
             $contacts = GetOwnContactsPaginationAction::execute($rows);
@@ -39,34 +42,28 @@ class ContactController extends Controller
             );
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $categories = GetAllParentCategoriesAction::execute();
 
         return view('pages.contact.create', compact('categories'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(ContactData $data, Request $request)
+    public function store(ContactData $data, Request $request): RedirectResponse
     {
-        if (! \auth()->user()->isCanPublishContact()) {
+        /** @var User $user */
+        $user = $request->user();
+
+        if (! $user->isCanPublishContact()) {
             return redirect()->route('contacts.index')->with('error', __('messages.cannot_create_contact.'))->withInput();
         }
-        $contact = UpsertContactAction::execute($data, $request->user());
+        $contact = UpsertContactAction::execute($data, $user);
         $this->notificationContactService->sendNotificationContactCreatedToManager($contact);
 
         return redirect()->route('contacts.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show(Contact $contact)
+    public function show(Contact $contact): View|RedirectResponse
     {
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
@@ -76,10 +73,7 @@ class ContactController extends Controller
         return view('pages.contact.show', compact('contact'));
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Contact $contact)
+    public function edit(Contact $contact): View|RedirectResponse
     {
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
@@ -91,21 +85,18 @@ class ContactController extends Controller
         return view('pages.contact.edit', compact('categories', 'contact'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(ContactData $data, Request $request)
+    public function update(ContactData $data, Request $request): RedirectResponse
     {
-        $contact = UpsertContactAction::execute($data, $request->user());
+        /** @var User $user */
+        $user = $request->user();
+        $contact = UpsertContactAction::execute($data, $user);
+
         $this->notificationContactService->sendNotificationContactUpdatedToManager($contact);
 
         return redirect()->route('contacts.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact): RedirectResponse
     {
         DeleteContactAction::execute($contact);
         $this->imageUploadContactService->destroy($contact);

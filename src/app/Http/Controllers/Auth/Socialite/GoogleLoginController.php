@@ -12,27 +12,34 @@ use Domain\Account\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\AbstractProvider;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GoogleLoginController extends Controller
 {
-    public function redirectToGoogle()
+    public function redirectToGoogle(): RedirectResponse
     {
-        return Socialite::driver('google')->redirect();
+        /** @var AbstractProvider $driver */
+        $driver = Socialite::driver('google');
+
+        return $driver->redirect();
     }
 
-    public function handleGoogleCallback()
+    public function handleGoogleCallback(): RedirectResponse
     {
-        $googleUser = Socialite::driver('google')->stateless()->user();
+        /** @var AbstractProvider $driver */
+        $driver = Socialite::driver('google');
+        $googleUser = $driver->stateless()->user();
 
-        $user = User::where('email', $googleUser->email)->first();
+        $user = User::where('email', $googleUser->getEmail())->first();
 
         if (! $user) {
             $role = GetBySlugRoleAction::execute('customer');
 
             $userData = UserData::from([
-                'name' => $googleUser->name,
-                'email' => $googleUser->email,
-                'password' => Hash::make(rand(100000, 999999)),
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'password' => Hash::make((string) rand(100000, 999999)),
                 'status' => UserStatus::ACTIVE,
                 'role_id' => $role->id,
             ]);

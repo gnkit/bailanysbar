@@ -6,15 +6,13 @@ use App\Http\Controllers\Controller;
 use Domain\Link\Actions\Contact\ResetImageContactAction;
 use Domain\Link\Models\Contact;
 use Domain\Link\Services\Image\ImageUploadContactService;
+use Illuminate\Http\RedirectResponse;
 
 class ImageUploadContactServiceController extends Controller
 {
-    public function __construct(private ImageUploadContactService $imageUploadContactService) {}
+    public function __construct(private readonly ImageUploadContactService $imageUploadContactService) {}
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function reset(Contact $contact)
+    public function reset(Contact $contact): RedirectResponse
     {
         $image = $this->imageUploadContactService->reset($contact);
         ResetImageContactAction::execute($contact, $image);

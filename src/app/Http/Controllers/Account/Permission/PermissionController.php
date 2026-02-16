@@ -8,63 +8,46 @@ use Domain\Account\Actions\Permission\GetAllPermissionsAction;
 use Domain\Account\Actions\Permission\UpsertPermissionAction;
 use Domain\Account\DataTransferObjects\PermissionData;
 use Domain\Account\Models\Permission;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PermissionController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): View
     {
         $rows = 10;
-
-        $permissions = GetAllPermissionsAction::execute($rows);
+        $permissions = GetAllPermissionsAction::execute();
 
         return view('pages.permission.index', compact('permissions'))
             ->with('i', (request()->input('page', 1) - 1) * $rows
             );
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create(): View
     {
         return view('pages.permission.create');
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(PermissionData $data)
+    public function store(PermissionData $data): RedirectResponse
     {
         UpsertPermissionAction::execute($data);
 
         return redirect()->route('permissions.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Permission $permission)
+    public function edit(Permission $permission): View
     {
         return view('pages.permission.edit', compact('permission'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(PermissionData $data)
+    public function update(PermissionData $data): RedirectResponse
     {
         UpsertPermissionAction::execute($data);
 
         return redirect()->route('permissions.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Permission $permission)
+    public function destroy(Permission $permission): RedirectResponse
     {
         DeletePermissionAction::execute($permission);
 

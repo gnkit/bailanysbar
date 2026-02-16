@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Account;
 use App\Http\Controllers\Controller;
 use Domain\Account\Actions\User\DeleteUserAction;
 use Domain\Account\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class AccountController extends Controller
@@ -14,18 +15,12 @@ class AccountController extends Controller
         //        $this->middleware('auth');
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function dashboard()
+    public function dashboard(): View
     {
         return view('pages.account.dashboard.index');
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function settings()
+    public function settings(): View
     {
         $account = auth()->user();
 

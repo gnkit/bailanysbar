@@ -9,13 +9,13 @@ use Domain\Link\Actions\Category\GetAllParentCategoriesPaginationAction;
 use Domain\Link\Actions\Category\UpsertCategoryAction;
 use Domain\Link\DataTransferObjects\CategoryData;
 use Domain\Link\Models\Category;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Throwable;
 
 class CategoryController extends Controller
 {
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function index(): View
     {
         $rows = 10;
 
@@ -26,56 +26,41 @@ class CategoryController extends Controller
             );
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
+    public function create(): View
     {
         $categories = GetAllParentCategoriesAction::execute();
 
         return view('pages.category.create', compact('categories'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(CategoryData $data)
+    public function store(CategoryData $data): RedirectResponse
     {
         UpsertCategoryAction::execute($data);
 
         return redirect()->route('categories.index')->with('success', __('messages.created_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Category $category)
+    public function edit(Category $category): View
     {
         $categories = GetAllParentCategoriesAction::execute();
 
         return view('pages.category.edit', compact('categories', 'category'));
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(CategoryData $data)
+    public function update(CategoryData $data): RedirectResponse
     {
         UpsertCategoryAction::execute($data);
 
         return redirect()->route('categories.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Category $category)
+    public function destroy(Category $category): RedirectResponse
     {
         try {
             DeleteCategoryAction::execute($category);
 
             return redirect()->route('categories.index')->with('success', __('messages.deleted_successfully'));
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             return redirect()->route('categories.index')->with('error', $exception->getMessage());
         }
     }
