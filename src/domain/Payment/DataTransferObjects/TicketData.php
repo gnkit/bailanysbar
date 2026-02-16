@@ -12,8 +12,7 @@ final class TicketData extends Data
         public readonly ?int $id,
         public readonly ?int $user_id,
         public readonly int $limit,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {

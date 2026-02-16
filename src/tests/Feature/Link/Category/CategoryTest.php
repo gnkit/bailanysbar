@@ -20,7 +20,7 @@ class CategoryTest extends TestCase
      *
      * @return void
      */
-    public function testCategoryIndex()
+    public function test_category_index()
     {
         $user = User::factory()->create([
             'role_id' => 1,
@@ -34,7 +34,7 @@ class CategoryTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testCategoryCreate()
+    public function test_category_create()
     {
         $user = User::factory()->create([
             'role_id' => 1,
@@ -49,7 +49,7 @@ class CategoryTest extends TestCase
         $this->followingRedirects()->get(route('categories.index'))->assertStatus(200);
     }
 
-    public function testCategoryStore()
+    public function test_category_store()
     {
         $user = User::factory()->create([
             'role_id' => 1,
@@ -74,7 +74,7 @@ class CategoryTest extends TestCase
         $this->followingRedirects()->get(route('categories.index'))->assertStatus(200);
     }
 
-    public function testCategoryEdit()
+    public function test_category_edit()
     {
         $user = User::factory()->create([
             'role_id' => 1,
@@ -88,7 +88,7 @@ class CategoryTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testCategoryUpdate()
+    public function test_category_update()
     {
         $user = User::factory()->create([
             'role_id' => 1,
@@ -123,7 +123,7 @@ class CategoryTest extends TestCase
         $this->followingRedirects()->get(route('categories.index'))->assertStatus(200);
     }
 
-    public function testCategoryDestroy()
+    public function test_category_destroy()
     {
         $user = User::factory()->create([
             'role_id' => 1,

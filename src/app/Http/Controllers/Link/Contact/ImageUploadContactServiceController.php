@@ -9,9 +9,7 @@ use Domain\Link\Services\Image\ImageUploadContactService;
 
 class ImageUploadContactServiceController extends Controller
 {
-    public function __construct(private ImageUploadContactService $imageUploadContactService)
-    {
-    }
+    public function __construct(private ImageUploadContactService $imageUploadContactService) {}
 
     /**
      * @return \Illuminate\Http\RedirectResponse

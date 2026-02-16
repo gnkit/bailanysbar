@@ -12,8 +12,7 @@ final class PermissionData extends Data
         public readonly ?int $id,
         public readonly string $name,
         public readonly ?string $slug,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {

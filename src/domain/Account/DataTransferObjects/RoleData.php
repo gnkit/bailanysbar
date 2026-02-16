@@ -13,8 +13,7 @@ final class RoleData extends Data
         public readonly string $name,
         public readonly ?string $slug,
         public readonly ?array $permissions,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {

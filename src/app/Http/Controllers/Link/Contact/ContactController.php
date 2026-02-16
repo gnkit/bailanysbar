@@ -19,8 +19,7 @@ class ContactController extends Controller
     public function __construct(
         private NotificationContactService $notificationContactService,
         private ImageUploadContactService $imageUploadContactService
-    ) {
-    }
+    ) {}
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

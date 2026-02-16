@@ -20,8 +20,7 @@ final class UserData extends Data
         public readonly ?string $password,
         public readonly UserStatus $status,
         public readonly int $role_id,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {

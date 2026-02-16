@@ -17,8 +17,7 @@ final class CategoryData extends Data
         public readonly ?string $icon,
         public readonly ?int $parent_id,
         public readonly ?string $color,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {

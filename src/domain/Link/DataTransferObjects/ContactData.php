@@ -34,8 +34,7 @@ final class ContactData extends Data
         #[Exists(Category::class)]
         public readonly int $category_id,
         public readonly string $image,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {
