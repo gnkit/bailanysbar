@@ -8,8 +8,6 @@ final class GetContactAction
 {
     public static function execute(Contact $contact): Contact
     {
-        $contact = Contact::findOrFail($contact->id);
-
-        return $contact;
+        return Contact::findOrFail($contact->id);
     }
 }

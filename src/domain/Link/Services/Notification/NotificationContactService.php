@@ -3,45 +3,50 @@
 namespace Domain\Link\Services\Notification;
 
 use Domain\Account\Models\User;
+use Domain\Link\Models\Contact;
 use Domain\Link\Notifications\ContactCreated;
 use Domain\Link\Notifications\ContactUpdated;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Support\Facades\Notification;
 
 final class NotificationContactService
 {
-    /**
-     * @return void
-     */
-    public function sendNotificationContactCreatedToManager($contact)
+    public function sendNotificationContactCreatedToManager(Contact $contact): void
     {
         $user = new User;
 
         Notification::send($user->managers(), new ContactCreated($contact));
     }
 
-    /**
-     * @return void
-     */
-    public function sendNotificationContactUpdatedToManager($contact)
+    public function sendNotificationContactUpdatedToManager(Contact $contact): void
     {
         $user = new User;
 
         Notification::send($user->managers(), new ContactUpdated($contact));
     }
 
-    /**
-     * @return true|void
-     */
-    public function readNotificationContact($contact)
+    public function readNotificationContact(Contact $contact): bool
     {
-        $notifications = auth()->user()->unreadNotifications;
+        /** @var User|null $currentUser */
+        $currentUser = auth()->user();
 
+        if ($currentUser === null) {
+            return false;
+        }
+
+        /** @var DatabaseNotificationCollection<int, DatabaseNotification> $notifications */
+        $notifications = $currentUser->unreadNotifications()->get();
+
+        /** @var DatabaseNotification $notification */
         foreach ($notifications as $notification) {
-            if ($notification->data['contact_id'] === $contact->id) {
+            if (isset($notification->data['contact_id']) && $notification->data['contact_id'] === $contact->id) {
                 $notification->markAsRead();
 
                 return true;
             }
         }
+
+        return false;
     }
 }

@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class GetContactsPublishedHasCategoryAction
 {
-    public static function execute($category): Collection
+    /** @return  Collection<int, Contact> */
+    public static function execute(int $category): Collection
     {
+        /** @var Collection<int, Contact> $contacts */
         $contacts = Contact::where('status', '=', ContactStatus::PUBLISHED)->with('category')->whereHas('category', function ($query) use ($category) {
             $query->where('id', '=', $category);
         })->get();

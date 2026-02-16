@@ -9,84 +9,57 @@ use Illuminate\Support\Facades\Storage;
 
 final class ImageUploadContactService
 {
-    /**
-     * @return mixed|string
-     */
-    public function upload(Request $request, ?Contact $contact)
+    public function upload(Request $request, ?Contact $contact): string
     {
-        // dd($request->has('image'), $contact);
-        if ($contact === null) {
-
-            if ($request->image !== null) {
-
-                return $this->store($request, $contact);
-            } else {
-
-                return ContactImageDefault::PATH->value;
-            }
-        } else {
-
-            if ($request->has('image') && (! is_null($request->image))) {
-
-                return $this->store($request, $contact);
-            } else {
-
-                return $contact->image;
-            }
+        if ($request->filled('image')) {
+            return $this->store($request, $contact);
         }
+
+        if ($contact !== null) {
+            return $contact->image;
+        }
+
+        return ContactImageDefault::PATH->value;
     }
 
-    /**
-     * @return string|void
-     */
-    public function reset(Contact $contact)
+    public function reset(Contact $contact): string
+    {
+        $this->destroy($contact);
+
+        return ContactImageDefault::PATH->value;
+    }
+
+    public function destroy(Contact $contact): void
     {
         if ($contact->image !== ContactImageDefault::PATH->value) {
+            $imagePath = public_path('storage/images/'.$contact->image);
 
-            $image_path = (public_path('storage').'/images/'.$contact->image);
-
-            if (file_exists($image_path)) {
-                unlink($image_path);
-
-                return ContactImageDefault::PATH->value;
-            }
-        } else {
-
-            return ContactImageDefault::PATH->value;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    public function destroy(Contact $contact)
-    {
-        if ($contact->image !== ContactImageDefault::PATH->value) {
-
-            $image_path = (public_path('storage').'/images/'.$contact->image);
-
-            if (file_exists($image_path)) {
-                unlink($image_path);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
             }
         }
     }
 
-    /**
-     * @return string
-     */
-    private function store(Request $request, ?Contact $contact)
+    private function store(Request $request, ?Contact $contact): string
     {
         if ($contact !== null) {
             $this->destroy($contact);
         }
 
-        $image_64 = $request->image;
-        $extension = explode('/', mime_content_type($image_64))[1];
-        $file = base64_decode(preg_replace(
-            '#^data:image/\w+;base64,#i',
-            '',
-            $request->input('image')
-        ));
+        /** @var string $image64 */
+        $image64 = $request->input('image');
+
+        $mimeType = mime_content_type($image64);
+
+        if ($mimeType === false) {
+            $extension = 'png';
+        } else {
+            $extension = explode('/', $mimeType)[1];
+        }
+
+        $base64String = preg_replace('#^data:image/\w+;base64,#i', '', $image64) ?? '';
+        $file = base64_decode($base64String);
+
         $imageName = auth()->id().'-'.time().'.'.$extension;
 
         Storage::disk('public')->put('/images/'.$imageName, $file);

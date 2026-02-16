@@ -7,8 +7,10 @@ use Illuminate\Pagination\Paginator;
 
 final class GetAllContactsPaginationAction
 {
-    public static function execute($quantity): Paginator
+    /** @return Paginator<int, Contact> */
+    public static function execute(int $quantity): Paginator
     {
+        /** @var Paginator<int, Contact> $contacts */
         $contacts = Contact::select('id', 'title', 'status', 'category_id')
             ->orderByDesc('created_at')
             ->simplePaginate($quantity);

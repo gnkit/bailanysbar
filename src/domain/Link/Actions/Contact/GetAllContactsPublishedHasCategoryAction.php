@@ -2,9 +2,14 @@
 
 namespace Domain\Link\Actions\Contact;
 
+use Domain\Link\Models\Category;
+use Domain\Link\Models\Contact;
+use Illuminate\Database\Eloquent\Collection;
+
 final class GetAllContactsPublishedHasCategoryAction
 {
-    public static function execute($category): array
+    /** @return array<int, Collection<int, Contact>> */
+    public static function execute(Category $category): array
     {
         $contacts = [];
         if ($category->children()->count() > 0) {

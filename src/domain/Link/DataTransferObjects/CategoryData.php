@@ -19,6 +19,7 @@ final class CategoryData extends Data
         public readonly ?string $color,
     ) {}
 
+    /** @return array<string, array<int, mixed>> */
     public static function rules(): array
     {
         return [
@@ -31,6 +32,10 @@ final class CategoryData extends Data
         ];
     }
 
+    /**
+     * @param  mixed  ...$args
+     * @return array<string, string>
+     */
     public static function attributes(...$args): array
     {
         return [

@@ -3,45 +3,36 @@
 namespace Domain\Link\Actions\Category;
 
 use Domain\Link\Models\Category;
+use Exception;
 
 final class DeleteCategoryAction
 {
-    /**
-     * @return void
-     *
-     * @throws \Exception
-     */
-    public static function execute(Category $category)
+    /** @throws Exception */
+    public static function execute(Category $category): void
     {
-        $category = Category::findOrFail($category->id);
-
         if ($category->id === 1) {
-            throw new \Exception('The category cannot be deleted');
+            throw new Exception('The category cannot be deleted');
         }
 
-        if ($category->children) {
+        if ($category->children()->exists()) {
             foreach ($category->children as $child) {
                 foreach ($child->contacts as $contact) {
                     $contact->update([
-                        'category_id' => 1 ?? $category->parent->id,
+                        'category_id' => $category->parent_id ?? 1,
                     ]);
                 }
             }
             $category->children()->delete();
         }
-        if ($category->parent) {
-            foreach ($category->contacts as $contact) {
-                $contact->update([
-                    'category_id' => 1 ?? $category->parent->id,
-                ]);
-            }
-        }
+
+        $targetCategoryId = $category->parent_id ?? 1;
 
         foreach ($category->contacts as $contact) {
             $contact->update([
-                'category_id' => 1,
+                'category_id' => $targetCategoryId,
             ]);
         }
+
         $category->delete();
     }
 }
