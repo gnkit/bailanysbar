@@ -9,15 +9,17 @@ final class CalculateTicketAction
 {
     public static function execute(User $user): bool
     {
-        if (! $user->isManager()) {
-
-            $ticket = GetByUserIdTicketAction::execute(auth()->user()->id);
-            $contact = GetAllContactsByUserIdAction::execute(auth()->user());
-
-            return ($ticket->limit > 0 && ($ticket->limit > $contact->count())) ?? false;
-        } else {
-
+        if ($user->isManager()) {
             return true;
         }
+
+        $ticket = GetByUserIdTicketAction::execute($user->id);
+        $contacts = GetAllContactsByUserIdAction::execute($user);
+
+        if ($ticket === null) {
+            return false;
+        }
+
+        return $ticket->limit > 0 && $ticket->limit > $contacts->count();
     }
 }

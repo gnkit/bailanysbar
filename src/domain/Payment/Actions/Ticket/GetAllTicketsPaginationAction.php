@@ -7,8 +7,10 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 final class GetAllTicketsPaginationAction
 {
-    public static function execute($quantity): Paginator
+    /** @return Paginator<int, Ticket> */
+    public static function execute(int $quantity): Paginator
     {
+        /** @var Paginator<int, Ticket> $tickets */
         $tickets = Ticket::with('user')
             ->select('id', 'user_id', 'limit', 'created_at', 'updated_at')
             ->orderByDesc('updated_at')
