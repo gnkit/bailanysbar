@@ -41,5 +41,7 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT_URL'),
     ],
-
+    'manager' => [
+        'password' => env('MANAGER_PASSWORD', Str::random(32)),
+    ],
 ];

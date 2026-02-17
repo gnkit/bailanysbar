@@ -18,15 +18,17 @@ class ManagerSeeder extends Seeder
     public function run()
     {
         $role = Role::where('slug', 'manager')->first();
+        /** @var string $password */
+        $password = config('services.manager.password');
 
         User::create([
             'name' => 'Manager',
             'email' => 'manager@mail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('manager'),
+            'password' => Hash::make($password),
             'remember_token' => Str::random(10),
             'status' => 'active',
-            'role_id' => $role->id,
+            'role_id' => $role->id ?? null,
         ]);
     }
 }
