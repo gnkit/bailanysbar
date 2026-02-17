@@ -11,6 +11,7 @@ use Domain\Account\Enums\User\UserStatus;
 use Domain\Account\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\AbstractProvider;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -29,7 +30,7 @@ class GoogleLoginController extends Controller
     {
         /** @var AbstractProvider $driver */
         $driver = Socialite::driver('google');
-        $googleUser = $driver->stateless()->user();
+        $googleUser = $driver->user();
 
         $user = User::where('email', $googleUser->getEmail())->first();
 
@@ -39,7 +40,7 @@ class GoogleLoginController extends Controller
             $userData = UserData::from([
                 'name' => $googleUser->getName(),
                 'email' => $googleUser->getEmail(),
-                'password' => Hash::make((string) rand(100000, 999999)),
+                'password' => Hash::make(Str::random(64)),
                 'status' => UserStatus::ACTIVE,
                 'role_id' => $role->id,
             ]);
