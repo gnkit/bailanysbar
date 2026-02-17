@@ -71,10 +71,11 @@ final class ContactData extends Data
 
     public static function fromRequest(Request $request): self
     {
-        $contact = Contact::where('id', $request->contact->id)->first();
+        /** @var Contact|null $contact */
+        $contact = $request->route('contact');
 
         return self::from([
-            'id' => $request->contact->id ?? null,
+            'id' => $contact->id ?? null,
             'title' => $request->title,
             'name' => $request->name,
             'description' => $request->description,
@@ -85,7 +86,7 @@ final class ContactData extends Data
             'whatsapp' => $request->whatsapp,
             'site' => $request->site,
             'status' => $request->status,
-            'user_id' => $contact->user->id ?? null,
+            'user_id' => $contact->user_id ?? $request->user()?->id,
             'category_id' => $request->category_id,
             'image' => (new ImageUploadContactService)->upload($request, $contact),
         ]);
