@@ -75,6 +75,8 @@ class ContactController extends Controller
 
     public function edit(Contact $contact): View|RedirectResponse
     {
+        $this->authorize('update', $contact);
+
         if ($this->notificationContactService->readNotificationContact($contact)) {
 
             return redirect()->refresh()->with('success', __('messages.contact_read_notice'));
@@ -85,19 +87,23 @@ class ContactController extends Controller
         return view('pages.contact.edit', compact('categories', 'contact'));
     }
 
-    public function update(ContactData $data, Request $request): RedirectResponse
+    public function update(ContactData $data, Request $request, Contact $contact): RedirectResponse
     {
+        $this->authorize('update', $contact);
+
         /** @var User $user */
         $user = $request->user();
-        $contact = UpsertContactAction::execute($data, $user);
+        $updatedContact = UpsertContactAction::execute($data, $user);
 
-        $this->notificationContactService->sendNotificationContactUpdatedToManager($contact);
+        $this->notificationContactService->sendNotificationContactUpdatedToManager($updatedContact);
 
         return redirect()->route('contacts.index')->with('success', __('messages.updated_successfully'))->withInput();
     }
 
     public function destroy(Contact $contact): RedirectResponse
     {
+        $this->authorize('delete', $contact);
+
         DeleteContactAction::execute($contact);
         $this->imageUploadContactService->destroy($contact);
 
