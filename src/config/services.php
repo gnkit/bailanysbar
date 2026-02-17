@@ -42,6 +42,6 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URL'),
     ],
     'manager' => [
-        'password' => env('MANAGER_PASSWORD', Str::random(32)),
+        'password' => env('MANAGER_PASSWORD', \Illuminate\Support\Str::random(32)),
     ],
 ];
