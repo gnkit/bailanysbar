@@ -32,10 +32,9 @@ final class ImageUploadContactService
     public function destroy(Contact $contact): void
     {
         if ($contact->image !== ContactImageDefault::PATH->value) {
-            $imagePath = public_path('storage/images/'.$contact->image);
-
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
+            $filename = basename($contact->image); // защита от traversal
+            if (Storage::disk('public')->exists('/images/'.$filename)) {
+                Storage::disk('public')->delete('/images/'.$filename);
             }
         }
     }

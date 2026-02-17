@@ -71,7 +71,7 @@ final class ContactData extends Data
 
     public static function fromRequest(Request $request): self
     {
-        $contact = Contact::where('id', $request->contact)->first();
+        $contact = Contact::where('id', $request->contact->id)->first();
 
         return self::from([
             'id' => $request->contact->id ?? null,
