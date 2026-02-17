@@ -23,7 +23,9 @@ Route::get('/pricing', [\App\Http\Controllers\StaticPage\StaticPageController::c
 Route::get('/privacy', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'privacy'])->name('privacy');
 Route::get('/sale', [\App\Http\Controllers\StaticPage\StaticPageController::class, 'sale'])->name('sale');
 
-Auth::routes();
+Route::middleware('throttle:5,1')->group(function () {
+    Auth::routes();
+});
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Account\AccountController::class, 'dashboard'])->name('dashboard');
@@ -47,5 +49,7 @@ Route::get('/language/{locale}', function ($locale) {
     return redirect()->back();
 });
 
-Route::get('/google/redirect', [App\Http\Controllers\Auth\Socialite\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
-Route::get('/google/callback', [App\Http\Controllers\Auth\Socialite\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+Route::middleware('throttle:10,1')->group(function () {
+    Route::get('/google/redirect', [App\Http\Controllers\Auth\Socialite\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
+    Route::get('/google/callback', [App\Http\Controllers\Auth\Socialite\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+});

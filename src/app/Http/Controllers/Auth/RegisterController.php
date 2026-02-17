@@ -42,7 +42,7 @@ class RegisterController extends Controller
                     'response' => $value,
                     'remoteip' => request()->ip(),
                 ]);
-                if (!$response->json('success')) {
+                if (! $response->json('success')) {
                     $fail("The {$attribute} is invalid");
                 }
             }],
