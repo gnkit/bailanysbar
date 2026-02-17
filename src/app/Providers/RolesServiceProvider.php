@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Domain\Account\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,13 +23,13 @@ class RolesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        Blade::directive('role', function ($role) {
-            return "<?php if(auth()->check() && auth()->user()->hasRole({$role})): ?>";
-        });
-        Blade::directive('endrole', function ($role) {
-            return '<?php endif; ?>';
+        Blade::if('role', function (string $role): bool {
+            /** @var User|null $user */
+            $user = auth()->user();
+
+            return $user !== null && $user->hasRole($role);
         });
     }
 }
