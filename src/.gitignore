@@ -17,3 +17,9 @@ yarn-error.log
 /.idea
 /.vscode
 .env.testing
+
+# Gemini & AI Agents
+.gemini/
+.agents/
+boost.json
+GEMINI.md
